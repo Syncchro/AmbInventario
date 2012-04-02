@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="text-align: center;  width: 66px; white-space: nowrap;margin-left: 1%; padding-top: 4px; float: right"
+	columnClasses="barraEdicaoDetalhe" columns="4" cellpadding="0"
+	cellspacing="0" border="0">
+
+
+	<!-- Botao de INCLUIR -->
+	<ice:commandLink disabled="#{!persistenciaMB.inclusao}" style="#{persistenciaMB.inclusao ? 'cursor: pointer;' : ''}"
+		action="#{persistenciaMB.preparaParaInclusao}">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup>
+				<ice:graphicImage
+					onmouseover="Tip('#{bundle.lbl_insert}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();" height="32px" width="32px"
+					value="#{persistenciaMB.imagemInclusaoExp}" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundle.lbl_botaoBarraEdicaoIncluir}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+		<!-- Botao de SALVAR -->
+	<ice:commandLink disabled="#{!persistenciaMB.alteracao}" style="#{persistenciaMB.alteracao ? 'cursor: pointer;' : ''}"
+		action="#{persistenciaMB.salvar}">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup>
+				<ice:graphicImage
+					onmouseover="Tip('#{bundle.lbl_update}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();"
+					value="#{persistenciaMB.imagemAlteracaoExp}" height="32px"
+					width="32px" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundle.lbl_botaoBarraEdicaoSalvar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+	<!-- Botao de CANCELAR A EDICAO -->
+	<ice:commandLink action="#{persistenciaMB.cancelarEdicao}" style="#{persistenciaMB.alteracao ? 'cursor: pointer;' : ''}">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup>
+				<ice:graphicImage rendered="#{persistenciaMB.alteracao}"
+					onmouseover="Tip('#{bundle.lbl_cancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();"
+					value="/gui/images/cancelar-exp.png" height="32px" width="32px" />
+				<ice:graphicImage rendered="#{!persistenciaMB.alteracao}"
+					onmouseover="Tip('#{bundle.lbl_cancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();"
+					value="/gui/images/cancelar-des.png" height="32px" width="32px" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundle.lbl_botaoBarraEdicaoCancelar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+</ice:panelGrid>

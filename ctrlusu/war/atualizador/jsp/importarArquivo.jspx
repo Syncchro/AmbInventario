@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1"  width="100%" rowClasses="row1,row2,rowCancelarImportExport">
+
+	<f:loadBundle
+        basename="SynAtualizadorMessagesResources"
+        var="bundleAccessControl"  />           
+	<br/>
+
+ 	<ice:panelGroup>
+ 		<ice:panelGrid width="100%" columns="1" >
+	 		<ice:panelGroup>
+		        	<ice:outputText value="#{bundleAccessControl.import_selArquivo}" styleClass="iceOutputTextObrigatorio"/>
+	 		</ice:panelGroup>
+	 		<ice:panelGroup rendered="#{pageMB.arquivoSelecionado==null}">
+				<ice:inputFile size="50" style="height:50px;"
+	                actionListener="#{pageMB.uploadFile}"
+                    label="#{bundleAccessControl.import_uploadArquivo}"
+                    submitOnUpload="none"
+                 />
+	 		</ice:panelGroup>
+ 			<ice:panelGroup  style="padding-top: 25px;" rendered="#{pageMB.arquivoSelecionado!=null}" >
+					<ice:outputText value="#{pageMB.arquivoSelecionado}"  readonly="true"/>
+					<ice:commandButton immediate="true" value="#{bundleAccessControl.import_trocarArquivo}" action="#{pageMB.limpaCamposImportacao}" style="width:100px" />
+	 		</ice:panelGroup>
+ 			<ice:panelGroup>
+				   	<ice:commandButton value="#{bundleAccessControl.import_importarArquivo}" disabled="#{pageMB.arquivoSelecionado==null}"  action="#{pageMB.importarArquivo}"/>
+	 		</ice:panelGroup> 			
+		</ice:panelGrid>
+	</ice:panelGroup>
+</ice:panelGrid>

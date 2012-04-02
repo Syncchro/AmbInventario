@@ -1,0 +1,74 @@
+<ice:form xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets" style="margin: 0px">
+	<ice:panelGrid columns="4" border="0" cellspacing="0" cellpadding="0"
+		width="100%" columnClasses="#{portal.quantidadeServicosHeader > 0 ?  'headerImageFerramentas, ': 'headerImage, '} #{portal.quantidadeServicosHeader > 0 ? 'headerFerramentasGerias, ' : ', '}  ,headerButton">
+
+
+		<ice:commandLink
+			disabled="#{!portal.headerPagina.botaoVoltarHabilitado}"
+			action="#{portal.headerPagina.voltarPaginaAnterior}">
+			<ice:graphicImage
+				onmouseover="Tip('#{bundle.lbl_voltar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();" height="32px" width="32px"
+				value="#{portal.headerPagina.imagemBotaoVoltar}" style="float: left;margin: 1px; margin-left: 3px;" />
+		</ice:commandLink>
+
+		
+		
+		<ice:panelGrid width="#{portal.quantidadeServicosHeader * 40}"  columns="1" border="0" cellpadding="0" cellspacing="0">
+			<ui:include src="servicos/barraBotoesGerais.jspx" rendered="#{portal.quantidadeServicosHeader > 0}">
+				<ui:param name="servicoMB" value="#{portal}" />
+			</ui:include>
+		</ice:panelGrid>
+	
+		<ice:panelGroup style="text-align: center;">
+			<img src="images/header.png" />
+		</ice:panelGroup>
+
+
+		
+		<ice:panelGrid columns="5" border="0" cellspacing="0" cellpadding="0"
+			width="100%">
+
+			<ice:commandLink action="#{popUpInformacoesAmbienteMB.abrirPopUp}"
+				onmouseover="Tip('#{bundle.lbl_ambiente}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();">
+				<ice:graphicImage value="gui/images/popupInfoAmbiente.png"
+					id="headerInfoHomologacao"  />
+			</ice:commandLink>
+			<ice:commandLink id="headerPageAumentaFonte"
+				action="#{portal.headerPagina.aumentarTamanhoDaFonte}"
+				onclick="UnTip();"
+				onmouseover="Tip('#{bundle.lbl_hintBotaoZoomMais}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();">
+				<ice:graphicImage id="headerPageAumentaFonteImg"
+					value="gui/images/bt_font_plus.png" ></ice:graphicImage>
+			</ice:commandLink>
+			<ice:commandLink id="headerPageReduzFonte"
+				action="#{portal.headerPagina.diminuirTamanhoDaFonte}"
+				onclick="UnTip();"
+				onmouseover="Tip('#{bundle.lbl_hintBotaoZoomMenos}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();">
+				<ice:graphicImage id="headerPageReduzFonteImg"
+					value="gui/images/bt_font_minus.png" ></ice:graphicImage>
+			</ice:commandLink>
+			<ice:commandLink id="headerPageLnkHelp" target="_blank"
+				onclick="javascript:openPopup('#{portal.headerPagina.helpPage}',300,500);UnTip();"
+				rendered="#{portal.headerPagina.helpPage != null}"
+				onmouseover="Tip('#{bundle.lbl_hintBotaoHelp}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();">
+				<ice:graphicImage id="headerPageLnkHelpImg"
+					value="gui/images/bt-ajuda.png" ></ice:graphicImage>
+			</ice:commandLink>
+			<ice:commandLink id="headerPageLnkLogout" partialSubmit="false"
+				action="#{portal.headerPagina.toLogoutPage}"
+				onmouseover="Tip('#{bundle.lbl_hintBotaoSair}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();">
+				<ice:graphicImage id="headerPageLnkLogoutImg"
+					value="gui/images/bt_exit.png" ></ice:graphicImage>
+			</ice:commandLink>
+		</ice:panelGrid>
+	</ice:panelGrid>
+</ice:form>

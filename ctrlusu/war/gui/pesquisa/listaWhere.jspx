@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        rendered="#{pageMB.pesquisaAtiva}"
+        columns="2"
+        width="100%"
+        columnClasses="listaWhereBarra">
+        <ice:panelGroup>
+        	<ice:outputText style="padding-top:0px; padding-bottom:0px;" value="#{bundle.search_lbl_pesquisasSalvas}"/>
+        </ice:panelGroup>
+        <ice:panelGroup>
+	   		<ice:selectOneMenu  style="width:200px; vertical-align:top; margin-top: 3px;" value="#{pesquisaMB.whereSelecionado}" valueChangeListener="#{pesquisaMB.whereAlterado}" partialSubmit="true">
+	   	    	<f:selectItems  value="#{pesquisaMB.lstWheres}"/>
+	   	    </ice:selectOneMenu>
+        </ice:panelGroup>
+</ice:panelGrid>        

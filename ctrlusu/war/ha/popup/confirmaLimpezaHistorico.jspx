@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view   xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jstl/core"
+          xmlns:ice="http://www.icesoft.com/icefaces/component"  
+          xmlns:ui="http://java.sun.com/jsf/facelets"  >
+     <f:loadBundle
+        basename="SynHAMessagesResources"
+        var="bundleHA"  />      
+<ice:outputDeclaration doctypeRoot="HTML"
+        doctypePublic="-//W3C//DTD HTML 4.01 Transitional//PT"
+        doctypeSystem="http://www.w3.org/TR/html4/loose.dtd" />
+<ice:panelGrid columns="1">
+  <ice:panelGroup>
+    <ice:outputText>#{bundleHA.limparHistorico_popup_msg_confirmacao}</ice:outputText>
+    <ice:outputText value="#{paginaMB.dataRefLimpeza}">
+     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="#{portal.timeZone}"/>
+    </ice:outputText>
+  </ice:panelGroup>
+  <br/>
+  <ice:panelGrid columns="2">
+    <ice:commandButton value="#{bundleHA.limparHistorico_popup_lbl_confirmar}" action="#{paginaMB.limparHistoricoPopup}"></ice:commandButton>  
+    <ice:commandButton value="#{bundleHA.limparHistorico_popup_lbl_cancelar}" action="#{popupGenerico.fecharPopup}" immediate="true"/>
+  </ice:panelGrid>
+</ice:panelGrid>
+</f:view>

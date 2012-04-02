@@ -1,0 +1,155 @@
+<ice:panelGrid  
+	    xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        rendered="#{pageMB.gridAtivo}"
+		 width="100%" 
+		 >
+		 <ice:panelGroup>
+			 <ice:panelGrid  columns = "3" cellpadding="0" cellspacing="0" styleClass="panelGridCustomize" width="100%">
+				<!-- Primeira colunas -->
+				<ice:panelGroup style="width: 30%;text-align: left;" styleClass="panelGroupCustomize">
+					<ice:panelGrid columns="2" width="100%" style="text-align: center;">
+						<ice:panelGroup/>
+						<ice:panelGroup style="width: 300px;text-align: center;">
+							<ice:outputText styleClass="iceOutputTextObrigatorio" value="#{bundle.customizeGridColumns_lbl_colunasDoGrid}"/>
+						</ice:panelGroup>
+						<ice:panelGroup >
+							<ice:panelGrid columns="1" width="5px">
+								<ice:commandLink id="customizeGridColumnsLnkMoveUp" 
+												action="#{gridMB.gridConfigurador.moveParaCima}" 
+												disabled="#{!gridMB.gridConfigurador.desassociacaoHabilitada}">
+									<ice:graphicImage id="customizeGridColumnsLnkMoveUpImg" 
+														value="/gui/images/hand-up-exp.gif" 
+														onmouseover="Tip('#{bundle.customizeGridColumns_lbl_paraCima}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        											onmouseout="UnTip();"
+	        											onclick="UnTip();"
+	        											height="16px"            
+	        											width="16px"/>
+								</ice:commandLink>
+								<ice:commandLink id="customizeGridColumnsLnkMoveDown" 
+												action="#{gridMB.gridConfigurador.moveParaBaixo}" 
+												disabled="#{!gridMB.gridConfigurador.desassociacaoHabilitada}">
+									<ice:graphicImage id="customizeGridColumnsLnkMoveDownImg" 
+														value="/gui/images/hand-down-exp.gif" 
+														onmouseover="Tip('#{bundle.customizeGridColumns_lbl_paraBaixo}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        											onmouseout="UnTip();"
+	        											onclick="UnTip();" 
+	        											height="16px"            
+	        											width="16px"/>
+								</ice:commandLink>				
+							</ice:panelGrid>
+						</ice:panelGroup>
+						<ice:panelGroup>
+							<ice:dataTable id="gridColumnsDisplayed"
+							            value="#{gridMB.gridConfigurador.listaCamposAtuais}"
+							            var="row"
+							            columnWidths="20px, 280px"
+							            columnClasses="tableColCustomizeColumns"
+								       	scrollable="true"
+								       	scrollHeight="90px"
+								       	styleClass="tableDataGrid" 
+					            >
+								<ice:column>
+									<ice:rowSelector value="#{row.selected}" multiple="true"/>
+									<ice:graphicImage id="customizeGridGridColumnsImgSelected" 
+											value="/gui/images/check.gif" 
+											rendered="#{ row['selected'] }">
+									</ice:graphicImage>
+		   					    </ice:column>		            
+		 						<ice:column>
+									<ice:outputText value="#{row.rotulo}"/>
+								</ice:column>
+							</ice:dataTable>
+				     	</ice:panelGroup>
+				     </ice:panelGrid>
+		     	</ice:panelGroup>
+				<!-- Segunda colunas -->
+		    	<ice:panelGroup styleClass="panelGroupButtonsCustomize" >
+		    		<ice:panelGrid columns="1" width="100%" >
+					    <ice:panelGroup>	
+					   		 <ice:commandButton id="customizeGridColumnsBtnRemoverColuna" 
+												onmouseover="Tip('#{bundle.customizeGridColumns_lbl_removerColuna}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        									onmouseout="UnTip();"
+	        									onclick="UnTip();"
+			    								styleClass="gridRightBtn-dis"
+			    								style="background-position: center;"
+			    								rendered="#{!gridMB.gridConfigurador.desassociacaoHabilitada}"/>    	    		
+			    			<ice:commandButton id="customizeGridColumnsBtnRemoverColuna" 
+												onmouseover="Tip('#{bundle.customizeGridColumns_lbl_removerColuna}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        									onmouseout="UnTip();"
+	        									onclick="UnTip();"
+			    								action="#{gridMB.gridConfigurador.desassociaCampo}" 
+			    								styleClass="gridRightBtn"
+			    								style="background-position: center;"
+			    								rendered="#{gridMB.gridConfigurador.desassociacaoHabilitada}"/>
+			    		</ice:panelGroup>
+					    <ice:panelGroup>		
+					   		<ice:commandButton id="customizeGridColumnsBtnAdicionarColuna" 
+												onmouseover="Tip('#{bundle.customizeGridColumns_lbl_adicionarColuna}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        									onmouseout="UnTip();"	
+	        									onclick="UnTip();"		    											    								 
+			    								styleClass="gridLeftBtn-dis"
+			    								style="background-position: center;"
+			    								rendered="#{!gridMB.gridConfigurador.associacaoHabilitada}"/>			    					    		
+			    			<ice:commandButton id="customizeGridColumnsBtnAdicionarColuna" 
+												onmouseover="Tip('#{bundle.customizeGridColumns_lbl_adicionarColuna}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        									onmouseout="UnTip();"	
+	        									onclick="UnTip();"		    											    								 
+			    								action="#{gridMB.gridConfigurador.associaCampo}" 
+			    								styleClass="gridLeftBtn"
+			    								style="background-position: center;"
+			    								rendered="#{gridMB.gridConfigurador.associacaoHabilitada}"/>
+			    		</ice:panelGroup>			    			
+					    <ice:panelGroup>	
+					    	<ice:commandButton id="customizeGridColumnsBtnAdicionarColunas" 
+												onmouseover="Tip('#{bundle.customizeGridColumns_lbl_adicionarColunas}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        									onmouseout="UnTip();"		
+	        									onclick="UnTip();"	    											    								 			    								
+			    								rendered="#{!gridMB.gridConfigurador.associarTodasHabilitado}"
+			    								styleClass="gridAllLeftBtn-dis"
+			    								style="background-position: center;"/>	    				
+			    			<ice:commandButton id="customizeGridColumnsBtnAdicionarColunas" 
+												onmouseover="Tip('#{bundle.customizeGridColumns_lbl_adicionarColunas}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        									onmouseout="UnTip();"		
+	        									onclick="UnTip();"	    											    								 			    								
+			    								action="#{gridMB.gridConfigurador.associaTodosCampos}" 
+			    								rendered="#{gridMB.gridConfigurador.associarTodasHabilitado}"
+			    								styleClass="gridAllLeftBtn"
+			    								style="background-position: center;"/>  			    			
+			    		</ice:panelGroup>			    			
+			   		</ice:panelGrid>
+		    	</ice:panelGroup>
+				<!-- Terceira colunas -->
+				<ice:panelGroup  style="width: 50%;text-align: center;" styleClass="panelGroupCustomize">
+					<ice:panelGrid columns="1" width="100%" style="text-align: center;" >
+						<ice:panelGroup style="width: 300px;text-align: center;">
+							<ice:outputText styleClass="iceOutputTextObrigatorio" value="#{bundle.customizeGridColumns_lbl_colunasDisponiveis}"/>
+						</ice:panelGroup>
+					    <ice:panelGroup>
+				    		<ice:dataTable id="gridColumnsNotDisplayed"
+						            value="#{gridMB.gridConfigurador.listaCamposPossiveis}"
+						            var="row"
+						   			  columnWidths="20px,280px"
+							            columnClasses="tableColCustomizeColumns"
+							       scrollable="true"
+							       scrollHeight="90px"
+							       	styleClass="tableDataGrid" 
+				            >
+			            	<ice:column>
+									<ice:rowSelector value="#{row.selected}" multiple="true"/>
+									<ice:graphicImage id="customizeGridNotGridColumnsImgSelected" 
+														value="/gui/images/check.gif" 
+														rendered="#{ row['selected'] }">
+									</ice:graphicImage>
+		   					    </ice:column>
+							<ice:column>
+								<ice:outputText value="#{row.rotulo}"/>
+							 </ice:column>		            
+						</ice:dataTable>
+				   		</ice:panelGroup>   
+				   	</ice:panelGrid>
+			   	</ice:panelGroup>
+		   	</ice:panelGrid>
+	   	</ice:panelGroup>
+</ice:panelGrid>

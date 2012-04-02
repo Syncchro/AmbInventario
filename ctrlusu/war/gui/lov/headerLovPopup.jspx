@@ -1,0 +1,20 @@
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"  
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        border="0" cellspacing="0" 
+       	cellpadding="0"
+       	rendered="#{currentPageBean != null}" 
+       	width="100%" 
+       	>
+	<ice:panelGrid  
+	       columns="1" border="0" cellspacing="0" 
+	       cellpadding="0"  width="100%" columnClasses="titulosHeader,barra"  >    
+	       	<ice:panelGroup style="width: 100%; text-align:left">
+					<ice:outputText styleClass="breadCrumbsCurrentPage" value="#{lovSession.titulo}"></ice:outputText>
+			</ice:panelGroup>    
+	</ice:panelGrid>
+</ice:panelGrid>
+
+	

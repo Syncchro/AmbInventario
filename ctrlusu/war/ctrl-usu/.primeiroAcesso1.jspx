@@ -1,0 +1,102 @@
+<html><?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view xmlns:jsp="http://java.sun.com/JSP/Page" 
+		  xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ice="http://www.icesoft.com/icefaces/component" >
+<ice:outputDeclaration doctypeRoot="HTML"
+        doctypePublic="-//W3C//DTD HTML 4.01 Transitional//EN"
+        doctypeSystem="http://www.w3.org/TR/html4/loose.dtd"/>  
+<f:loadBundle
+        basename="SynCtrl-UsuMessagesResources"
+        var="bundleAccessControl"  />                
+<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+			
+		</head>
+		<body>    
+		    <form>
+					
+				<table width="100%" height="100%" border="0">
+				<tr>
+				<td>
+				<div align="center">
+						<br/><br/>
+						                                                                    
+						<ice:messages globalOnly="true"/>
+						<br/><br/>
+						<table width="745" border="1" cellpadding="0" cellspacing="0" class="TLoginLogotipo" bordercolor="#E0DCBE">
+						    <tr>
+						    <td>
+								<table width="100%" border="1">
+						        <tr>
+						        <td>
+						        	
+						        	<img src="./images/kdmconfig.png" align="left" hspace="70%"/>
+						        	                                                                          
+						            
+						            <table width="400" border="0" align="center">
+										<tr>
+											<td width="120" class="TLoginTxt">
+												<ice:outputText value="Senha Atual : "/>
+											</td>
+											<td>
+												<div align="center"> 
+													<input type="password" class="TLoginBox" value="#{primeiroAcesso.senhaAtual}" maxlength="16" size="16"></input>
+												</div>
+											</td>
+										</tr>
+										<tr> 
+											<td class="TLoginTxt">
+												<ice:outputText value="Nova Senha : "/>
+											</td>
+											<td>
+												<div align="center"> 
+													<input type="password" class="TLoginBox" value="#{primeiroAcesso.novaSenha}" maxlength="16" size="16"></input>
+												</div>
+											</td>
+										</tr>
+										<tr> 
+											<td class="TLoginTxt">
+												<ice:outputText value="Confirmação Nova Senha : "/>
+											</td>
+											<td>
+												<div align="center"> 
+													<input type="password" class="TLoginBox" value="#{primeiroAcesso.confirmacaoNovaSenha}" maxlength="16" size="16"></input>
+												</div>
+											</td>
+										</tr>										
+										<tr> 
+											<td colspan="2">
+												<br/>
+												<br/>
+												<br/>
+												<table width="140" border="0" align="center">
+													<tr> 
+														<input type="submit" class="TLoginBtn" action="#{primeiroAcesso.alterarSenha}" value="Ok"></input>
+														<input type="submit" class="TLoginBtn" action="#{primeiroAcesso.clean}" value="Limpar"></input>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+						                    
+									<div align="center"><br/><br/>
+										<ice:outputText styleClass="TLoginTxt" value="(c)Copyright 2005 Todos os Direitos Reservados"/>
+										<br/>
+										<ice:outputText styleClass="TLoginTxt" value="Synchro Sistema de Informação"/>
+										<br/><br/>
+									</div>
+						                    
+								</td>
+								</tr>
+								</table>
+							</td>
+						    </tr>
+						</table>
+				</div>
+				</td>
+				</tr>
+				</table>
+			</form>   
+		</body></html>

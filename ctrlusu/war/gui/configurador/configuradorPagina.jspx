@@ -1,0 +1,17 @@
+<ice:commandLink
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    rendered="#{pageMB.configuradorPaginaAtivo}"
+	action="#{pageMB.configuradorPagina.salvarConfiguracao}"
+	styleClass="buttonInsideBar"  
+>
+			<ice:graphicImage  
+				value="/gui/images/salvarColunas.png"
+				onmouseover="Tip('#{bundle.lbl_savePageConfiguration}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        	onmouseout="UnTip();"
+	        	onclick="UnTip();"
+	        	height="24px"            
+	        	width="24px" 
+			/>
+		</ice:commandLink>

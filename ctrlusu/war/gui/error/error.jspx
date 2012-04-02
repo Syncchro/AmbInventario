@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view   xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jstl/core"
+          xmlns:ice="http://www.icesoft.com/icefaces/component"  
+          xmlns:ui="http://java.sun.com/jsf/facelets" >
+          
+<!-- Adiciona bundle utilizado por toda a aplicacao. -->  
+<f:loadBundle
+        basename="SynGuiJsfMessagesResources"
+        var="bundle"  />                        
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Adiciona title do portal baseado no arquivo de propriedades. -->
+	<title >#{portal.nomeAplicacao}</title>
+	
+	<!-- Adiciona estilo do SynGuiJSF igual para todas as aplicacoes. -->
+		<script>
+   		function verificaErro(){
+			if (window.opener != null){
+        		window.close();
+        		window.opener.location="./error.iface"
+         	 }
+		}
+    ajustaAltura()
+   		</script>
+</head>
+   <body leftmargin="0" topmargin="0" onload="verificaErro();ajustaAltura();limpaListaCriada();" >
+	
+	<link type="text/css" rel="stylesheet" href="gui/css/styleDefault.css"/> 
+	<link type="text/css" rel="stylesheet" href="gui/css/styleTamanho12.css"/>
+	<script type="text/javascript" src="gui/js/JavaScriptUtil.js"></script>
+	<script src="gui/js/SynUtil.js"></script>
+	
+	<ice:panelBorder 
+		border="1" 
+		cellpadding="0"
+        cellspacing="0" 
+        renderWest="false"
+        width="100%"
+        renderEast="false"
+        id="painelPrincipal"
+	>
+		<f:facet name="north" >
+            <ice:panelGroup>
+ 		     	 <ui:include src="headerError.jspx"></ui:include>
+            </ice:panelGroup>
+        </f:facet>
+        
+		<f:facet name="center">
+			<ice:panelGroup id="divErroCentral" style="overflow: scroll;">
+				<ice:form style="margin: 0px;">
+						<!-- mensagem generica de erro -->
+						<img src="gui/images/erro.png" alt=""/>
+			            <ice:outputText value="#{bundle.lbl_telaerror_msgUsuario}" style="font-weight: bold;" />
+			            <ice:messages globalOnly="true"/>
+			            <br/>
+			            <ice:outputText value="#{errorMB.msgUsuario}" style="font-weight: bold; color: red;" ></ice:outputText>
+			            <br/><br/>
+						<!-- mensagem de erro  -->			            
+						<ice:panelGrid columns="2" border="0" columnClasses="colLabelError, colValueError">
+		
+					       	<ice:outputText value="#{bundle.lbl_telaerror_msgErro}" styleClass="infLabelError" />
+					        <ice:outputText value="#{sessionScope._error_message}" styleClass="infValueError" />
+					       
+					       	<ice:outputText value="#{bundle.lbl_telaerror_tipoErro}" styleClass="infLabelError" />
+					        <ice:outputText value="#{sessionScope._error_exception_type}" styleClass="infValueError"/>
+					        
+					    </ice:panelGrid>
+					    <br/><br/>
+					    
+					    <!-- informacoes do sistema e do usuario  -->
+					    <ice:panelGroup>
+						    	<ice:outputLabel value="#{bundle.lbl_telaerror_informacoesUsuario}" styleClass="infLabelError"/>
+						</ice:panelGroup>
+					    
+					    <ice:panelGrid columns="2" border="0" styleClass="infUsuarioError" columnClasses="colLabelError, colValueError" >
+		
+							<ice:outputText value="#{bundle.lbl_telaerror_caminhoAplicao}" styleClass="infLabelError" />
+					        <ice:outputText value="#{errorMB.caminhoAplicacao}" styleClass="infValueError"/>
+		
+					       	<ice:outputText value="#{bundle.lbl_telaerror_nomeUsuario}" styleClass="infLabelError" />
+					        <ice:outputText value="#{errorMB.nomeUsuario}" styleClass="infValueError"/>
+					        
+					        <ice:outputText value="#{bundle.lbl_telaerror_organizacao}" styleClass="infLabelError" />
+					        <ice:outputText value="#{errorMB.organizacaoContexto}" styleClass="infValueError"/>
+					        
+					        <ice:outputText value="#{bundle.lbl_telaerror_dataHora}" styleClass="infLabelError"  />
+					        <ice:outputText value="#{errorMB.dataHoraErro}" styleClass="infValueError"/>
+					        
+					        <ice:outputText value="#{bundle.lbl_telaerror_sistemaVersao}" styleClass="infLabelError" />
+					        <ice:outputText value="#{errorMB.sistemaVersao}" styleClass="infValueError"/>
+					        
+					        <ice:outputText value="#{bundle.lbl_telaerror_ambiente}" styleClass="infLabelError" />
+					        <ice:outputText value="#{errorMB.ambiente}" styleClass="infValueError"/>
+					        
+					        <ice:outputText value="#{bundle.lbl_telaerror_obs}" styleClass="infLabelError"  />
+					        
+					        <ice:inputTextarea cols="100" rows="8" value="#{errorMB.observacao}" styleClass="iceTextarea">
+					        </ice:inputTextarea>
+					        
+					    </ice:panelGrid>
+					    
+					    <br/>
+					    <ice:panelGrid columns="2" border="0" style="padding: 5px; cells">
+					    	<ice:commandButton value="#{bundle.lbl_telaerror_enviar}" action="#{errorMB.enviar}" disabled="#{errorMB.enviarDesabilitado}"></ice:commandButton>
+					    	<ice:commandButton value="#{bundle.lbl_telaerror_voltar}" action="#{errorMB.voltar}"></ice:commandButton>
+					    </ice:panelGrid>
+					    <br/><br/>
+					    
+					     <ice:panelCollapsible rendered="#{errorMB.exibeStacktracePrimitivo}">
+					     	<f:facet name="header">
+		            	    	<ice:panelGroup>
+				                    <ice:outputText value="#{bundle.lbl_telaerror_detalheErro}" />
+				                </ice:panelGroup>
+					        </f:facet>
+					        
+					        <ice:panelGrid columns="2" border="0" styleClass="infUsuarioError" columnClasses="colLabelError, colValueError" >
+					        
+					        <ice:outputText value="#{bundle.lbl_telaerror_exception}" styleClass="infLabelError" />
+					        <ice:outputText value="#{sessionScope._error_exception}"  styleClass="infValueError"/>
+					       
+					       	<ice:outputText value="#{bundle.lbl_telaerror_status}" styleClass="infLabelError" />
+					        <ice:outputText value="#{sessionScope._error_status_code}" styleClass="infValueError"/>
+					       
+					       	<ice:outputText value="#{bundle.lbl_telaerror_requestURI}" styleClass="infLabelError" />
+					        <ice:outputText value="#{sessionScope._error_request_uri}" styleClass="infValueError"/>
+					       
+					       	<ice:outputText value="#{bundle.lbl_telaerror_servletName}" styleClass="infLabelError" />
+					        <ice:outputText value="#{sessionScope._error_servlet_name}" styleClass="infValueError"/>
+					         
+						    <ice:outputText value="#{bundle.lbl_telaerror_stackTrace}" styleClass="infLabelError" />
+						    <ice:outputText value="#{sessionScope._error_stack_trace}" escape="false" styleClass="infValueError"/>
+						    
+						    </ice:panelGrid>
+						    
+					    </ice:panelCollapsible>
+			    </ice:form>
+		    </ice:panelGroup>
+		    
+		</f:facet>
+		
+		<f:facet name="south">
+        	<ice:panelGroup>
+	        	<ui:include src="/gui/portal/footer.jspx"></ui:include>
+			</ice:panelGroup>
+        </f:facet>
+	</ice:panelBorder>
+   </body>
+   </html>
+ </f:view>

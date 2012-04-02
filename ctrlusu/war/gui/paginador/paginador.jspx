@@ -1,0 +1,58 @@
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component" width="60px" columns="5"
+		rendered="#{paginadorMB != null and paginadorMB.renderedPaginador}">
+        <ice:panelGroup>
+        	<ice:commandLink  partialSubmit="true" disabled="#{!paginadorMB.anteriorAtivo}"  action="#{paginadorMB.moveParaPrimeiraPagina}">
+        		<ice:graphicImage  
+						onmouseover="Tip('#{bundle.lbl_primeiro}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 	onmouseout="UnTip();"   
+	        		 	onclick="UnTip();"     				
+        				value = "#{paginadorMB.imagemPrimeiraPagina}"
+        				/>
+        	</ice:commandLink>
+        </ice:panelGroup>
+        <ice:panelGroup>
+        	<ice:commandLink  partialSubmit="true" disabled="#{!paginadorMB.anteriorAtivo}"  action="#{paginadorMB.moveParaPaginaAnterior}">
+        		<ice:graphicImage
+						onmouseover="Tip('#{bundle.lbl_anterior}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 	onmouseout="UnTip();"       
+						onclick="UnTip();"				        		 
+        				value = "#{paginadorMB.imagemPaginaAnterior}"
+/>
+        	</ice:commandLink>
+        </ice:panelGroup>
+        <ice:panelGroup style="white-space: nowrap;">
+			<ice:inputText 
+							 value="#{paginadorMB.numeroPaginaCorrente}" 
+							 valueChangeListener="#{paginadorMB.alteraNumeroPagina}" 
+							 partialSubmit="true" 
+							 style="width:20px;"
+							 onmouseover="Tip('#{bundle.paginatorDetail_lbl_changeRecord}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 		 onmouseout="UnTip();"   	
+	        		 		 onclick="UnTip();"						  
+							 converter="SynIntegerConverterFooterPage"
+							 onfocus="javascript:aplicaMascaraNumero(this, 3, 'false');"
+							 onblur="javascript:preencheValorDefault(this, 1);"/>	
+			<ice:outputText value=" #{bundle.paginatorDetail_lbl_de} #{paginadorMB.qtdTotalRegistros} #{paginadorMB.descricaoPagina}"/>
+        </ice:panelGroup>
+        <ice:panelGroup>
+           	<ice:commandLink  partialSubmit="true" disabled="#{!paginadorMB.proximoAtivo}" action="#{paginadorMB.moveParaProximaPagina}">
+	       		<ice:graphicImage  
+							 onmouseover="Tip('#{bundle.lbl_proximo}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 		 onmouseout="UnTip();"   							  
+	       					 onclick="UnTip();"
+	       					value = "#{paginadorMB.imagemProximaPagina}"/>
+        	</ice:commandLink>
+        </ice:panelGroup>
+        <ice:panelGroup>
+        	<ice:commandLink  partialSubmit="true"  disabled="#{!paginadorMB.proximoAtivo}" action="#{paginadorMB.moveParaUltimaPagina}">
+	       		<ice:graphicImage  
+							 onmouseover="Tip('#{bundle.lbl_ultimo}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 		 onmouseout="UnTip();"   	
+	        		 		 onclick="UnTip();"						  
+	       					value = "#{paginadorMB.imagemUltimaPagina}"/>
+        	</ice:commandLink>
+        </ice:panelGroup>
+</ice:panelGrid>        

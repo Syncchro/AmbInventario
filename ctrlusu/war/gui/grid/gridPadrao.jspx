@@ -1,0 +1,927 @@
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        rendered="#{pageMB.gridAtivo}" width="100%">
+        
+     	<!-- JSP que inclui dados que devem aparecer tanto na lista como no detalhe -->
+         <ice:panelGroup >
+             <ice:dataTable  var="data"
+                           	value="#{gridMB.gridDataModel}"
+                           	columnWidths="#{gridMB.tamanhoColunas}"
+                           	rows="#{gridMB.registrosPorPagina}" 
+                           	columnClasses="#{gridMB.classesDasColunas}"
+                           	width="100%"
+              >
+              
+              <ice:column rendered="#{pageMB.navegaRegistroGrid}">
+					<ice:panelGroup>
+						<ice:commandLink action="#{pageMB.navegarRegistroGrid}" style="padding: 0 3px">
+							<ice:graphicImage value="/gui/images/gridNavegarSubTela.png" />
+							<f:param name="rowPK" value="#{data['pk']}"></f:param>
+						</ice:commandLink>
+					</ice:panelGroup>         
+                </ice:column>
+              
+				<ice:column rendered="#{gridMB.colunaSelecaoVisivel}">
+					<f:facet name="header">
+						<ice:selectBooleanCheckbox 
+							value="#{gridMB.todosRegistrosSelecionados}"
+							valueChangeListener="#{gridMB.selecionaTodosRegistros}"
+							rendered="#{gridMB.gridMultiSelecao and gridMB.colunaSelecaoVisivel}"
+	                        partialSubmit="true"/>
+					</f:facet>
+					
+					<ice:panelGroup  >
+						<ice:commandLink action="#{gridMB.selecionaRegistro}" rendered="#{gridMB.colunaSelecaoVisivel}">
+							<ice:graphicImage value="#{gridMB.imagemRegistroSelecionado}" rendered="#{data['selected']}"/>
+							<ice:graphicImage value="#{gridMB.imagemRegistroNaoSelecionado}" rendered="#{ data['selected'] == null || !data['selected'] }"/>
+							<f:param name="rowPK" value="#{data['pk']}"></f:param>
+						</ice:commandLink>
+					</ice:panelGroup>         
+                </ice:column>
+                
+                <!-- BEGIN COLUMN -->
+                <!-- coluna 1 -->
+				<ice:column rendered="#{gridMB.camposGrid[0] != null}"  styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+					<f:facet name="header">
+						<ui:include src="#{gridMB.camposGrid[0].jspColunaHeader}">
+							<ui:param name="data" value="#{data}"></ui:param>
+							<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+							<ui:param name="linhaGrid" value="0"></ui:param>
+							<ui:param name="colunaGrid" value="0"></ui:param>
+						</ui:include>
+					</f:facet>
+					
+					
+					 <ice:panelGroup  rendered="#{!pageMB.gridHierarquico and !gridMB.lov}">
+						
+						
+						<ui:include src="#{gridMB.camposGrid[0].jspColuna}">
+				    				<ui:param name="data" value="#{data}"></ui:param>
+				    				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+				    				<ui:param name="linhaGrid" value="0"></ui:param>
+				    				<ui:param name="colunaGrid" value="0"></ui:param>
+				    			</ui:include>
+						
+					</ice:panelGroup>
+					
+					<ice:panelGroup  rendered="#{pageMB.gridHierarquico}" >
+						
+						<ui:include src="gridHierarquico.jspx">
+		    				<ui:param name="data" value="#{data}"></ui:param>
+		    				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+		    				<ui:param name="linhaGrid" value="0"></ui:param>
+		    				<ui:param name="colunaGrid" value="0"></ui:param>
+		    			</ui:include>
+						
+					</ice:panelGroup>
+					
+						<ice:commandLink  value="#{data[gridMB.camposGrid[0].nome]}"
+            		action="#{gridMB.selecionaRegistro}" rendered="#{!pageMB.gridHierarquico and gridMB.lov}"
+            		escape="false">
+            		<f:param name="rowPK" value="#{data['pk']}"></f:param>
+            	</ice:commandLink>
+					
+				</ice:column>
+
+
+				<!-- coluna 2 -->
+                <ice:column rendered="#{gridMB.camposGrid[1] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[1].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="1"></ui:param>
+	        				<ui:param name="colunaGrid" value="1"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[1].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="1"></ui:param>
+        				<ui:param name="colunaGrid" value="1"></ui:param>
+        			</ui:include>
+                </ice:column>
+				<!-- coluna 3 -->
+                <ice:column rendered="#{gridMB.camposGrid[2] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                     <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[2].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="2"></ui:param>
+	        				<ui:param name="colunaGrid" value="2"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[2].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="2"></ui:param>
+        				<ui:param name="colunaGrid" value="2"></ui:param>
+        			</ui:include>
+                </ice:column>
+				<!-- coluna 4 -->
+                <ice:column rendered="#{gridMB.camposGrid[3] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                  <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[3].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="3"></ui:param>
+	        				<ui:param name="colunaGrid" value="3"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[3].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="3"></ui:param>
+        				<ui:param name="colunaGrid" value="3"></ui:param>
+        			</ui:include>
+                </ice:column>
+				<!-- coluna 5 -->
+                <ice:column rendered="#{gridMB.camposGrid[4] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                      <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[4].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="4"></ui:param>
+	        				<ui:param name="colunaGrid" value="4"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[4].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="4"></ui:param>
+        				<ui:param name="colunaGrid" value="4"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 6 -->
+                <ice:column rendered="#{gridMB.camposGrid[5] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                      <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[5].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="5"></ui:param>
+	        				<ui:param name="colunaGrid" value="5"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[5].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="5"></ui:param>
+        				<ui:param name="colunaGrid" value="5"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 7 -->
+                <ice:column rendered="#{gridMB.camposGrid[6] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                      <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[6].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="6"></ui:param>
+	        				<ui:param name="colunaGrid" value="6"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[6].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="6"></ui:param>
+        				<ui:param name="colunaGrid" value="6"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 8 -->
+                <ice:column rendered="#{gridMB.camposGrid[7] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                      <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[7].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="7"></ui:param>
+	        				<ui:param name="colunaGrid" value="7"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[7].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="7"></ui:param>
+        				<ui:param name="colunaGrid" value="7"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 9 -->
+                <ice:column rendered="#{gridMB.camposGrid[8] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[8].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="8"></ui:param>
+	        				<ui:param name="colunaGrid" value="8"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[8].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="8"></ui:param>
+        				<ui:param name="colunaGrid" value="8"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 10 -->
+                <ice:column rendered="#{gridMB.camposGrid[9] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[9].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="9"></ui:param>
+	        				<ui:param name="colunaGrid" value="9"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[9].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="9"></ui:param>
+        				<ui:param name="colunaGrid" value="9"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 11 -->
+                <ice:column rendered="#{gridMB.camposGrid[10] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[10].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="10"></ui:param>
+	        				<ui:param name="colunaGrid" value="10"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[10].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="10"></ui:param>
+        				<ui:param name="colunaGrid" value="10"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 12 -->
+                <ice:column rendered="#{gridMB.camposGrid[11] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                     <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[11].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="11"></ui:param>
+	        				<ui:param name="colunaGrid" value="11"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[11].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="11"></ui:param>
+        				<ui:param name="colunaGrid" value="11"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 13 -->
+                <ice:column rendered="#{gridMB.camposGrid[12] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                     <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[12].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="12"></ui:param>
+	        				<ui:param name="colunaGrid" value="12"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[12].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="12"></ui:param>
+        				<ui:param name="colunaGrid" value="12"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 14 -->
+                <ice:column rendered="#{gridMB.camposGrid[13] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[13].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="13"></ui:param>
+	        				<ui:param name="colunaGrid" value="13"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[13].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="13"></ui:param>
+        				<ui:param name="colunaGrid" value="13"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 15 -->
+                <ice:column rendered="#{gridMB.camposGrid[14] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[14].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="14"></ui:param>
+	        				<ui:param name="colunaGrid" value="14"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[14].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="14"></ui:param>
+        				<ui:param name="colunaGrid" value="14"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 16 -->
+                <ice:column rendered="#{gridMB.camposGrid[15] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                   <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[15].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="15"></ui:param>
+	        				<ui:param name="colunaGrid" value="15"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[15].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="15"></ui:param>
+        				<ui:param name="colunaGrid" value="15"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 17 -->
+                <ice:column rendered="#{gridMB.camposGrid[16] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[16].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="16"></ui:param>
+	        				<ui:param name="colunaGrid" value="16"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[16].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="16"></ui:param>
+        				<ui:param name="colunaGrid" value="16"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 18 -->
+                <ice:column rendered="#{gridMB.camposGrid[17] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[17].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="17"></ui:param>
+	        				<ui:param name="colunaGrid" value="17"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[17].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="17"></ui:param>
+        				<ui:param name="colunaGrid" value="17"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 19 -->
+                <ice:column rendered="#{gridMB.camposGrid[18] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                   <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[18].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="18"></ui:param>
+	        				<ui:param name="colunaGrid" value="18"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[18].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="18"></ui:param>
+        				<ui:param name="colunaGrid" value="18"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 20 -->
+                <ice:column rendered="#{gridMB.camposGrid[19] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[19].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="19"></ui:param>
+	        				<ui:param name="colunaGrid" value="19"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[19].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="19"></ui:param>
+        				<ui:param name="colunaGrid" value="19"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 21 -->
+                <ice:column rendered="#{gridMB.camposGrid[20] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[20].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="20"></ui:param>
+	        				<ui:param name="colunaGrid" value="20"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[20].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="20"></ui:param>
+        				<ui:param name="colunaGrid" value="20"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 22 -->
+                <ice:column rendered="#{gridMB.camposGrid[21] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[21].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="21"></ui:param>
+	        				<ui:param name="colunaGrid" value="21"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[21].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="21"></ui:param>
+        				<ui:param name="colunaGrid" value="21"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 23 -->
+                <ice:column rendered="#{gridMB.camposGrid[22] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[22].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="22"></ui:param>
+	        				<ui:param name="colunaGrid" value="22"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[22].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="22"></ui:param>
+        				<ui:param name="colunaGrid" value="22"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 24 -->
+                <ice:column rendered="#{gridMB.camposGrid[23] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[23].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="23"></ui:param>
+	        				<ui:param name="colunaGrid" value="23"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[23].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="23"></ui:param>
+        				<ui:param name="colunaGrid" value="23"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 25 -->
+                <ice:column rendered="#{gridMB.camposGrid[24] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[24].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="24"></ui:param>
+	        				<ui:param name="colunaGrid" value="24"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[24].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="24"></ui:param>
+        				<ui:param name="colunaGrid" value="24"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 26 -->
+                <ice:column rendered="#{gridMB.camposGrid[25] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[25].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="25"></ui:param>
+	        				<ui:param name="colunaGrid" value="25"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[25].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="25"></ui:param>
+        				<ui:param name="colunaGrid" value="25"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 27 -->
+                <ice:column rendered="#{gridMB.camposGrid[26] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[26].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="26"></ui:param>
+	        				<ui:param name="colunaGrid" value="26"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[26].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="26"></ui:param>
+        				<ui:param name="colunaGrid" value="26"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 28 -->
+                <ice:column rendered="#{gridMB.camposGrid[27] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[27].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="27"></ui:param>
+	        				<ui:param name="colunaGrid" value="27"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[27].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="27"></ui:param>
+        				<ui:param name="colunaGrid" value="27"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 29 -->
+                <ice:column rendered="#{gridMB.camposGrid[28] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[28].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="28"></ui:param>
+	        				<ui:param name="colunaGrid" value="28"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[28].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="28"></ui:param>
+        				<ui:param name="colunaGrid" value="28"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 30 -->
+                <ice:column rendered="#{gridMB.camposGrid[29] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[29].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="29"></ui:param>
+	        				<ui:param name="colunaGrid" value="29"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[29].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="29"></ui:param>
+        				<ui:param name="colunaGrid" value="29"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 31 -->
+                <ice:column rendered="#{gridMB.camposGrid[30] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[30].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="30"></ui:param>
+	        				<ui:param name="colunaGrid" value="30"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[30].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="30"></ui:param>
+        				<ui:param name="colunaGrid" value="30"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 32 -->
+                <ice:column rendered="#{gridMB.camposGrid[31] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[31].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="31"></ui:param>
+	        				<ui:param name="colunaGrid" value="31"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[31].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="31"></ui:param>
+        				<ui:param name="colunaGrid" value="31"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 33 -->
+                <ice:column rendered="#{gridMB.camposGrid[32] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[32].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="32"></ui:param>
+	        				<ui:param name="colunaGrid" value="32"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[32].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="32"></ui:param>
+        				<ui:param name="colunaGrid" value="32"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 34 -->
+                <ice:column rendered="#{gridMB.camposGrid[33] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[33].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="33"></ui:param>
+	        				<ui:param name="colunaGrid" value="33"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[33].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="33"></ui:param>
+        				<ui:param name="colunaGrid" value="33"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 35 -->
+                <ice:column rendered="#{gridMB.camposGrid[34] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[34].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="34"></ui:param>
+	        				<ui:param name="colunaGrid" value="34"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[34].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="34"></ui:param>
+        				<ui:param name="colunaGrid" value="34"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 36 -->
+                <ice:column rendered="#{gridMB.camposGrid[35] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[35].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="35"></ui:param>
+	        				<ui:param name="colunaGrid" value="35"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[35].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="35"></ui:param>
+        				<ui:param name="colunaGrid" value="35"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 37 -->
+                <ice:column rendered="#{gridMB.camposGrid[36] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[36].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="36"></ui:param>
+	        				<ui:param name="colunaGrid" value="36"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[36].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="36"></ui:param>
+        				<ui:param name="colunaGrid" value="36"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 38 -->
+                <ice:column rendered="#{gridMB.camposGrid[37] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[37].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="37"></ui:param>
+	        				<ui:param name="colunaGrid" value="37"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[37].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="37"></ui:param>
+        				<ui:param name="colunaGrid" value="37"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 39 -->
+                <ice:column rendered="#{gridMB.camposGrid[38] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[38].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="38"></ui:param>
+	        				<ui:param name="colunaGrid" value="38"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[38].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="38"></ui:param>
+        				<ui:param name="colunaGrid" value="38"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 40 -->
+                <ice:column rendered="#{gridMB.camposGrid[39] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[39].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="39"></ui:param>
+	        				<ui:param name="colunaGrid" value="39"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[39].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="39"></ui:param>
+        				<ui:param name="colunaGrid" value="39"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 41 -->
+                <ice:column rendered="#{gridMB.camposGrid[40] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[40].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="40"></ui:param>
+	        				<ui:param name="colunaGrid" value="40"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[40].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="40"></ui:param>
+        				<ui:param name="colunaGrid" value="40"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 42 -->
+                <ice:column rendered="#{gridMB.camposGrid[41] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[41].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="41"></ui:param>
+	        				<ui:param name="colunaGrid" value="41"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[41].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="41"></ui:param>
+        				<ui:param name="colunaGrid" value="41"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 43 -->
+                <ice:column rendered="#{gridMB.camposGrid[42] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[42].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="42"></ui:param>
+	        				<ui:param name="colunaGrid" value="42"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[42].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="42"></ui:param>
+        				<ui:param name="colunaGrid" value="42"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 44 -->
+                <ice:column rendered="#{gridMB.camposGrid[43] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[43].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="43"></ui:param>
+	        				<ui:param name="colunaGrid" value="43"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[43].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="43"></ui:param>
+        				<ui:param name="colunaGrid" value="43"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 45 -->
+                <ice:column rendered="#{gridMB.camposGrid[44] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[44].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="44"></ui:param>
+	        				<ui:param name="colunaGrid" value="44"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[44].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="44"></ui:param>
+        				<ui:param name="colunaGrid" value="44"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 46 -->
+                <ice:column rendered="#{gridMB.camposGrid[45] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[45].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="45"></ui:param>
+	        				<ui:param name="colunaGrid" value="45"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[45].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="45"></ui:param>
+        				<ui:param name="colunaGrid" value="45"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 47 -->
+                <ice:column rendered="#{gridMB.camposGrid[46] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[46].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="46"></ui:param>
+	        				<ui:param name="colunaGrid" value="46"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[46].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="46"></ui:param>
+        				<ui:param name="colunaGrid" value="46"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 48 -->
+                <ice:column rendered="#{gridMB.camposGrid[47] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[47].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="47"></ui:param>
+	        				<ui:param name="colunaGrid" value="47"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[47].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="47"></ui:param>
+        				<ui:param name="colunaGrid" value="47"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 49 -->
+                <ice:column rendered="#{gridMB.camposGrid[48] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[48].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="48"></ui:param>
+	        				<ui:param name="colunaGrid" value="48"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[48].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="48"></ui:param>
+        				<ui:param name="colunaGrid" value="48"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- coluna 50 -->
+                <ice:column rendered="#{gridMB.camposGrid[49] != null}" styleClass="#{data['matched'] ? 'gridResultadoCombina' : ''}">
+                    <f:facet name="header">
+	                     <ui:include src="#{gridMB.camposGrid[49].jspColunaHeader}">
+	        				<ui:param name="data" value="#{data}"></ui:param>
+	        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+	        				<ui:param name="linhaGrid" value="49"></ui:param>
+	        				<ui:param name="colunaGrid" value="49"></ui:param>
+	        			</ui:include>
+                    </f:facet>
+                    <ui:include src="#{gridMB.camposGrid[49].jspColuna}">
+        				<ui:param name="data" value="#{data}"></ui:param>
+        				<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+        				<ui:param name="linhaGrid" value="49"></ui:param>
+        				<ui:param name="colunaGrid" value="49"></ui:param>
+        			</ui:include>
+                </ice:column>
+                <!-- END COLUMN -->
+                
+            </ice:dataTable>
+        </ice:panelGroup>
+</ice:panelGrid>

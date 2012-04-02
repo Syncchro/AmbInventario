@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" style="text-align: center;white-space: nowrap;">
+
+	<ice:panelGroup styleClass="divInline">
+		<ice:commandLink id="headerPageLnkChangePageSize"
+			styleClass="buttonInsideBar" partialSubmit="true"
+			action="#{portal.headerPagina.changePageSize}"
+			rendered="#{!portal.headerPagina.maximizado}">
+			<ice:graphicImage id="headerPageLnkChangePageSizeImg"
+				value="#{portal.headerPagina.imageExpand}"
+				onmouseover="Tip('#{bundle.lbl_hintBotaoFechar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();" ></ice:graphicImage>
+		</ice:commandLink>
+		<ice:commandLink id="headerPageLnkChangePageSize"
+			styleClass="buttonInsideBar" partialSubmit="true"
+			action="#{portal.headerPagina.changePageSize}"
+			rendered="#{portal.headerPagina.maximizado}">
+			<ice:graphicImage id="headerPageLnkChangePageSizeImg"
+				value="#{portal.headerPagina.imageExpand}"
+				onmouseover="Tip('#{bundle.lbl_hintBotaoAbrir}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();" ></ice:graphicImage>
+		</ice:commandLink>
+	</ice:panelGroup>
+
+
+</ice:panelGroup>

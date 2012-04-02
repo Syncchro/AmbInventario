@@ -1,0 +1,14 @@
+<ice:commandLink  
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    rendered = "#{painelFuncMB != null and !pageMB.openedAsSubPage and pageMB.grid.configuracaoColuna}"
+						styleClass="buttonInsideBar"  
+						action="#{painelFuncMB.alteraExibicaoConfGrid}">
+		<ice:graphicImage  
+						 value="/gui/images/config_colunas.png" 
+						 styleClass="#{painelFuncMB.styleBtnConfGrid}" 
+						 onmouseover="Tip('#{bundle.lbl_exibirEsconderConfiguradorColuna}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				         onmouseout="UnTip();"
+				         onclick="UnTip();"/>
+</ice:commandLink>

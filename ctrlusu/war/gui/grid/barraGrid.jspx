@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+		columns="1" width="98%"
+		rendered="#{pageMB.gridAtivo}"
+		>
+        <ice:panelGroup 
+        		styleClass="groupInfoDetail">
+        		
+        		<ice:panelGrid cellpadding="0px" cellspacing="0px" columns="4"  width="100%" height="35px" rowClasses="rowBarraGrid" 
+        			columnClasses="columnHeaderPesquisa,columnHeaderListDetail,columnHeaderListDetail,columnHeaderConfig">
+
+        			<!--  Incluir descrição da pesquisa  -->  
+			        <ui:include src="../pesquisa/barraPesquisa.jspx">
+        				<ui:param name="pesquisaMB" value="#{pageMB.pesquisa}"></ui:param>
+        				<ui:param name="painelFuncMB" value="#{pageMB.paineis['funcionalidades']}"></ui:param>
+        			</ui:include>
+        	        		
+			        <ice:panelGroup style="white-space: nowrap; display: inline; position: static;">
+						<ice:commandLink styleClass="buttonInsideBar"  
+							action="#{gridMB.limpaOrdenacao}" 
+							disabled="#{gridMB.limpaOrdenacaoDesabilitado }" >
+								<ice:graphicImage 	 
+												 	value="#{gridMB.imagemLimpaOrdenacao}" 
+												 	styleClass="#{gridMB.styleBtnLimpaOrdenacao}" 
+												 	onmouseover="Tip('#{bundle.lbl_limparOrdenacao}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				        							onmouseout="UnTip();"
+				        							onclick="UnTip();"
+				        							height="24px"            
+				        							width="24px"/>
+						</ice:commandLink>
+			        	<ice:outputText value="#{gridMB.descricaoOrdenacao}" escape="false" />
+			        </ice:panelGroup>
+			        <ice:panelGroup style="white-space: nowrap;  display: inline; position: static;">
+			        	<ice:commandLink  styleClass="buttonInsideBar"  
+			        				action="#{gridMB.alteraStatusFiltro}" 
+			        				disabled="#{gridMB.filtroDesabilitado }" >
+								<ice:graphicImage  
+													value="#{gridMB.imagemFiltro}" 
+													styleClass="#{gridMB.styleBtnFiltro}" 
+													onmouseover="Tip('#{bundle.lbl_exibirEsconderFiltro}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				        							onmouseout="UnTip();"
+				        							onclick="UnTip();"
+				        							height="24px"            
+				        							width="24px"/>
+						</ice:commandLink>
+			        	<ice:outputText  value="#{gridMB.descricaoFiltro}"/>
+			        </ice:panelGroup>
+		
+					<ice:panelGroup style="white-space: nowrap;  display: inline; position: static;">
+	       				<ui:include src="btnConfigGrid.jspx">
+		        			<ui:param name="painelFuncMB" value="#{pageMB.paineis['funcionalidades']}"></ui:param>
+		        			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+	       				</ui:include>
+	       				<ui:include src="../configurador/configuradorPagina.jspx">
+	       	    			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+	       				</ui:include>						
+					</ice:panelGroup>
+		        </ice:panelGrid>
+		        
+		</ice:panelGroup>
+        
+        
+</ice:panelGrid>        

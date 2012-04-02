@@ -1,0 +1,31 @@
+<ice:panelGroup xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	headerClass="barraFerramentasHeader" style="text-align: center; white-space: nowrap;">
+
+	<ice:panelGroup styleClass="divInline">
+
+		<ice:commandLink styleClass="buttonInsideBar"
+			rendered="#{pageMB.exportExcelAtivo}"
+			action="#{pageMB.exportImport.abrirPopupExportacao}">
+			<ice:graphicImage value="/gui/images/exportar_excel.png"
+				styleClass="graphic"
+				onmouseover="Tip('#{bundle.lbl_exportarExcel}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();"  onclick="UnTip();" />
+		</ice:commandLink>
+
+	</ice:panelGroup>
+
+	<ice:panelGroup styleClass="divInline">
+		<ice:commandLink styleClass="buttonInsideBar"
+			rendered="#{pageMB.importExcelAtivo}"
+			action="#{pageMB.exportImport.abrirPopupImportacao}">
+			<ice:graphicImage value="/gui/images/importar_excel.png"
+				styleClass="graphic"
+				onmouseover="Tip('#{bundle.lbl_importarExcel}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();"  />
+		</ice:commandLink>
+	</ice:panelGroup>
+	
+</ice:panelGroup>

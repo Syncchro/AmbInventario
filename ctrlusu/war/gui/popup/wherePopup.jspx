@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1">
+
+	<ice:panelGroup>
+	    <ice:messages globalOnly="true"/>
+	</ice:panelGroup>
+	
+	<ice:panelGrid columns="2">
+ 		<ice:panelGroup>
+    		<ice:outputText value="#{bundle.incluirWherePopup_nomePesquisa}" styleClass="iceOutputTextObrigatorio"/>
+ 		</ice:panelGroup>
+ 		<ice:panelGroup>
+ 			<!-- Required do campo obrigatório deve estar sensivel ao popup caso contrário mesmo com o popup fechado o campo será validado por qualuqer ação que não seja immediate. -->
+    		<ice:inputText id="incluirWherePopupNome" value="#{param.nomeNovoWhere}" maxlength="100" size="20" />
+ 		</ice:panelGroup>
+ 		<!-- 
+ 		<ice:panelGroup>
+    		<ice:outputText value="#{bundle.incluirWherePopup_indAllUsers}" styleClass="iceOutputTextObrigatorio"/>
+ 		</ice:panelGroup>
+ 		<ice:panelGroup>
+ 			Required do campo obrigatório deve estar sensivel ao popup caso contrário mesmo com o popup fechado o campo será validado por qualuqer ação que não seja immediate. 
+    		<ice:selectBooleanCheckbox  id="incluirWherePopupIndAllUsers" value="#{paginaMB.pesquisa.where.indTodosUsuarios}" />
+ 		</ice:panelGroup>
+ 		 -->
+		<ice:panelGroup>
+    		<ice:outputText value="#{bundle.incluirWherePopup_tornarPadrao}" styleClass="iceOutputTextObrigatorio"/>
+ 		</ice:panelGroup>
+ 		<ice:panelGroup>
+    		<ice:selectBooleanCheckbox  id="incluirWherePopupIndAllUsers" value="#{param.tornarPadrao}" disabled="#{!paginaMB.pesquisa.permiteSalvarWhereDefault}" />
+ 		</ice:panelGroup> 		 
+ 		<ice:panelGroup>
+    		<ice:commandButton id="incluirWherePopupBtnSalvar" 
+    			value="#{bundle.incluirWherePopup_salvar}" 
+    			action="#{paginaMB.pesquisa.salvarWhereComo}">
+    		</ice:commandButton>
+ 		</ice:panelGroup> 		
+ 		<ice:panelGroup>
+    		<ice:commandButton id="incluirWherePopupBtnCancelar" 
+    			value="#{bundle.incluirWherePopup_cancelar}" 
+    			action="#{popupGenerico.fecharPopup}" 
+    			immediate="true"/>
+ 		</ice:panelGroup> 		
+	</ice:panelGrid>        
+        
+</ice:panelGrid>

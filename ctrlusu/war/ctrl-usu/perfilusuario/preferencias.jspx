@@ -1,0 +1,58 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="width: 100%; height: 100%" styleClass="moduloPerfilUsuario">
+	
+	<f:loadBundle basename="SynCtrl-UsuMessagesResources" var="bundleAccessControl" />
+
+	<ice:panelGroup styleClass="headerModuloPerfilUsuario">
+		<ice:outputText value="${bundleAccessControl.preferencias_header}" style="font-weight: bold;" />
+	</ice:panelGroup>
+	
+	<ice:panelGrid columns="2" columnClasses="perfilUsuarioColunasPreferencia">
+		<ice:column>
+			<ice:outputText value="${bundleAccessControl.preferencias_gerais_header}" style="font-weight: bold; margin-left: 12px" />
+			<ice:panelGroup styleClass="perfilUsuarioPreferenciaSubGrupo">
+				<ice:panelGrid columns="2" columnClasses="perfilUsuarioColunasPreferenciaSubGrupo" cellpadding="3px">
+			
+					<ice:outputText value="${bundleAccessControl.preferencias_gerais_lbl_OrgPadrao}" style="font-weight: bold;" />
+					<ice:selectOneMenu id="comboOrg" value="#{preferencias.orgPadrao}" style="width: 320px;" partialSubmit="true" immediate="true" valueChangeListener="#{preferencias.orgAlterada}">
+						<f:selectItems value="#{preferencias.listaOrgs}"/>
+					</ice:selectOneMenu>
+			
+					<ice:outputText value="${bundleAccessControl.preferencias_gerais_lbl_PaginaInicial}"	style="font-weight: bold;" />
+					<ice:selectOneMenu value="#{preferencias.paginaInicial}" style="width: 320px;" disabled="#{preferencias.orgPadrao == null or preferencias.orgPadrao == ''}">
+						<f:selectItems value="#{preferencias.listaPaginas}"/>
+					</ice:selectOneMenu>
+			
+					<ice:outputText value="${bundleAccessControl.preferencias_gerais_lbl_TamanhoFonte}" style="font-weight: bold;" />
+					<ice:selectOneMenu value="#{preferencias.tamanhoFonte}" style="width: 320px;">
+						<f:selectItems value="#{preferencias.listaTamanhosFonte}"/>
+					</ice:selectOneMenu>
+					
+				</ice:panelGrid>
+			</ice:panelGroup>
+		</ice:column>
+		<ice:column>
+			<ice:outputText value="${bundleAccessControl.preferencias_menu_header}" style="font-weight: bold; margin-left: 12px" />
+			
+			<ice:panelGroup styleClass="perfilUsuarioPreferenciaSubGrupo">
+				<ice:panelGrid columns="2" columnClasses="perfilUsuarioColunasPreferenciaSubGrupo" cellpadding="3px">
+				
+					<ice:outputText value="${bundleAccessControl.preferencias_menu_lbl_Arvore}" style="font-weight: bold;" />
+					<ice:selectOneMenu value="#{preferencias.estadoArvoreMenu}" style="width: 100px;">
+						<f:selectItems value="#{preferencias.listaEstadoArvoreMenu}"/>
+					</ice:selectOneMenu>
+	
+					<ice:outputText value="${bundleAccessControl.preferencias_menu_lbl_ManterArea}" style="font-weight: bold;" />
+					<ice:selectOneMenu value="#{preferencias.estadoAreaMenu}" style="width: 100px;">
+						<f:selectItems value="#{preferencias.listaEstadoAreaMenu}"/>
+					</ice:selectOneMenu>	
+						
+				</ice:panelGrid>
+			</ice:panelGroup>
+		</ice:column>
+	</ice:panelGrid>
+
+</ice:panelGroup>

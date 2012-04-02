@@ -1,0 +1,33 @@
+<ice:panelGroup
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        > 
+			<ice:tree 
+	                value="#{pageMB.model}"
+	                var="item"
+	                hideRootNode="false"
+	                imageDir="./xmlhttp/css/xp/css-images/"
+	                >
+					<ice:treeNode>
+	           			<f:facet name="icon">
+		                    <ice:panelGroup style="display: inline">
+	                        	<ice:graphicImage value="#{item.userObject.icon}"/>
+	                    	</ice:panelGroup>
+	                	</f:facet>	                
+        				<f:facet name="content">
+            				<ice:panelGroup style="display: inline">
+	                			<ice:commandLink action="#{item.userObject.selecionaRegistro}" partialSubmit="true" styleClass="#{item.userObject.style}" disabled="#{!item.userObject.editavel}" title="#{item.userObject.text}" rendered="#{!item.userObject.root}" >
+			                		<ice:graphicImage value="./ha/images/checkSelected.gif" rendered="#{item.userObject.editavel and item.userObject.checked}"/>
+									<ice:graphicImage value="./ha/images/checkDesSelected.gif" rendered="#{item.userObject.editavel and  (item.userObject.checked == null || !item.userObject.checked) }"/>
+									<ice:graphicImage value="./ha/images/checkDesabilitado.gif" rendered="#{!item.userObject.editavel and item.userObject.checked}"/>
+									<ice:graphicImage value="./ha/images/uncheckDesabilitado.gif" rendered="#{ !item.userObject.editavel and (item.userObject.checked == null || !item.userObject.checked) }"/>
+									<ice:outputText value="#{item.userObject.text}"></ice:outputText>									
+	                	    	</ice:commandLink>
+								<ice:outputText value="#{item.userObject.text}" rendered="#{item.userObject.root}"></ice:outputText>
+            				</ice:panelGroup>
+        				</f:facet>
+    				</ice:treeNode>
+	        </ice:tree>
+		</ice:panelGroup>   

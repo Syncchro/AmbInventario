@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:commandLink 
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    rendered = "#{pageMB.timerListenerAtivo}"
+    styleClass="buttonInsideBar"  action="#{timerBean.alterTimerActivation}"
+>
+	 <!-- 
+     * Toda vez que o Timer é executado ele aciona os get's (binds) da tela, portanto
+     * foi definido esse método como gatilho do Timer.
+     * Não podemos deixar esse gatilho no getState() pois ele é acionado fora do
+     * contexto do Faces.
+	 -->
+	
+		<ice:graphicImage  value="#{timerBean.imagem}" 
+	        onmouseover="Tip('#{bundle.lbl_atualizaAutomatica}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();"
+			onclick="UnTip();"
+			height="16px"            
+			width="16px"   							   			    				        						
+			/>
+		<ice:outputText value="#{timerBean.executarTimer}"></ice:outputText>															
+</ice:commandLink>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid 
+xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:ice="http://www.icesoft.com/icefaces/component"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+columns="2" style="border: 1px #CCCCCC solid; width: 100%">
+    	<ice:panelGroup>
+			<ice:outputLabel value="#{bundleHA.limparHistorico_lbl_dataRefLimpeza}"/>
+    	</ice:panelGroup>
+    	<ice:panelGroup>
+    	 <ice:selectInputDate id="dataRefLimpeza"
+    	                     value="#{pageMB.dataRefLimpeza}"
+                             highlightUnit="DAY_OF_WEEK: MONTH"
+                             highlightValue="1,7: 8" 
+                             renderAsPopup="true">
+            <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="#{portal.timeZone}"/>
+         </ice:selectInputDate>
+         <ice:message for="dataRefLimpeza" tooltip="true"/>
+    	</ice:panelGroup>
+</ice:panelGrid>

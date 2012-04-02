@@ -1,0 +1,13 @@
+<ice:panelGroup
+ xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ice="http://www.icesoft.com/icefaces/component"
+  rendered="#{grupoMB != null}"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  style="height: 100%;"
+  
+>
+		<ui:include src="#{grupoMB.subPagina.nomeJsp}">
+			<ui:param name="pageMB" value="#{grupoMB.subPagina}"></ui:param>
+        </ui:include>	
+</ice:panelGroup>

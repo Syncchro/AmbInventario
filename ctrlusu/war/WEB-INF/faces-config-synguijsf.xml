@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+
+<faces-config>
+
+    <application>
+        <locale-config>
+            <default-locale>en_US</default-locale>
+            <supported-locale>pt_BR</supported-locale>
+        </locale-config>
+        <message-bundle>SynGuiJsfMessagesResources</message-bundle>
+        <view-handler>
+            com.icesoft.faces.facelets.D2DFaceletViewHandler
+        </view-handler>
+    </application>
+	
+	
+	 <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>toLogoutPage</from-outcome>
+            <to-view-id>/gui/logout.iface</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/gui/logout.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+	
+	<navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>portal</from-outcome>
+            <to-view-id>/index.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+	
+	
+	<managed-bean>
+		<managed-bean-name>portal</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.gui.presentation.managedbean.portal.Portal</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>popupGenerico</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.gui.presentation.managedbean.page.popup.PopupGenerico</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>renderManager</managed-bean-name>
+		<managed-bean-class>com.icesoft.faces.async.render.RenderManager</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>tabSetBackingBean</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.gui.presentation.managedbean.TabSetBackingBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+
+	<managed-bean>
+		<managed-bean-name>timerBean</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.gui.presentation.managedbean.page.timer.Timer</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>renderManager</property-name>
+			<value>#{renderManager}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>errorMB</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.gui.presentation.managedbean.portal.ErrorMB</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>popUpInformacoesAmbienteMB</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.gui.presentation.managedbean.page.ambiente.PopUpInformacoesAmbiente</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
+		
+	<converter>
+    	<converter-id>SynGridConverter</converter-id>
+    	<converter-class>br.com.synchro.framework.gui.presentation.managedbean.converter.SynGridConverter</converter-class>
+    </converter>
+    <converter>
+    	<converter-id>SynIntegerConverterFooterPage</converter-id>
+    	<converter-class>br.com.synchro.framework.gui.presentation.managedbean.converter.SynIntegerConverterFooterPage</converter-class>
+    </converter>
+    
+    <converter>
+    	<converter-id>BigDecimalConverter</converter-id>
+    	<converter-class>javax.faces.convert.BigDecimalConverter</converter-class>
+    </converter>
+    <converter>
+    	<converter-id>SynConverterDecimal</converter-id>
+    	<converter-class>br.com.synchro.framework.gui.presentation.managedbean.converter.SynConverterDecimal</converter-class>
+    </converter>
+    <converter>
+    	<converter-id>LongConverter</converter-id>
+    	<converter-class>javax.faces.convert.LongConverter</converter-class>
+    </converter>
+    <converter>
+    	<converter-id>IntegerConverter</converter-id>
+    	<converter-class>javax.faces.convert.IntegerConverter</converter-class>
+    </converter>
+    <converter>
+    	<converter-id>DateTimeConverter</converter-id>
+    	<converter-class>javax.faces.convert.DateTimeConverter</converter-class>
+    </converter>
+    <converter>
+    	<converter-id>SynDateTimeConverter</converter-id>
+    	<converter-class>br.com.synchro.framework.gui.presentation.managedbean.converter.SynDateTimeConverter</converter-class>
+    </converter>
+    <validator>
+    	<validator-id>SynLengthValidator</validator-id>
+    	<validator-class>br.com.synchro.framework.gui.presentation.validator.SynLengthValidator</validator-class>
+    </validator>
+        <validator>
+    	<validator-id>SynLovValidator</validator-id>
+    	<validator-class>br.com.synchro.framework.gui.presentation.validator.SynLovValidator</validator-class>
+    </validator>
+</faces-config>

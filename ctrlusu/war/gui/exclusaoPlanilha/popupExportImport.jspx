@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" columns="1"
+	width="100%"
+	rowClasses="row1,row2,row1,row2,row1,rowCancelarImportExport">
+
+	<ice:panelGroup>
+		<ice:messages globalOnly="true" />
+	</ice:panelGroup>
+
+	<ice:panelGroup>
+		<ice:graphicImage value="/gui/images/exclam.png" styleClass="graphic" />
+		<ice:outputText
+			value="#{bundle.exclusaoViaPlanilha_popupTextoExplicativo}" escape="false"/>
+	</ice:panelGroup>
+
+	<ice:panelGroup style="border: 1px solid #484848; width: 100%; margin-top: 11px;">
+		<ice:panelGroup style="margin: 5px;">
+			<ice:outputLink
+				value="#{paginaMB.exclusaoViaPlanilha.servletNomePadrao}"
+				target="_blank" style="text-decoration: underline;">
+				<ice:outputText value="#{bundle.exclusaoViaPlanilha_exportacaoPadrao}"></ice:outputText>
+				<ice:graphicImage value="/gui/images/excel.gif" styleClass="graphic" />
+			</ice:outputLink>
+		</ice:panelGroup>
+	</ice:panelGroup>
+
+	<ice:panelGroup style="margin-top: 11px;">
+		<ice:panelGrid styleClass="tableExportImport" width="100%" columns="1">
+			<ice:panelGroup>
+				<ice:outputText
+					value="#{bundle.exclusaoViaPlanilha_popupDescSelecionarArquivo}"
+					styleClass="iceOutputTextObrigatorio" />
+			</ice:panelGroup>
+			<ice:panelGroup
+				rendered="#{paginaMB.exclusaoViaPlanilha.arquivoSelecionado==null}">
+				<ice:inputFile size="50" style="height:50px;"
+					actionListener="#{paginaMB.exclusaoViaPlanilha.uploadFile}"
+					label="#{bundle.exclusaoViaPlanilha_popupBtnUploadArquivo}"
+					submitOnUpload="none" />
+			</ice:panelGroup>
+			<ice:panelGroup style="padding-top: 25px;"
+				styleClass="panelGroupDetailSolicitacao"
+				rendered="#{paginaMB.exclusaoViaPlanilha.arquivoSelecionado!=null}">
+				<ice:outputText
+					value="#{paginaMB.exclusaoViaPlanilha.arquivoSelecionado}"
+					readonly="true" />
+				<ice:commandButton immediate="true"
+					value="#{bundle.exportImport_trocarArquivo}"
+					action="#{paginaMB.exclusaoViaPlanilha.limpaCamposImportacao}"
+					style="width:100px" />
+			</ice:panelGroup>
+		</ice:panelGrid>
+	</ice:panelGroup>
+	<br />
+	<ice:panelGroup>
+		<ice:commandButton
+			value="#{bundle.exclusaoViaPlanilha_popupBtnImportarArquivo}"
+			disabled="#{paginaMB.exclusaoViaPlanilha.arquivoSelecionado==null}"
+			action="#{paginaMB.exclusaoViaPlanilha.abrirPopupContexto}"
+			style="margin-right: 5px;" />
+		<ice:commandButton value="#{bundle.lbl_cancelar}"
+			action="#{paginaMB.exclusaoViaPlanilha.fecharPopup}" />
+	</ice:panelGroup>
+</ice:panelGrid>

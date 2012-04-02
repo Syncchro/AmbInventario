@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1">
+	<f:loadBundle
+        basename="SynCtrl-UsuMessagesResources"
+        var="bundleAccessControl"  />           
+	<br/>
+	<ice:messages />
+	<br/>
+	<ice:panelGroup>
+		<ice:outputText value="#{bundleAccessControl.lbl_popupEsqueciMinhaSenhaInfo}" styleClass="iceOutputTextObrigatorio"/>
+	</ice:panelGroup>  
+	<br/>
+	<ice:panelGrid columns="2">
+    		<ice:outputLabel value="#{bundleAccessControl.lbl_user}" for="campoUsuario" />
+    		<ice:inputText value="#{login.user}" size="30" maxlength="200" styleClass="TLoginBox" id="campoUsuario"/>
+	</ice:panelGrid>
+	<br />
+	<br />
+	<ice:panelGrid columns="2">
+		<ice:commandButton value="#{bundleAccessControl.lbl_Enviar}" action="#{login.reinicializarSenha}" disabled="#{!login.botaoReiniciarSenhaHabilitado}"  styleClass="TLoginBtn"/>
+		<ice:commandButton value="#{bundleAccessControl.lbl_Fechar}" action="#{login.fecharPopupEsqueciMinhaSenha}" styleClass="TLoginBtn" />
+	</ice:panelGrid>        
+</ice:panelGrid>

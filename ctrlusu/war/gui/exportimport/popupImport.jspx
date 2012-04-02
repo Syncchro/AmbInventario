@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1"  width="100%" rowClasses="row1,row2,rowCancelarImportExport">
+
+	<ice:panelGroup>
+	    <ice:messages globalOnly="true" />
+	</ice:panelGroup>
+	
+ 	<ice:panelGroup>
+ 		<ice:panelGrid styleClass="tableExportImport" width="100%" columns="1" >
+	 		<ice:panelGroup>
+		        	<ice:outputText value="#{bundle.exportImport_selArquivo}" styleClass="iceOutputTextObrigatorio"/>
+	 		</ice:panelGroup>
+	 		<ice:panelGroup rendered="#{paginaMB.exportImport.arquivoSelecionado==null}">
+				<ice:inputFile size="50" style="height:50px;"
+	                actionListener="#{paginaMB.exportImport.uploadFile}"
+                    label="#{bundle.exportImport_uploadArquivo}"
+                    submitOnUpload="none"
+                 />
+	 		</ice:panelGroup>
+ 			<ice:panelGroup  style="padding-top: 25px;" styleClass="panelGroupDetailSolicitacao" rendered="#{paginaMB.exportImport.arquivoSelecionado!=null}" >
+					<ice:outputText value="#{paginaMB.exportImport.arquivoSelecionado}"  readonly="true"/>
+					<ice:commandButton immediate="true" value="#{bundle.exportImport_trocarArquivo}" action="#{paginaMB.exportImport.limpaCamposImportacao}" style="width:100px" />
+	 		</ice:panelGroup>
+ 			<ice:panelGroup>
+				   	<ice:commandButton value="#{bundle.exportImport_importarArquivo}" disabled="#{paginaMB.exportImport.arquivoSelecionado==null}"  action="#{paginaMB.exportImport.abrirPopupContexto}"/>
+	 		</ice:panelGroup> 			
+		</ice:panelGrid>
+	</ice:panelGroup>
+	<ice:panelGroup>
+			<ice:commandButton  
+ 				value="#{bundle.lbl_cancelar}" 
+ 				action="#{paginaMB.exportImport.fecharPopup}"/>
+	</ice:panelGroup>
+</ice:panelGrid>

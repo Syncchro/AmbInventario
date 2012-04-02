@@ -1,0 +1,37 @@
+<ice:panelGroup xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" style="text-align: center;white-space: nowrap;">
+
+	<ice:panelGroup styleClass="divInline">
+		<ice:commandLink styleClass="buttonInsideBar"
+			disabled="#{!persistenciaMB.inclusao}"
+			action="#{persistenciaMB.preparaParaInclusao}">
+			<ice:graphicImage
+				onmouseover="Tip('#{bundle.lbl_insert}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();"
+				value="#{persistenciaMB.imagemInclusao}" />
+		</ice:commandLink>
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="divInline">
+		<ice:commandLink styleClass="buttonInsideBar"
+			disabled="#{!persistenciaMB.exclusao}"
+			action="#{persistenciaMB.abrirDelete}">
+			<ice:graphicImage
+				onmouseover="Tip('#{bundle.lbl_delete}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();"
+				value="#{persistenciaMB.imagemExclusao}"  />
+		</ice:commandLink>
+	</ice:panelGroup>
+	<!-- 
+	<ice:commandLink styleClass="buttonInsideBar"
+		disabled="#{!persistenciaMB.alteracao}"
+		action="#{persistenciaMB.salvar}">
+		<ice:graphicImage
+			onmouseover="Tip('#{bundle.lbl_update}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();"
+			value="#{persistenciaMB.imagemAlteracao}" height="24px" width="24px" />
+	</ice:commandLink>
+	 -->
+
+</ice:panelGroup>

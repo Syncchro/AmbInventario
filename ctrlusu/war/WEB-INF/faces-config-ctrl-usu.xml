@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+	
+	<!-- toPortal foi criado apontando para o JSP do indexLogin para passar pelo 
+		filtro do controle de usuário que vai retirar da URL informações indesejadas. 
+		NÂO ALTERAR ESTA DEFINIÇÂO-->
+	<navigation-rule>
+		<description>Portal</description>
+		<navigation-case>
+			<from-outcome>toPortal</from-outcome>
+			<to-view-id>/indexLogin.jsp</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>toPrimeiroAcesso</from-outcome>
+			<to-view-id>/ctrl-usu/primeiroAcesso.iface</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>toLoginApp</from-outcome>
+			<to-view-id>/ctrl-usu/login.iface</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+
+	<managed-bean>
+		<managed-bean-name>primeiroAcesso</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.AlteracaoSenhaUsuarioMB</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>alertasUsuarioMB</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.AlertasUsuarioPopUpMB</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>organizacaoUsuario</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.OrganizacaoUsuario</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>login</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.LoginMB</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>popUpServicosUsuario</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.PopUpsServicosUsuario</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>copiaPapel</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.CopiaPapelMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>avisoExpiracaoSenha</managed-bean-name>
+		<managed-bean-class>br.com.synchro.framework.ctrlusu.presentation.managedbean.AvisoExpiracaoSenhaMB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+</faces-config>	

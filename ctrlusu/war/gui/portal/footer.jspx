@@ -1,0 +1,36 @@
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" columns="1"
+	border="0" cellspacing="0" cellpadding="0" width="100%"
+	rendered="#{portal.renderedSouth}">
+
+	<ice:panelGrid styleClass="rodaPeClass"
+		columnClasses="footerParts,footerParts2,footerParts3,footerParts4"
+		columns="4" cellspacing="0" cellpadding="0" width="100%">
+		<ice:panelGroup>
+			<ice:outputText value="#{portal.footer.leftValue}"
+				style="color: #FFFFFF;" />
+		</ice:panelGroup>
+
+		<ice:panelGroup>
+			<ice:outputText value="#{portal.footer.centerValue}"
+				style="color: #FFFFFF;" />
+		</ice:panelGroup>
+		<ice:column>
+			<ice:panelGroup>
+				<ice:form rendered="#{popUpInformacoesAmbienteMB.apresentaWarning}">
+					<ice:commandLink action="#{popUpInformacoesAmbienteMB.abrirPopUp}">
+						<ice:graphicImage value="/gui/images/Warning.png"
+							styleClass="graphic" height="16px" width="16px" />
+						<ice:outputText value="#{bundle.ambiente_homologacao_footer_warning}" style="vertical-align: top; color: #FFFF00; padding-left: 3px; font-weight: bold"/>
+					</ice:commandLink>
+				</ice:form>
+			</ice:panelGroup>
+		</ice:column>
+		<ice:panelGroup>
+			<ice:outputText value="#{portal.footer.rightValue}"
+				style="color: #FFFFFF;" />
+		</ice:panelGroup>
+	</ice:panelGrid>
+
+</ice:panelGrid>

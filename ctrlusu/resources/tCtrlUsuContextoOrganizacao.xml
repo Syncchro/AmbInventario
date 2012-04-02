@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<br.com.synchro.framework.gui.to.PaginaTO>
+  <codigo>tCtrlUsuContextoOrganizacao</codigo>
+  <rotulo>Organização de Trabalho</rotulo>
+  <tipo>CUSTOM</tipo>
+  <pageBeanClass>br.com.synchro.framework.ctrlusu.presentation.managedbean.OrganizacaoContextoMB</pageBeanClass>
+  <consultaAdapter>br.com.synchro.framework.ctrlusu.presentation.adapters.ConsultaOrganizacaoContexto</consultaAdapter>
+  <nomeMapa>subject</nomeMapa>
+  <indInclusao>N</indInclusao>
+  <indAlteracao>N</indAlteracao>
+  <indExclusao>N</indExclusao>
+  <indAssociacao>true</indAssociacao>
+  <nomeJsp>../../ctrl-usu/organizacaoesUsuario.jspx</nomeJsp>
+  <id>29050</id>
+  <servicos/>
+  <navegacoes/>
+  <campos>
+    <br.com.synchro.framework.gui.to.CampoPaginaTO>
+      <paginaTO reference="../../.."/>
+      <codigo>orgNome</codigo>
+      <rotulo>Nome da Organização</rotulo>
+      <tipo>String</tipo>
+      <indPesquisa>S</indPesquisa>
+      <ctrlEditavel>3</ctrlEditavel>
+      <ctrlVisivel>3</ctrlVisivel>
+      <ordem>1</ordem>
+      <tamanho>100</tamanho>
+      <indRequerido>N</indRequerido>
+      <maxLinhas>1</maxLinhas>
+      <indGrid>S</indGrid>
+      <id>237050</id>
+      <hint>Nome que identifica a organização</hint>
+    </br.com.synchro.framework.gui.to.CampoPaginaTO>
+    <br.com.synchro.framework.gui.to.CampoPaginaTO>
+      <paginaTO reference="../../.."/>
+      <codigo>orgId</codigo>
+      <rotulo>Id Organização</rotulo>
+      <tipo>String</tipo>
+      <indPesquisa>S</indPesquisa>
+      <ctrlEditavel>3</ctrlEditavel>
+      <ctrlVisivel>3</ctrlVisivel>
+      <ordem>2</ordem>
+      <tamanho>100</tamanho>
+      <indRequerido>N</indRequerido>
+      <maxLinhas>1</maxLinhas>
+      <indGrid>S</indGrid>
+      <id>242056</id>
+      <hint>Identificador único da organização</hint>
+    </br.com.synchro.framework.gui.to.CampoPaginaTO>
+  </campos>
+  <grupos/>
+  <hint>Seleção da organização de trabalho</hint>
+  <indPesquisa>N</indPesquisa>
+  <codigoComp>CtrlUsu</codigoComp>
+  <verCompIni>1</verCompIni>
+</br.com.synchro.framework.gui.to.PaginaTO>

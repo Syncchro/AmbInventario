@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 1.5.0_16-b02 (Sun Microsystems Inc.)
+Class-Path: ScreenDefinition2-JBoss4.3_business-2.7.1.jar activation-1
+ .1.jar antlr-2.7.6.jar asm.jar backport-util-concurrent.jar cafConfig
+ _business-1.0.0.jar cglib-2.1.3.jar commons-beanutils.jar commons-cod
+ ec-1.2.jar commons-collections-3.2.1.jar commons-digester.jar commons
+ -email-1.1.jar commons-fileupload.jar commons-httpclient-3.1.jar comm
+ ons-io-1.4.jar commons-lang-2.4.jar commons-logging-1.1.jar commons-p
+ ool.jar coreapi.jar ehcache-1.2.3.jar engineapi.jar freemarker.jar ht
+ tpclient-4.1.2.jar httpcore-4.1.2.jar icefaces-comps.jar icefaces-fac
+ elets.jar icefaces.jar jaxb-api-2.2.3.jar jaxb-impl-2.2.4.jar jaxb-li
+ bs.jar jaxb-ri.jar jaxp-api.jar jaxrpc-api.jar jaxrs-api-2.3.0.GA.jar
+  jcip-annotations-1.0.jar jettison-1.2.jar jsf-api.jar jsf-impl.jar j
+ sr250-api-1.0.jar jstl-1.1.0.jar jxl.jar log4j_1.2.8.jar mail.jar mai
+ lapi.jar mirror-1.6.1.jar relaxngDatatype.jar resources.jar resteasy-
+ jaxb-provider-2.3.0.GA.jar resteasy-jaxrs-2.3.0.GA.jar resteasy-jetti
+ son-provider-2.3.0.GA.jar saxon9-s9api.jar saxon9.jar scannotation-1.
+ 0.3.jar stax-api-1.0.jar synchro-atualizador_business-1.0.1RC6.jar sy
+ nchro-atualizador_web-1.2.5RC1.jar synchro-ctrl-usu_business-1.9.1RC1
+ .jar synchro-ctrl-usu_web-1.9.1RC1.jar synchro-framework_business-2.6
+ .4RC1.jar synchro-gui_business-3.1.9RC1.jar synchro-gui_web-3.1.9RC1.
+ jar synchro-ha_business-1.6.7RC1.jar synchro-ha_web-1.6.7RC1.jar sync
+ hro-md_business-1.3.2RC1.jar synchro-relatorio_business-1.1.6RC1.jar 
+ xmlpull-1.1.3.1.jar xpp3_min-1.1.4c.jar xsdlib.jar xstream-1.4.1.jar 
+ .
+

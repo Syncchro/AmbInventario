@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:ice="http://www.icesoft.com/icefaces/component"
+   width="100%" columns="1">
+ 
+ <f:loadBundle
+        basename="SynCtrl-UsuMessagesResources"
+        var="bundleAccessControl"  />  
+
+		<ice:panelGroup>
+			<ice:outputText value="#{bundleAccessControl.lbl_acessoNegado}"></ice:outputText>
+		</ice:panelGroup>        	
+	
+</ice:panelGrid>	

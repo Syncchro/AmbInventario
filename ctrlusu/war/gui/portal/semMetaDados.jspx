@@ -1,0 +1,10 @@
+<ice:panelGrid
+		xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component" 
+	>
+        
+	<ice:panelGroup>
+		<ice:outputText value="#{bundle.msg_sem_metadados}" styleClass="iceOutputTextMetadados" />
+	</ice:panelGroup>
+</ice:panelGrid>

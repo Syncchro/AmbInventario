@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ARVORE>
+	<ROOT>
+		<NOME>Aplicação MANO!</NOME>
+		<DESCRICAO>Aplicação root</DESCRICAO>
+		<MODULOS>
+
+			<MODULO>
+				<NOME>Serviços</NOME>
+				<DESCRICAO>Serviços</DESCRICAO>
+				<MODULOS>
+					<MODULO page-id="servicosGerais">
+						<NOME>Gerais</NOME>
+						<DESCRICAO>Serviços Gerais</DESCRICAO>
+					</MODULO>
+				</MODULOS>
+			</MODULO>
+
+			<MODULO>
+				<NOME>Controle de Usuário</NOME>
+				<DESCRICAO>Controle de Usuário</DESCRICAO>
+				<MODULOS>
+					<MODULO page-id="tCtrlUsuUsuarios">
+						<NOME>Cadastro de usuários</NOME>
+						<DESCRICAO>Aplicação root</DESCRICAO>
+						<MODULOS>
+							<MODULO page-id="tCtrlUsuUsuariosPapeisAssociados">
+								<NOME>Papéis Associados</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+							<MODULO page-id="tCtrlUsuUsuarioOrganizacoesAssociadas">
+								<NOME>Organizações Associadas</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+						</MODULOS>
+					</MODULO>
+					<MODULO page-id="tCtrlUsuPapeis">
+						<NOME>Cadastro de papéis</NOME>
+						<DESCRICAO>Aplicação root</DESCRICAO>
+						<MODULOS>
+							<MODULO page-id="tCtrlUsuPapelUsuariosAssociados">
+								<NOME>Usuários Associados</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+							<MODULO page-id="tCtrlUsuOrganizacaoUsuariosAssociados">
+								<NOME>Organizações Associadas</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+							<MODULO page-id="tCtrlUsuPermissoesPapel">
+								<NOME>Permissões</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+						</MODULOS>
+					</MODULO>
+					<MODULO page-id="tCtrlUsuOrganizacoes">
+						<NOME>Cadastro de organizações</NOME>
+						<DESCRICAO>Aplicação root</DESCRICAO>
+						<MODULOS>
+							<MODULO page-id="tCtrlUsuOrganizacaoPapeisAssociados">
+								<NOME>Usuários Associados</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+							<MODULO page-id="tCtrlUsuPapelOrganizacoesAssociadas">
+								<NOME>Papeis Associados</NOME>
+								<DESCRICAO>Aplicação root</DESCRICAO>
+							</MODULO>
+						</MODULOS>
+					</MODULO>
+				</MODULOS>
+			</MODULO>
+
+
+			<MODULO>
+				<NOME>Configurações do sistema</NOME>
+				<DESCRICAO>Configurações do sistema</DESCRICAO>
+				<MODULOS>
+					<MODULO>
+						<NOME>Histórico de Dados</NOME>
+						<DESCRICAO>Histórico de Dados</DESCRICAO>
+						<MODULOS>
+							<MODULO page-id="tHAAtivarHistorico">
+								<NOME>Ativar Histórico</NOME>
+								<DESCRICAO>Ativar Histórico</DESCRICAO>
+							</MODULO>
+							<MODULO page-id="tHAProcessoLimparHistorico">
+								<NOME>Limpar Histórico</NOME>
+								<DESCRICAO>Limpar Histórico</DESCRICAO>
+							</MODULO>
+							<MODULO page-id="tHALogLimpeza">
+								<NOME>Limpar log do Histórico</NOME>
+								<DESCRICAO>Limpar log do Histórico</DESCRICAO>
+							</MODULO>
+						</MODULOS>
+					</MODULO>
+				</MODULOS>
+			</MODULO>
+
+		</MODULOS>
+	</ROOT>
+</ARVORE>

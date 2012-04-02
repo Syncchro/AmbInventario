@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1">
+        
+   	<ice:panelGroup>
+	    <ice:messages globalOnly="true"/>
+	</ice:panelGroup>
+
+	<f:loadBundle
+        basename="SynCtrl-UsuMessagesResources"
+        var="bundleAccessControl"  />    
+ 
+<ice:panelGrid columns="2">
+	<ice:panelGroup>
+		<ice:outputText value="#{bundleAccessControl.papel_lbl_nome}" styleClass="iceOutputTextObrigatorio"/>
+	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:inputText value="#{copiaPapel.nome}" maxlength="30"  size="60" partialSubmit="true" ></ice:inputText>
+	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:outputText value="#{bundleAccessControl.papel_lbl_descricao}"  styleClass="iceOutputTextObrigatorio"/>
+	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:inputTextarea value="#{copiaPapel.descricao}"
+		rows="5"
+		cols="60"
+		partialSubmit="true"
+		onfocus="javascript:aplicaMascaraTextArea(this,'255');"
+		styleClass="iceTextarea"
+		></ice:inputTextarea>
+		<ice:outputText id="textAreaCopiaPapel"></ice:outputText>
+	</ice:panelGroup>
+</ice:panelGrid>
+	<br/><br/>
+	<ice:panelGrid columns="2">
+ 		<ice:panelGroup>
+    		<ice:commandButton  
+    			value="#{bundleAccessControl.papel_lbl_copiar}" 
+    			action="#{copiaPapel.confirmarCopia}"
+    		/>
+ 		</ice:panelGroup> 		
+ 		<ice:panelGroup>
+ 			<ice:commandButton  
+ 				value="#{bundleAccessControl.papel_lbl_cancelar}" 
+ 				action="#{copiaPapel.fecharPopup}" 
+ 			/>
+ 		</ice:panelGroup> 		
+	</ice:panelGrid>        
+</ice:panelGrid>

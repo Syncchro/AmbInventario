@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	style="overflow: auto;height: 400px;">
+	<ice:panelGrid columns="1">
+
+		<ice:panelGrid columns="1" rendered="#{popUpInformacoesAmbienteMB.apresentaWarning}" style="border: padding: 3px; width: 100%;">
+			<ice:panelGrid columns="2">
+				<h:graphicImage value="/gui/images/exclam.png" />
+				<h:outputText value="#{bundle.ambiente_msg_instrucao_resolucao}"/>
+			</ice:panelGrid>
+		</ice:panelGrid>
+
+		<br />
+		<ice:panelGrid
+			style="text-align: center; margin-left: auto;margin-right: auto; margin-bottom: auto;"
+			columns="4">
+			<ice:column>
+				<ice:graphicImage value="/gui/images/homologado.png"
+					styleClass="graphic" height="16px" width="16px" />
+				<ice:outputText value="#{bundle.ambiente_situacao_homologado}" />
+			</ice:column>
+			<ice:column>
+				<ice:graphicImage value="/gui/images/ambiente_nao_homologado.png"
+					styleClass="graphic" height="16px" width="16px" />
+				<ice:outputText value="#{bundle.ambiente_situacao_desconhecido}" />
+			</ice:column>
+			<ice:column>
+				<ice:graphicImage
+					value="/gui/images/ambiente_homologado_com_problema.png"
+					styleClass="graphic" height="16px" width="16px" />
+				<ice:outputText value="#{bundle.ambiente_situacao_problema}" />
+			</ice:column>
+			<ice:column>
+				<ice:graphicImage
+					value="/gui/images/info.png"
+					styleClass="graphic" height="16px" width="16px" />
+				<ice:outputText value="#{bundle.ambiente_situacao_info}" />
+			</ice:column>
+		</ice:panelGrid>
+
+		<br />
+
+		<ice:dataTable var="variavelAmbiente"
+			value="#{popUpInformacoesAmbienteMB.ambienteSituacao}"
+			style="width: 95%; margin-left: auto;margin-right: auto;">
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.ambiente_coluna_variavel}" />
+				</f:facet>
+				<ice:outputText value="#{variavelAmbiente.rotulo}" />
+			</ice:column>
+
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.ambiente_coluna_valor}" />
+				</f:facet>
+				<ice:outputText value="#{variavelAmbiente.valor}" />
+			</ice:column>
+
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.ambiente_coluna_situacao}" />
+				</f:facet>
+				<ice:graphicImage
+					rendered="#{variavelAmbiente.situacao == 'HOMOLOGADO'}"
+					value="/gui/images/homologado.png" styleClass="graphic"
+					height="16px" width="16px" />
+				<ice:graphicImage
+					rendered="#{variavelAmbiente.situacao == 'DESCONHECIDO'}"
+					value="/gui/images/ambiente_nao_homologado.png"
+					styleClass="graphic" height="16px" width="16px" />
+				<ice:graphicImage
+					rendered="#{variavelAmbiente.situacao == 'PROBLEMA'}"
+					value="/gui/images/ambiente_homologado_com_problema.png"
+					styleClass="graphic" height="16px" width="16px" />
+				<ice:graphicImage
+					rendered="#{variavelAmbiente.situacao == 'INFO'}"
+					value="/gui/images/info.png"
+					styleClass="graphic" height="16px" width="16px" />
+			</ice:column>
+		</ice:dataTable>
+
+
+
+	</ice:panelGrid>
+</ice:panelGroup>

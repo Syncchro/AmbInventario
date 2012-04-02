@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        rendered="#{pageMB.pesquisaAtiva}"
+        width= "100%">
+        
+	<ice:panelGroup style="width: 100%;">
+		<ice:dataTable 
+		           value="#{pesquisaMB.where.condicoesVisiveis}"
+		           var="condition"
+		           headerClass="tableDataGridHdr"
+				   columnClasses="tableColRemocao,tableCol,tableCol,tableColValor"
+				    columnWidths="2%,40%,20%,40%"
+			       scrollable="true"
+			       scrollHeight="90px"
+			       rowClasses="rowCondicao,rowCondicao2"
+				   width="100%"
+		>
+	        <!-- coluna para seleção de registro -->
+			<ice:column>
+			    <f:facet name="header">
+				    <ice:commandLink  styleClass="buttonInsideBar" action="#{pesquisaMB.where.addCondicao}"				    								   >
+							<ice:graphicImage  value="/gui/images/adiciona_condicao-exp.gif"
+							  onmouseover="Tip('#{bundle.search_cmd_adicionarCondicao}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 		  onmouseout="UnTip();"   	
+	        		 		  onclick="UnTip();"
+	        		 		  height="16px"            
+	        		 		  width="16px"></ice:graphicImage>
+					</ice:commandLink>   
+			    </f:facet>
+			    <ice:graphicImage  value="/gui/images/bt_nothing.gif" rendered="#{condition.requerido and condition.condicaoEditavel}"></ice:graphicImage>
+			    <ice:commandLink  rendered="#{!condition.requerido and condition.condicaoEditavel}" styleClass="buttonInsideBar" action="#{condition.removerCondicacao}">
+							<ice:graphicImage  value="/gui/images/remove_condicao-exp.gif"
+							  onmouseover="Tip('#{bundle.search_cmd_removerCondicao}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	        		 		  onmouseout="UnTip();"  
+	        		 		  onclick="UnTip();"
+	        		 		  height="16px"            
+	        		 		  width="16px"></ice:graphicImage>
+				</ice:commandLink>   
+			</ice:column>	
+			<!-- coluna Nome do Campo -->
+			<ice:column>
+			    <f:facet name="header">
+			    	<ice:panelGroup>
+			        	<ice:outputText value="#{bundle.search_lbl_campo}"/>
+					</ice:panelGroup>
+			    </f:facet>
+			    <ice:selectOneMenu  value="#{condition.campoSelecionado}" partialSubmit="true" valueChangeListener="#{condition.campoAlterado}" disabled="#{condition.requerido || not condition.condicaoEditavel}" style="width:220px; vertical-align: top; margin-top: 3px;">
+					<f:selectItem  itemValue=""/>
+					<f:selectItems  value="#{pesquisaMB.lstCampos}"/>
+				</ice:selectOneMenu>
+			</ice:column>
+			<!-- coluna Operador -->
+			<ice:column>
+			    <f:facet name="header">
+			    	<ice:panelGroup>
+			        	<ice:outputText value="#{bundle.search_lbl_operador}"/>
+					</ice:panelGroup>
+			    </f:facet>
+			    <ice:selectOneMenu  value="#{condition.operadorSelecionado}" partialSubmit="true"  valueChangeListener="#{condition.operadorAlterado}" disabled="#{condition.operadorDesabilitado}" style="width:100px" >
+					<f:selectItems  value="#{condition.operadores}"/>
+				</ice:selectOneMenu>
+			</ice:column>	
+
+			<!-- coluna Valor -->
+			<ice:column>
+			    <f:facet name="header">
+			    	<ice:panelGroup>
+			        	<ice:outputText value="#{bundle.search_lbl_valor}"/>
+					</ice:panelGroup>
+			    </f:facet>
+			    <!--  Importa JSP que representa campo renderizavel. -->
+				<ui:include src="../detalhe/campoPadrao.jspx">
+				   	<ui:param name="campoMB" value="#{condition}"></ui:param>
+		        </ui:include>
+			</ice:column>
+			
+		</ice:dataTable>
+
+	<ice:panelGroup style="float:right; padding-top: 2px;">
+  	<ice:commandLink action="#{pesquisaMB.refazPesquisa}" styleClass="buttonInsideBar;" style="cursor: pointer;">
+  	  <ice:panelGroup style="border: 1px solid #ABABAB; width: 50px; text-align: center">
+        <ice:panelGroup>
+            <ice:graphicImage value="/gui/images/executar-exp.png"
+        			onmouseover="Tip('#{bundle.lbl_btnRefresh}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+        			onmouseout="UnTip();" onclick="UnTip();" height="32px" width="32px" />
+       	</ice:panelGroup>
+        <ice:panelGroup>
+     			  <ice:outputText value="#{bundle.lbl_botaoExecutarPesquisa}"></ice:outputText>
+  			</ice:panelGroup>
+      </ice:panelGroup>         		
+    </ice:commandLink>
+	</ice:panelGroup>
+
+	</ice:panelGroup>
+</ice:panelGrid>

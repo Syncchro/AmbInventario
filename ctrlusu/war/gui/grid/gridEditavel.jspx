@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        rendered="#{pageMB.gridAtivo}"
+        width="100%"
+        columns="1"
+        >
+        
+     	<!-- JSP que inclui dados que devem aparecer tanto na lista como no detalhe -->
+         <ice:column >
+             <ice:dataTable  var="data"
+                           	value="#{gridMB.dadosGrid}"
+                           	columnWidths="#{gridMB.tamanhoColunas}"
+                           	styleClass="tableDataGrid"
+                           	rows="#{gridMB.registrosPorPagina}" 
+                           	columnClasses="tableCol"
+                           	rowClasses="tableRowEditavel1 icedattblrow1,tableRowEditavel2 icedattblrow2"
+                            width="100%"
+                           	
+              >
+
+				<!-- Coluna com as ações permitidas no GridEditavel -->
+				<ice:column styleClass="tableColGridEditavel">
+					<!--  Não colocar as imagens dentro de um panelGroup para não ocorrer quebra de linha na coluna no IE -->
+					<ice:panelGroup style="white-space: nowrap;">
+          
+          <ice:commandLink action="#{gridMB.selecionaRegistro}">
+						<ice:graphicImage value="/gui/images/editarGrid.png" rendered="#{data['ALTERACAO'] == null and data['INCLUSAO'] == null and gridMB.pagina.paginaTO.indAlteracao == 'S'}"
+							onmouseover="Tip('#{bundle.lbl_gridEditavel_editar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+        					onmouseout="UnTip();" 
+        					onclick="UnTip();" height="16px"            
+        					width="16px"  			     			     			 />
+						<ice:graphicImage value="/gui/images/cancelarGrid.png" rendered="#{data['ALTERACAO'] != null}"
+							onmouseover="Tip('#{bundle.lbl_gridEditavel_cancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+        					onmouseout="UnTip();"  
+        					onclick="UnTip();" 
+        					height="16px"            
+        					width="16px" 			     			     			 />
+						<f:param name="rowPK" value="#{data['pk']}"></f:param>
+					</ice:commandLink>
+					<ice:commandLink action="#{gridMB.cancelarInclusao}">
+						<ice:graphicImage value="/gui/images/cancelarGrid.png" rendered="#{data['INCLUSAO'] != null}"/>
+						<f:param name="rowPK" value="#{data['pk']}"></f:param>
+					</ice:commandLink>
+					<ice:commandLink action="#{gridMB.preparaExclusao}" rendered="#{data['INCLUSAO'] == null and gridMB.pagina.paginaTO.indExclusao == 'S'}">
+						<ice:graphicImage value="/gui/images/excluirGrid.png" 
+							onmouseover="Tip('#{bundle.lbl_gridEditavel_excluir}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+        					onmouseout="UnTip();" 
+        					onclick="UnTip();" 
+        					height="16px"            
+        					width="16px"  			     			     			 />
+						<f:param name="rowPK" value="#{data['pk']}"></f:param>
+					</ice:commandLink>
+					<ice:commandLink actionListener="#{gridMB.processaDetalheGrid}" rendered="#{gridMB.detalhe}"  onclick="javascript:guardaObj(this);">
+						<ice:graphicImage value="/gui/images/detalhe-grid.png" rendered="#{data['imgDetalhe'] == null}" />
+						<ice:graphicImage value="#{data['imgDetalhe']}" rendered="#{data['imgDetalhe'] != null}" />
+						<f:param name="rowPK" value="#{data['pk']}"></f:param>
+					</ice:commandLink>
+					</ice:panelGroup>
+					<ice:panelGroup>
+		                <ice:commandLink action="#{gridMB.processaHierarquiaGrid}" rendered="#{data['filhos'] != null and !gridMB.lov}"  >
+								<ice:panelGroup rendered="#{data['qtdImagens'] != null}"  >
+									<ice:panelGrid columns="#{data['nivelTree'] + 2}">
+										<ice:panelSeries value="#{data['qtdImagens']}" var="img">
+											<ice:graphicImage value="/gui/images/linha_pontilhada.gif" />
+										</ice:panelSeries>
+										<ice:graphicImage value="/gui/images/detalhe-grid.png"  rendered="#{data['expandTree'] == null}" />
+										<ice:graphicImage value="/gui/images/detalhe-grid-aberto.png" rendered="#{data['expandTree'] != null}" />
+									</ice:panelGrid>
+								</ice:panelGroup>
+								<ice:panelGroup rendered="#{data['qtdImagens'] == null}">
+									<ice:graphicImage value="/gui/images/detalhe-grid.png"  rendered="#{data['expandTree'] == null}" />
+									<ice:graphicImage value="/gui/images/detalhe-grid-aberto.png" rendered="#{data['expandTree'] != null}" />
+								</ice:panelGroup>
+								<f:param name="rowPK" value="#{data['pk']}"></f:param>
+						</ice:commandLink>
+						<ice:panelGroup rendered="#{data['qtdImagens'] != null and  data['filhos'] == nul}">
+								<ice:panelGrid columns="#{data['nivelTree'] + 2}">
+									<ice:panelSeries value="#{data['qtdImagens']}" var="img">
+										<ice:graphicImage value="/gui/images/linha_pontilhada.gif" />
+									</ice:panelSeries>
+									<ice:graphicImage value="/gui/images/linha_pontilhada.gif" />
+								</ice:panelGrid>
+						</ice:panelGroup>
+                	</ice:panelGroup>         
+                </ice:column>
+                
+				<ice:columns value="#{gridMB.camposGrid}" var="campoGrid">
+					
+                    <f:facet name="header">
+                    	<ice:panelGroup>
+                    		<ice:panelGrid>
+                            	<ice:panelGroup>
+									<ice:commandLink  value="#{campoGrid.rotulo}" action="#{campoGrid.alteraOrdenacao}">
+										<ice:outputText value=" - #{campoGrid.posicao}" rendered="#{campoGrid.posicao > 0}"/>
+										<ice:graphicImage  value="#{campoGrid.ordem.imagem}"  rendered="#{campoGrid.ordem.imagem != null}" styleClass="graphic"/>
+									</ice:commandLink>                            	
+								</ice:panelGroup>
+								<ice:panelGroup rendered="#{gridMB.filtroVisivel}">
+       								<ice:inputText  valueChangeListener="#{campoGrid.alteraFiltro}" 
+       									partialSubmit="true" 
+       									value="#{campoGrid.filtro}" 
+       									title="#{campoGrid.rotulo}">
+  									</ice:inputText>
+								</ice:panelGroup>								
+							</ice:panelGrid>
+						</ice:panelGroup>
+                    </f:facet>
+
+                    <ice:panelGroup>
+						<ice:outputText value="#{data[campoGrid.nome]}" converter="SynGridConverter" 
+								rendered="#{data['ALTERACAO'] == null and data['INCLUSAO'] == null }" 
+								scape="false" >
+						</ice:outputText>
+		        		<ice:panelGroup rendered="#{data['INCLUSAO_ALTERACAO'] != null}">
+		                    <ui:include src="../detalhe/campoPadrao.jspx">
+			        			<ui:param name="campoMB" value="#{data['INCLUSAO_ALTERACAO'][campoGrid.nome]}"></ui:param>
+			        			<ui:param name="rowPK" value="#{data['pk']}"></ui:param>
+			        		</ui:include>
+		        		</ice:panelGroup>
+	        		</ice:panelGroup>
+	                
+				</ice:columns>
+                
+            </ice:dataTable>
+        </ice:column>
+             <ice:column >
+	        <ui:include src="../paginagrideditavel/barraEdicaoGridEditavel.jspx">
+					<ui:param name="persistenciaMB" value="#{pageMB.persistencia}"></ui:param>
+					<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+				</ui:include>
+        </ice:column>
+</ice:panelGrid>

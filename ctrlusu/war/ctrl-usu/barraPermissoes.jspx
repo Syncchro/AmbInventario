@@ -1,0 +1,39 @@
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" width="100%"
+	style="text-align: center;  width: 66px; white-space: nowrap;"
+	columnClasses="barraBotoesPermissao" columns="2" cellpadding="0"
+	cellspacing="0" border="0">
+
+	<!-- Botao Salvar -->
+	<ice:commandLink rendered="#{!pageMB.somenteLeitura}"
+		action="#{pageMB.salvar}">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup>
+				<ice:graphicImage value="/ctrl-usu/images/salvar-exp.png"
+					onmouseover="Tip('#{bundleAccessControl.papelFuncionalidades_lbl_Salvar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundleAccessControl.lbl_botaoBarraPermissaoSalvar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+	<!-- Botao Cancelar -->
+	<ice:commandLink rendered="#{!pageMB.somenteLeitura}"
+		action="#{pageMB.cancelar}">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup>
+				<ice:graphicImage value="/ctrl-usu/images/cancelar-exp.png"
+					onmouseover="Tip('#{bundleAccessControl.papelFuncionalidades_lbl_Cancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundleAccessControl.lbl_botaoBarraPermissaoCancelar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+</ice:panelGrid>

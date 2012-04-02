@@ -1,0 +1,26 @@
+<ice:panelGroup
+xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component" 
+        xmlns:ui="http://java.sun.com/jsf/facelets" 
+	>
+	
+	<ice:panelGrid
+        columns="1" border="0" cellspacing="0" 
+        cellpadding="0"  width="100%"
+        rowClasses="messages,centroPagina" styleClass="containerCentral">
+
+		<ice:panelGroup rendered="#{currentPageBean != null and currentPageBean.mensagemFromPopup}" >
+			<!-- Adiciona area de mensagens logo abaixo do Header da pagina. -->
+			<ice:messages rendered="#{portal.mensagemPortalVisivel}"  globalOnly="true" />
+		</ice:panelGroup>
+	 	<ice:panelGroup style="height: 100%;">
+	 	<!-- Inclui o JSP da pagina se existir pagina na Session e o JSP da pagina caso 
+	 		contrario e o JSP central padrao ou definido no arquivo de propriedades. -->
+				<ui:include src="#{portal.jspPagina}">
+					<ui:param name="pageMB" value="#{currentPageBean}"></ui:param>
+				</ui:include>
+		</ice:panelGroup>
+	</ice:panelGrid>
+</ice:panelGroup>
+

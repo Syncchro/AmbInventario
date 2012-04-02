@@ -1,0 +1,41 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="width: 100%; height: 100%" styleClass="moduloPerfilUsuario" rendered="#{!alterarSenha.LDAPAtivo}">
+
+ 	<f:loadBundle basename="SynCtrl-UsuMessagesResources" var="bundleAccessControl" />
+
+	<ice:panelGroup styleClass="headerModuloPerfilUsuario">
+		<ice:outputText value="${bundleAccessControl.lbl_AlterarSenha}" style="font-weight: bold;" />
+	</ice:panelGroup>
+	
+	<ice:panelGrid columns="2" width="600" style="margin: 10px 0 0 10px;" columnClasses="perfilUsuarioColunasPreferencia">
+
+		<ice:panelGrid columns="1" width="250" cellpadding="0" cellspacing="0">
+			<ice:panelGrid columns="2">
+				<ice:outputText value="${bundleAccessControl.lbl_senhaAtual}" style="font-weight: bold;" />
+				<h:inputSecret value="#{alterarSenha.senhaAtual}" size="30"	maxlength="40" styleClass="iceInpTxt" />
+
+				<ice:outputText value="${bundleAccessControl.lbl_novaSenha}" style="font-weight: bold;" />
+				<h:inputSecret value="#{alterarSenha.novaSenha}" size="30" maxlength="40" styleClass="iceInpTxt" />
+
+				<ice:outputText value="${bundleAccessControl.lbl_confNovaSenha}" style="font-weight: bold;" />
+				<h:inputSecret value="#{alterarSenha.confirmacaoNovaSenha}"	size="30" maxlength="40" styleClass="iceInpTxt" />
+			</ice:panelGrid>
+		</ice:panelGrid>
+
+		<ice:panelGrid columns="1" width="380" styleClass="perfilUsuarioAreaRequisitosAlterarSenha">
+			
+			<ice:panelGroup rendered="#{primeiroAcesso.condicoesNovaSenha != null}" style="text-align: left;">
+				<ice:outputText value="A nova senha deve atender aos seguintes requisitos:"	style="color: red;font-weight: bold;" />
+				<ul>
+					<ice:panelSeries value="#{primeiroAcesso.condicoesNovaSenha}" var="cond" style="font-weight: bold;">
+						<LI><ice:outputText value="#{cond}" /></LI>
+					</ice:panelSeries>
+				</ul>
+			</ice:panelGroup>
+		</ice:panelGrid>
+	</ice:panelGrid>
+
+</ice:panelGroup>

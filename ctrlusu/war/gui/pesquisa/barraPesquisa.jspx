@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	rendered="#{pageMB.pesquisaAtiva}"
+	style="white-space: nowrap; display: inline; position: static;">
+
+
+	<ice:commandLink styleClass="buttonInsideBar"
+		action="#{painelFuncMB.alteraExibicaoPesquisa}"
+		rendered="#{pageMB.pesquisaAtiva and !pageMB.openedAsSubPage}">
+		<ice:graphicImage value="/gui/images/bt_pesquisar.png"
+			styleClass="#{painelFuncMB.styleBtnPesquisa}"
+			onmouseover="Tip('#{bundle.lbl_btnSearch}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();" />
+	</ice:commandLink>
+	<ice:selectOneMenu style="width:200px;width:200px; vertical-align:top; margin-top: 5px;"
+		value="#{pesquisaMB.whereSelecionado}"
+		valueChangeListener="#{pesquisaMB.whereAlterado}" partialSubmit="true"
+		onmouseover="Tip('#{pesquisaMB.descricao}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+		onmouseout="UnTip();" onclick="UnTip();">
+		<f:selectItems value="#{pesquisaMB.lstWheres}" />
+	</ice:selectOneMenu>
+	<ice:commandLink action="#{pesquisaMB.refazPesquisa}"
+		styleClass="buttonInsideBar">
+		<ice:graphicImage value="/gui/images/executar.png"
+			onmouseover="Tip('#{bundle.lbl_btnRefresh}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();" />
+	</ice:commandLink>
+
+	<ice:commandLink action="#{pesquisaMB.desfazerWhere}"
+		styleClass="buttonInsideBar" rendered="#{painelFuncMB.pesquisaVisivel}">
+		<ice:graphicImage value="/gui/images/cancelar.png"
+			onmouseover="Tip('#{bundle.lbl_btnPesquisaCancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" />
+	</ice:commandLink>
+	<ice:commandLink action="#{pesquisaMB.definirWhereDefault}"
+		styleClass="buttonInsideBar"
+		rendered="#{pesquisaMB.botaoDefinirWhereDefault and pesquisaMB.persistenciaWhere and painelFuncMB.pesquisaVisivel}">
+		<ice:graphicImage value="/gui/images/pesquisaPadrao.png"
+			onmouseover="Tip('#{bundle.lbl_btnDefinirWhereDefault}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" />
+	</ice:commandLink>
+	<ice:graphicImage value="/gui/images/pesquisaPadrao-des.png"
+			rendered="#{!pesquisaMB.botaoDefinirWhereDefault and pesquisaMB.persistenciaWhere and painelFuncMB.pesquisaVisivel}"
+			onmouseover="Tip('#{bundle.lbl_btnDefinirWhereDefault}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" />
+				
+	<ice:commandLink action="#{pesquisaMB.salvarWhere}"
+		rendered="#{!pesquisaMB.botaoSalvarWhereDesabilitado and pesquisaMB.persistenciaWhere and painelFuncMB.pesquisaVisivel}"
+		styleClass="buttonInsideBar">
+		<ice:graphicImage value="/gui/images/salvar.png"
+			onmouseover="Tip('#{bundle.lbl_btnPesquisaSalvar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" />
+	</ice:commandLink>
+	<ice:commandLink action="#{pesquisaMB.exibirWhereSalvarComoPopup}"
+		rendered="#{pesquisaMB.persistenciaWhere and painelFuncMB.pesquisaVisivel}"
+		styleClass="buttonInsideBar">
+		<ice:graphicImage value="/gui/images/salvarComo.png"
+			onmouseover="Tip('#{bundle.lbl_btnPesquisaSalvarComo}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" />
+	</ice:commandLink>
+
+	<ice:commandLink action="#{pesquisaMB.removerWhere}"
+		rendered="#{!pesquisaMB.botaoRemoverWhereDesabilitado and pesquisaMB.persistenciaWhere and painelFuncMB.pesquisaVisivel}"
+		styleClass="buttonInsideBar">
+		<ice:graphicImage value="/gui/images/excluir.png"
+			onmouseover="Tip('#{bundle.lbl_btnPesquisaExcluir}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" />
+	</ice:commandLink>
+
+
+
+</ice:panelGroup>

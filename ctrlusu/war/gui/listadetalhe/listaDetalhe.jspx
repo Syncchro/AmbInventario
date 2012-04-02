@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets" columns="1" 
+        cellpadding="0" 
+		cellspacing="0" 
+		width="100%" 
+		border="0" 
+		style="display: block">
+        
+        
+        <ice:panelGroup style="display: block">
+        	<ui:include src="../grid/barraGrid.jspx">
+        		<ui:param name="gridMB" value="#{pageMB.grid}"></ui:param>
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+       
+        <!-- Inclui JSp com a area do contexto de pesquisa. -->
+        <ice:panelGroup style="display: block; width: 99.4%; background: #EEEEEE; padding: 3px" rendered="#{pageMB.pesquisa.textoContextoPesquisaVisivel}">
+        	<ui:include src="../pesquisa/barraContextoPesquisa.jspx">
+        		<ui:param name="pesquisaMB" value="#{pageMB.pesquisa}"></ui:param>
+        		<ui:param name="painelFuncMB" value="#{pageMB.paineis['funcionalidades']}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+       
+		<!-- Inclui JSp coma area de funcionalidades genericas. -->
+        <ice:panelGroup style="display: block">
+        	<ui:include src="../paineis/painelFunc.jspx">
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        		<ui:param name="painelFuncMB" value="#{pageMB.paineis['funcionalidades']}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+              
+		<!--  Inlcui JSP (Lista / Detalhe) padrao. -->      	
+        <ice:panelGroup style="width: 100%; display: block">
+        	<ui:include src="painelListaDetalhe.jspx">
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+
+        <!--  Inclui barra inferior da página -->
+        <ice:panelGroup style="display: block">
+        	<ui:include src="barraPainelListaDetalhe.jspx">
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+
+ 		<!--  Inclui barra inferior da página -->
+        <ice:panelGroup style="display: block" rendered="#{pageMB.detalhe == null or pageMB.detalhe.estadoPagina == 'CONSULTA'}">
+        	<ui:include src="../grupo/grupo.jspx">
+        		<ui:param name="agrupadorMB" value="#{pageMB.agrupadorSubTela}"></ui:param>
+        		<ui:param name="alturaGrupo" value="30%"></ui:param>
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+  
+</ice:panelGroup>

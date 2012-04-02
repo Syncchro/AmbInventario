@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<caf-config server="jboss">
+
+	<log init="true" propertyFile="log4j.properties" readClassLoader="true"/>
+	
+	<!-- Pra fazer lookup de objetos via JNDI -->
+	<naming> 
+		 <appserver name="tomcat"/> 
+		 <context id="ctxDefault" default="false" username="" password="" url="database.urllookup.datasource" /> 
+	 </naming> 
+
+	<!-- Pra realizar conexão usando datasource. Se for utiliza-la setar o atributo default=true -->
+	<database>
+	
+		<datasource id="fwsec_oracle" 
+			jndiName="java:jdbc/TESTE" context="ctxDefault"
+			jtaEnabled="true" jtaName="UserTransaction"
+			default="true">
+			<jdbc hostname="172.27.2.16"
+			username="TESTE"
+			password="TESTE"
+			driver="oracle.jdbc.driver.OracleDriver"
+			dburl="jdbc:oracle:thin"
+			port="1521"
+			database="TESTE"/>
+		</datasource>
+			
+	</database>
+
+	<!-- Parâmetros da política de segurança -->
+	<!-- loginAttempts : número máximo de tentativas que um usuário tem para logar com sucesso -->
+	<!-- passwordPeriod : funcionalidade para forçar o usuário a trocar, de tempos em tempos, sua senha. Em dias. -->
+	<!-- simultaneosAccess : controle de acesso simultâneo. Permite/impede que usuários acessem o sistema simultaneamente -->
+	<!-- passwordHistory: mantém um histórico de senhas e permite forçar o usuário a não utilizar um número qualquer de senhas anteriores -->
+	<!-- useDomains : definido para uma determinada aplicação aceitem usuários que pertençam a um determinado domínio -->
+	<!-- bytesToHexa : Para evitar problemas de charset no banco de dados converter a informação de senha para hexadecimal -->
+	<!-- loginTimeout : é especificado em minutos -->
+	<security 
+		datasourceId="fwsec_oracle"
+		loginAttempts="5" 
+		passwordHistory="0" 
+		simultaneosAccess="true" 
+		useDomains="true"
+		passwordPeriod="1" 
+		loginTimeout="720" 
+		loginEncrypted="false" 
+		bytesToHexa="true" 
+		targetDatabase="oracle"
+		emailUserCallBack=""
+		emailSend="scc.email.teste@synchro.com.br"
+		emailSmtp="ca_smtp.synchro.com.br"
+		emailSubject="Reinicialização da sua senha"		
+		upperLogin="false"
+		passwordValidator="br.com.cit.caf.security.CtlrUsuPasswordValidator">
+
+		<authentication useCafConfiguration="true" useJaas="false" useAllProfiles="false">
+			<loginModule impl="br.com.cit.caf.security.auth.login.DatabaseLoginModule" flag="requisite" />
+			<loginModule impl="br.com.cit.caf.security.auth.login.AuthenticateLDAP" flag="requisite" />
+			<loginModule impl="br.com.cit.caf.security.auth.login.SubjectBuilderLoginModule" flag="required" />
+			<loginModule impl="br.com.cit.caf.security.audit.AuditLoginModule" flag="required" />
+		</authentication> 
+		<crypto algorithm="MD5" />		
+	</security>
+
+</caf-config>

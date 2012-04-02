@@ -1,0 +1,36 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+		<ice:panelGroup style="text-align: center; display: block; float: right; margin-left: 5px;">
+			<ice:commandLink style="cursor: pointer;" action="#{pageMB.salvar}" >
+				<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+					<ice:panelGroup>
+						<ice:graphicImage
+							onmouseover="Tip('#{bundle.lbl_update}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+							onmouseout="UnTip();" onclick="UnTip();"
+							value="/gui/images/salvar-exp.png" height="32px"
+							width="32px" />
+					</ice:panelGroup>
+					<ice:panelGroup>
+						<ice:outputText value="#{bundle.lbl_botaoBarraEdicaoSalvar}"></ice:outputText>
+					</ice:panelGroup>
+				</ice:panelGroup>
+			</ice:commandLink>
+		</ice:panelGroup>
+		<ice:panelGroup style="text-align: center; display: block; float: right;">
+			<ice:commandLink action="#{pageMB.cancelar}" style="cursor: pointer;"	>
+				<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+					<ice:panelGroup>
+						<ice:graphicImage
+							onmouseover="Tip('#{bundle.lbl_hintCancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+							onmouseout="UnTip();" onclick="UnTip();"
+							value="/gui/images/cancelar-exp.png" height="32px" width="32px" />
+					</ice:panelGroup>
+					<ice:panelGroup>
+						<ice:outputText value="#{bundle.lbl_botaoBarraEdicaoCancelar}"></ice:outputText>
+					</ice:panelGroup>
+				</ice:panelGroup>
+			</ice:commandLink>
+		</ice:panelGroup>
+</ice:panelGroup>

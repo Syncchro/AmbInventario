@@ -1,0 +1,31 @@
+<html><?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view xmlns:jsp="http://java.sun.com/JSP/Page" 
+		  xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:ice="http://www.icesoft.com/icefaces/component" >
+<ice:outputDeclaration doctypeRoot="HTML"
+        doctypePublic="-//W3C//DTD HTML 4.01 Transitional//EN"
+        doctypeSystem="http://www.w3.org/TR/html4/loose.dtd"/>  
+<f:loadBundle
+        basename="SynCtrl-UsuMessagesResources"
+        var="bundleAccessControl"  />                
+<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+			
+		</head>
+		<body>    
+		    <form>
+		    <ice:panelGrid>
+			    <ice:panelGroup>
+					                                         
+					<ice:selectOneListbox value="#{organizacaoUsuario.organizacaoSelecionada}">
+					<f:selectItems value="#{organizacaoUsuario.listaOrgs}"></f:selectItems>       
+					</ice:selectOneListbox>
+				</ice:panelGroup>
+		    </ice:panelGrid>		
+           		<p>
+	                <input type="submit" action="#{organizacaoUsuario.refazerSubject}" value="OK"></input>
+                </p>				
+			</form>   
+		</body></html>

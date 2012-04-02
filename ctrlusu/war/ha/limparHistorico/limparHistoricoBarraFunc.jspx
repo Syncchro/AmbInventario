@@ -1,0 +1,61 @@
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:ice="http://www.icesoft.com/icefaces/component" 
+        width="50px" 
+        cellpadding="0" 
+		cellspacing="0" 
+		border="0"
+		columns="4"
+		style="horizontal-align:right">		
+		<ice:panelGroup style="white-space: nowrap; text-align: left;">
+			<ice:commandLink  styleClass="buttonInsideBar"  action="#{pageMB.expandirArvore}">
+				<ice:graphicImage 
+						value="/ha/images/expandir.gif" styleClass="graphic" 
+						onmouseover="Tip('#{bundleHA.ativarHistorico_lbl_expandir}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+    					onmouseout="UnTip();"
+    					onclick="UnTip();"
+    					height="16px"            
+	        			width="16px"/>
+			</ice:commandLink>
+		</ice:panelGroup>
+       	
+		<ice:panelGroup style="white-space: nowrap; text-align: left;">
+			<ice:commandLink  styleClass="buttonInsideBar"  action="#{pageMB.retrairArvore}">
+				<ice:graphicImage 
+						value="/ha/images/fechar.gif" styleClass="graphic" 
+						onmouseover="Tip('#{bundleHA.ativarHistorico_lbl_fecharArvore}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+    					onmouseout="UnTip();"
+    					onclick="UnTip();"
+    					height="16px"            
+	        			width="16px"/>
+			</ice:commandLink>
+		</ice:panelGroup>
+		
+
+		<ice:panelGroup style="white-space: nowrap; text-align: left;">
+			<ice:commandLink  styleClass="buttonInsideBar"  action="#{pageMB.confirmarLimpezaHistorico}" >
+				<ice:graphicImage 
+						value="/ha/images/salvar.png" styleClass="graphic" 
+						onmouseover="Tip('#{bundleHA.limparHistorico_lbl_ConfirmaExclusao}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+    					onmouseout="UnTip();"
+    					onclick="UnTip();"
+    					height="16px"            
+	        			width="16px" />
+			</ice:commandLink>
+		</ice:panelGroup>
+		
+		<ice:panelGroup style="white-space: nowrap; text-align: left;">
+			<ice:commandLink  styleClass="buttonInsideBar"  action="#{pageMB.cancelar}" >
+				<ice:graphicImage 
+						value="/ha/images/cancelar.png" styleClass="graphic" 
+						onmouseover="Tip('#{bundleHA.limparHistorico_lbl_Cancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+    					onmouseout="UnTip();"
+    					onclick="UnTip();"
+    					height="16px"            
+	        			width="16px"  />
+			</ice:commandLink>
+		</ice:panelGroup>
+
+</ice:panelGrid>        

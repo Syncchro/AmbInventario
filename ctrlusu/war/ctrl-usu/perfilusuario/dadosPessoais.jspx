@@ -1,0 +1,61 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="width: 100%; height: 100%" styleClass="moduloPerfilUsuario">
+	
+	<f:loadBundle basename="SynCtrl-UsuMessagesResources" var="bundleAccessControl" />
+
+	<ice:panelGroup styleClass="headerModuloPerfilUsuario">
+		<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_header_dados_pessoais}" style="font-weight: bold;" />
+	</ice:panelGroup>
+	
+	<ice:panelGrid columns="2" style="margin:10px 0 0 10px">
+		<ice:panelGrid columns="2">
+		
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_CodLogin}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.codLogin}" size="45" styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_Nome}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.nomUsuario}" size="45"	styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_Email}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.txtEmail}" size="45" styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_RG}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.rg}" size="45"	 styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_CPF}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.cpf}" size="45"	 styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+		</ice:panelGrid>
+	
+		<ice:panelGrid columns="2">	
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_DtNascimento}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.dtNascimento}" size="45"	styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" >
+				<f:convertDateTime timeZone="#{portal.timeZone}"/>
+			</h:inputText>
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_NomeMae}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.nomeMae}" size="45"	 styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_NomePai}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.nomePai}" size="45"	 styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" />
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_UltimoAcesso}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.dtUltimoAcesso}" size="45"	 styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true" >
+				<f:convertDateTime timeZone="#{portal.timeZone}"/>
+			</h:inputText>
+			
+			<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_DtExpSenha}"	style="font-weight: bold;" />
+			<h:inputText value="#{dadosPessoais.dtExpSenha}" size="45"	styleClass="iceInpTxt iceInpTxt-readOnly" disabled="true">
+				<f:convertDateTime timeZone="#{portal.timeZone}"/>
+			</h:inputText>
+		</ice:panelGrid>
+	</ice:panelGrid>
+	
+	<ice:panelGroup styleClass="perfilUsuarioAreaRequisitosAlterarSenha" style="text-align: left; margin: 5px 90px; padding: 3px">
+		<ice:outputText value="${bundleAccessControl.dados_pessoais_lbl_AvisoAlteracao}" style="color: red; font-weight: bold;" />
+	</ice:panelGroup>	
+
+</ice:panelGroup>

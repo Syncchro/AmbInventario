@@ -1,0 +1,13 @@
+<ice:panelGroup
+ 	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    rendered="#{pageMB.gridAtivo}"
+    style="display: inline"
+>
+	<ice:outputText value="#{data[gridMB.camposGrid[linhaGrid].nome]}" converter="SynGridConverter">
+    <f:attribute name="formatoDecimal" value="#{gridMB.camposGrid[linhaGrid].formatoNumerico}"/>
+    <f:attribute name="tipoCampo" value="#{gridMB.camposGrid[linhaGrid].campoPaginaTO.tipo}"/>
+    </ice:outputText>
+	
+</ice:panelGroup>

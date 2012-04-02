@@ -1,0 +1,21 @@
+<br.com.synchro.framework.gui.to.PaginaTO>
+	<codigo>tCtrlUsuPerfilUsuario</codigo>
+	<rotulo>Perfil do Usuário</rotulo>
+	<tipo>CUSTOM</tipo>
+	<pageBeanClass>br.com.synchro.framework.ctrlusu.perfilusuario.presentation.managedbean.PerfilUsuarioMB</pageBeanClass>
+	<indInclusao>N</indInclusao>
+	<indAlteracao>N</indAlteracao>
+	<indExclusao>N</indExclusao>
+	<indAssociacao>true</indAssociacao>
+	<nomeJsp>/ctrl-usu/perfilusuario/perfil.jspx</nomeJsp>
+	<modoAbertura>I</modoAbertura>
+	<id>555000</id>
+	<servicos />
+	<navegacoes />
+	<grupos />
+	<hint>Perfil do Usuário</hint>
+	<codigoComp>CtrlUsu</codigoComp>
+	<indGrupoPrincipal>N</indGrupoPrincipal>
+	<campos>
+	</campos>
+</br.com.synchro.framework.gui.to.PaginaTO>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        rendered="#{navegacaoMB !=  null}"
+        width="100%" style="padding: 2px;">
+        	<ice:selectOneMenu style="width:200px" partialSubmit="true" valueChangeListener="#{navegacaoMB.selecionarNavegacao}" 
+        		value="#{navegacaoMB.valorNavegacao}">
+	   	    	<f:selectItem itemValue="rotuloDefault" itemLabel="#{bundle.lvl_valorDefaultSelectBoxNavegacao}" />
+	   	    	<f:selectItems  value="#{navegacaoMB.navegacoesItens}"/>
+	   	    </ice:selectOneMenu>
+</ice:panelGroup> 

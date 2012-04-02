@@ -1,0 +1,82 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets" dropValue="#{data}"
+	style="height:20px;" dropTarget="#{gridMB.draggable}" hoverclass="dropTarget">
+
+
+	<ice:commandLink actionListener="#{gridMB.processaDetalheGrid}"
+		rendered="#{gridMB.detalhe}" onclick="javascript:guardaObj(this);">
+		<ice:graphicImage value="/gui/images/tree_folder_close.gif" />
+		<ice:graphicImage value="/gui/images/tree_folder_open.gif"
+			style="display: none;" />
+		<f:param name="rowPK" value="#{data['pk']}"></f:param>
+	</ice:commandLink>
+
+
+	<ui:repeat value="#{data['qtdImagens']}" var="img">
+		<ice:graphicImage value="/gui/images/tree_line_vertical.gif"
+			style="float: left; margin-left: 1pt;  " />
+	</ui:repeat>
+
+
+	<ice:graphicImage value="/gui/images/tree_line_middle_node.gif"
+		style="float: left; margin-left: 1pt;  " />
+
+	<ice:panelGroup
+		rendered="#{data['qtdFilhos'] != null and data['qtdFilhos'] > 0}">
+		<ice:panelGroup style="float: left; margin: 4px;">
+			<ice:commandLink action="#{gridMB.processaHierarquiaGrid}">
+				<ice:graphicImage value="/gui/images/detalhe-grid.png"
+					rendered="#{data['expandTree'] == null}" />
+				<ice:graphicImage value="/gui/images/detalhe-grid-aberto.png"
+					rendered="#{data['expandTree'] != null}" />
+				<f:param name="rowPK" value="#{data['pk']}"></f:param>
+			</ice:commandLink>
+		</ice:panelGroup>
+		<ice:panelGroup draggable="#{gridMB.draggable}" dragListener="#{gridMB.alteraNivel}"
+			dragValue="#{data}" dragOptions="dragGhost"
+			dragMask="dragging,drag_cancel,hover_start,hover_end"
+			style="float: left;">
+			<ice:graphicImage value="#{gridMB.nomeIconeFechado}"
+				rendered="#{data['expandTree'] == null and data['imgNodeFechado'] ==null}" />
+			<ice:graphicImage value="#{data['imgNodeFechado']}"
+				rendered="#{data['expandTree'] == null and data['imgNodeFechado'] !=null}" />
+			<ice:graphicImage value="#{gridMB.nomeIconeExpandido}"
+				rendered="#{data['expandTree'] != null and data['imgNodeAberto'] ==null}" />
+				<ice:graphicImage value="#{data['imgNodeAberto']}"
+				rendered="#{data['expandTree'] != null and data['imgNodeAberto'] !=null}" />
+		</ice:panelGroup>
+
+	</ice:panelGroup>
+
+	<ice:panelGroup
+		rendered="#{(data['qtdFilhos'] != null and data['qtdFilhos'] == 0)}"
+		draggable="#{gridMB.draggable}" dragListener="#{gridMB.alteraNivel}"
+		dragValue="#{data}" dragOptions="dragGhost"
+		dropMask="dragging,drag_cancel,hover_start,hover_end"
+		style="float: left;">
+		<ice:graphicImage value="#{data['imgNodeFolha']}" rendered ="#{data['imgNodeFolha'] !=null}" />
+		<ice:graphicImage value="#{gridMB.nomeIconeFolha}" rendered ="#{data['imgNodeFolha'] ==null}" />
+
+	</ice:panelGroup>
+
+	<ice:panelGroup style="float: left;" rendered="#{!gridMB.lov}">
+		<ui:include src="#{gridMB.camposGrid[0].jspColuna}">
+			<ui:param name="data" value="#{data}"></ui:param>
+			<ui:param name="gridMB" value="#{gridMB}"></ui:param>
+			<ui:param name="linhaGrid" value="0"></ui:param>
+			<ui:param name="colunaGrid" value="0"></ui:param>
+		</ui:include>
+
+	</ice:panelGroup>
+
+<ice:panelGroup style="float: left;" rendered="#{gridMB.lov}">
+<ice:commandLink  value="#{data[gridMB.camposGrid[0].nome]}"
+            		action="#{gridMB.selecionaRegistro}" 
+            		escape="false">
+            		<f:param name="rowPK" value="#{data['pk']}"></f:param>
+            	</ice:commandLink>
+</ice:panelGroup>
+
+</ice:panelGroup>

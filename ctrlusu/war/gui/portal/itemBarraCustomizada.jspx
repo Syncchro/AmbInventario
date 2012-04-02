@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" width="100%"
+	style="border: 1px solid #ABABAB;height: 44px;"
+	styleClass="panelCenterButtonsFerramentas"
+	rendered="#{itenBarraFerramenta != null}">
+
+	<ice:panelGrid border="0" cellpadding="0px" cellspacing="0px"
+		headerClass="barraFerramentasHeader" columns="2">
+		<f:facet name="header">
+			<ice:outputText value="#{itenBarraFerramenta.rotulo}"
+				style="font-size: 10px; font-weight: normal;" />
+		</f:facet>
+		<!--  Quando o agrupador da barra possui JSP especifico -->
+		<ice:panelGroup headerClass="barraFerramentasHeader"
+			style="text-align: center; white-space: nowrap;"
+			rendered="#{itenBarraFerramenta.nomeJsp != null}">
+			<ui:include src="#{itenBarraFerramenta.nomeJsp}">
+				<ui:param name="pageMB" value="#{pageMB}" />
+			</ui:include>
+		</ice:panelGroup>
+		<!--  Quando o agrupador da barra padrão percorre os botões -->
+		<ice:panelGroup headerClass="barraFerramentasHeader"
+			style="text-align: center; white-space: nowrap;"
+			rendered="#{itenBarraFerramenta.nomeJsp == null}">
+			<ice:panelSeries styleClass="divInline"
+				value="#{itenBarraFerramenta.botoes}" var="botao">
+				<ice:commandLink action="#{botao.actionButton}"
+					rendered="#{botao.renderedButton}" styleClass="buttonInsideBar"
+					disabled="#{botao.desabilitado}">
+					<ice:graphicImage value="#{botao.nomeImagem}" rendered="#{!botao.desabilitado}"
+						onmouseover="Tip('#{botao.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 500, CENTERMOUSE, true);"
+						onmouseout="UnTip();" onclick="UnTip();" />
+					<ice:graphicImage value="#{botao.nomeImagemDesabilitada}" rendered="#{botao.desabilitado}"
+						onmouseover="Tip('#{botao.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 500, CENTERMOUSE, true);"
+						onmouseout="UnTip();" onclick="UnTip();" />
+				</ice:commandLink>
+			</ice:panelSeries>
+			
+		<ui:include src="../servicos/barraBotoesEspecificos.jspx">
+			<ui:param name="servicoMB" value="#{itenBarraFerramenta}" />
+		</ui:include>
+			
+		</ice:panelGroup>
+
+	</ice:panelGrid>
+</ice:panelGroup>

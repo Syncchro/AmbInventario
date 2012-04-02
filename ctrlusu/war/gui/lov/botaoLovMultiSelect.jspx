@@ -1,0 +1,40 @@
+<!-- Toda vez que o Timer e executado ele aciona os gets (binds) da tela, portanto foi definido esse metodo como gatilho do Timer. -->
+<!-- Nao podemos deixar esse gatilho no getState() pois ele e acionado fora do contexto do Faces. -->  
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      style="white-space: nowrap; float: right; padding-top: 0px; padding-bottom: 0px"
+      cellpadding="0" cellspacing="0"	border="0">
+
+<ice:panelGrid columns="2">
+  <ice:commandLink 
+	   rendered = "#{pageMB.lov != null and pageMB.lov.lovMultiplaSelecao}" action="#{pageMB.lov.executaRetornoLov}">
+
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 55px; text-align: center">
+			<ice:panelGroup>
+	   			<ice:graphicImage  value="/gui/images/lov-multiselect-exp.png" 
+	 	        	onmouseover="Tip('#{bundle.lbl_hintBotaoPopUpSelecionar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+	     				onmouseout="UnTip();" onclick="UnTip();"/>
+	  	</ice:panelGroup>
+			<ice:panelGroup>
+			   <ice:outputText value="#{bundle.lbl_botaoPopUpSelecionar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+  </ice:commandLink>
+
+  <ice:commandLink>
+	  <ice:panelGroup style="border: 1px solid #ABABAB; width: 50px; text-align: center">
+      <ice:panelGroup>
+        <ice:graphicImage
+     	   		onmouseover="Tip('#{bundle.lbl_hintCancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+     				onmouseout="UnTip();" onclick="window.close();"
+     				value="/gui/images/cancelar-exp.png" height="32px" width="32px" />
+     	</ice:panelGroup>
+      <ice:panelGroup>
+   			  <ice:outputText value="#{bundle.lbl_botaoBarraEdicaoCancelar}"></ice:outputText>
+			</ice:panelGroup>
+    </ice:panelGroup>         		
+  </ice:commandLink>
+</ice:panelGrid>
+</ice:panelGroup>

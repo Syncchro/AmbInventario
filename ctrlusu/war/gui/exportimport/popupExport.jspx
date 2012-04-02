@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1"  width="100%" rowClasses="row1,row2,row3,rowCancelarImportExport">
+
+	<ice:panelGroup>
+	    <ice:messages globalOnly="true"/>
+	</ice:panelGroup>
+	
+	<ice:panelGroup>
+    		<ice:outputText value="#{bundle.exportImport_selecioneExpImp}" styleClass="iceOutputTextObrigatorio"/>
+ 	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:panelGrid styleClass="tableExportImport" width="100%">
+			<ice:panelGroup>
+					<ice:outputText value="#{bundle.exportImport_exportacaoPadrao}"  />
+					<ice:outputLink 
+						value="#{paginaMB.exportImport.servletNomeExportPadrao}" 
+						target="_blank">
+							<ice:graphicImage 
+								value="/gui/images/excel.gif" styleClass="graphic" />
+					</ice:outputLink>
+			</ice:panelGroup>
+			<ice:panelGroup>
+					<ice:outputText value="#{bundle.exportImport_exportacaoLeiautePadrao}"   />
+					<ice:outputLink 
+						value="#{paginaMB.exportImport.servletNomeExportLeaiutePadrao}" 
+						target="_blank" disabled="#{!paginaMB.exportImport.exportacaoLeiautePadraoDisponivel}">
+							<ice:graphicImage 
+								value="/gui/images/excel.gif" styleClass="graphic" rendered="#{paginaMB.exportImport.exportacaoLeiautePadraoDisponivel}"/>
+							<ice:graphicImage 
+								value="/gui/images/excel-des.gif" styleClass="graphic" rendered="#{!paginaMB.exportImport.exportacaoLeiautePadraoDisponivel}"/>								
+					</ice:outputLink>
+
+			</ice:panelGroup>
+			<ice:panelGroup>
+					<ice:outputText value="#{bundle.exportImport_exportacaoPadraoReimportacao}"  />
+					<ice:outputLink 
+						value="#{paginaMB.exportImport.servletNomeExportReimportacao}" 
+						target="_blank" disabled="#{!paginaMB.exportImport.exportacaoParaReimportacaoDisponivel}">
+							<ice:graphicImage 
+								value="/gui/images/excel.gif" styleClass="graphic" rendered="#{paginaMB.exportImport.exportacaoParaReimportacaoDisponivel}"/>
+							<ice:graphicImage 
+								value="/gui/images/excel-des.gif" styleClass="graphic" rendered="#{!paginaMB.exportImport.exportacaoParaReimportacaoDisponivel}"/>
+					</ice:outputLink>
+			</ice:panelGroup>
+		</ice:panelGrid>
+	</ice:panelGroup>
+	<ice:panelGroup>
+			<ice:commandButton  
+ 				value="#{bundle.lbl_cancelar}" 
+ 				action="#{paginaMB.exportImport.fecharPopup}" 
+ 			/>
+	</ice:panelGroup>
+</ice:panelGrid>

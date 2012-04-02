@@ -1,0 +1,3016 @@
+/*
+ Generic site wide changes
+ */
+body {
+	background-color: #FFFFFF;
+	color: #666666;
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+}
+
+/*
+=================== Font Family, Size and Color ==============
+*/
+	/* set the attributes for the font family, size and color for ALL elements on the page */
+	/* make the fonts inside tables and forms == the default size of the page */
+body,table {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+table {
+	padding: 0px;
+  margin: 0px;
+	border: 0px;
+}
+
+form {
+	margin: 0px;
+}
+
+/* Main border layout for template */
+.mainBorderLayout {
+	border: 0px;
+	vertical-align: top;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+}
+
+.dropTarget {
+	background-color: blue;
+}
+
+/* over ride default theme */
+.icePnlBrdrNorth { /*background-color: #336699;*/
+	background: url('../images/TopoFundo.png');
+	vertical-align: top;
+	text-align: left;
+	margin: 0px;
+	padding: 0px;
+	border-collapse: collapse;
+	border-bottom: #dadada solid 1px;
+}
+
+.icePnlBrdrWest {
+	background-color: #B1CCDF;
+	vertical-align: top;
+	margin: 0px;
+	padding: 0px;
+	background-image: url( "../images/bg_menu_image.jpg" );
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.icePnlBrdrCenter {
+	vertical-align: top;
+	width: 80%;
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+
+/* controls the appearance of links throughout the application */
+a:link,a:hover,a:visited,a:active {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.buttonInsideBar {
+	padding: 2px;
+}
+
+.buttonInsideBar-dis {
+	padding: 2px;
+}
+
+a:focus {
+	border: 0;
+	outline: 0px;
+}
+
+.buttonInsideBar:hover {
+	background-color: #DDDDDD;
+}
+
+.buttonInsideBar:focus {
+	boder: 0px;
+	outline: 0px;
+}
+
+/*
+----------- TreeView component
+utilizado pelo componente Tree.
+*/
+.iceTreeRow {
+	white-space: nowrap;
+	padding: 0px;
+}
+
+/*
+	Formatação do texto da arvore.
+*/
+.iceTreeRow a {
+	text-decoration: none;
+	color: #000000;
+	cursor: pointer;
+	padding: 0px;
+	vertical-align: middle;
+}
+
+.iceTreeRow a:hover {
+	text-decoration: none;
+}
+
+.iceTreeRow img {
+	border: 0px;
+	vertical-align: middle;
+	background-repeat: repeat-y;
+	padding: 0px;
+}
+
+.iceTreeRow div {
+	padding: 0px;
+}
+
+.iceTreeRow a img {
+	/* vertical-align: top; - Bug in FF, when img has focus it is not highlighted with a box.*/
+	background-repeat: repeat-y;
+	border: 0px;
+	padding: 0px;
+}
+
+/*
+ Div que apresenta arvore de navegação Navigation
+*/
+.navTree {
+	overflow: auto;
+	height: 510px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.navThemeChange,.navTree {
+	border-right: 1px solid #dedede;
+	margin: 5px;
+	/*padding: 5px;*/
+	margin-top: 0;
+	margin-left: 0;
+	width: 275px;
+}
+
+.titlePage {
+	font-weight: bold;
+	color: #000000;
+	background-color: #EEEEEE;
+}
+
+.titlePageImage {
+	text-align: right;
+	white-space: nowrap;
+	border: 2px;
+	vertical-align: top;
+	top: 0px;
+	position: relative;
+}
+
+.headerImage {
+	text-align: center;
+	vertical-align: bottom;
+  width: 315px;;
+	/*width: 95%;*/
+	background: url('../../images/TopoEsquerdo.png') no-repeat;
+}
+
+.headerImageFerramentas {
+	text-align: center;
+	vertical-align: bottom;
+  width: 315px;;
+	/*width: 95%;*/
+	background: url('../../images/TopoEsquerdoFerramentas.png') no-repeat;
+}
+
+.headerImageReduzido {
+	text-align: center;
+	padding-left: 220px;
+	vertical-align: bottom;
+	background: url('../../images/TopoEsquerdoReduzido.png') no-repeat;
+}
+
+.headerFerramentasGerias{
+  background: url(../../images/TopoFerramentasGerais.png) no-repeat right center;
+  height: 35px;
+  padding-right: 10px;
+  width: 55px;
+}
+
+.headerImageError {
+	text-align: center;
+	vertical-align: bottom;
+	/*width: 95%;*/
+}
+
+.headerButton {
+	padding-left: 50px;
+	text-align: center;
+	vertical-align: center;
+	width: 130px;
+	background: url('../../gui/images/TopoDireito.png') no-repeat;
+}
+
+.headerButtonReduzido {
+	padding-left: 40px;
+	text-align: center;
+	vertical-align: center;
+	width: 40px;
+	background: url('../../gui/images/TopoDireitoReduzido.png') no-repeat;
+}
+
+/**
+	estilo utilizado para formatar imagens renderizadas atraves da tag <ice:graficImage>
+**/
+.iceGphImg {
+	border: 0px;
+  padding: 0px;
+  margin: 0px; 
+}
+
+/**
+	estilo da tela de pesquisa generica
+*/
+.panelSearch {
+	background-color: #EEEEEE;
+	width: 100%;
+	border-top: 1px solid #FFFFFF;
+}
+
+.searchBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-image: url(../images/bt_pesquisar.gif );
+	background-position: right;
+	text-align: left;
+	background-repeat: no-repeat;
+	width: 85px;
+	min-width: 85px;
+	background-color: #FFFFFF;
+}
+
+.undoBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-image: url(../../gui/images/desfazer.png );
+	background-position: right;
+	text-align: left;
+	background-repeat: no-repeat;
+	width: 80px;
+	min-width: 80px;
+	background-color: #FFFFFF;
+}
+
+.saveAsBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-image: url(../../gui/images/salvar.png );
+	background-position: right;
+	text-align: left;
+	background-repeat: no-repeat;
+	width: 100px;
+	min-width: 100px;
+	background-color: #FFFFFF;
+}
+
+.saveBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-image: url(../../images/salvar.png );
+	background-position: right;
+	text-align: left;
+	background-repeat: no-repeat;
+	width: 60px;
+	min-width: 60px;
+	background-color: #FFFFFF;
+}
+
+.excludeBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-image: url(../images/cancelar.gif );
+	background-position: right;
+	text-align: left;
+	background-repeat: no-repeat;
+	width: 65px;
+	min-width: 65px;
+	background-color: #FFFFFF;
+}
+
+.gridRightBtn {
+	background-image: url(../images/direita.png );
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 40px;
+}
+
+.gridLeftBtn {
+	background-image: url(../images/esquerda.png );
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 40px;
+}
+
+.gridAllLeftBtn {
+	background-image: url(../images/tdsEsquerda.png );
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 40px;
+}
+
+.gridRightBtn-dis {
+	background-image: url(../images/direita-des.png );
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 40px;
+}
+
+.gridLeftBtn-dis {
+	background-image: url(../images/esquerda-des.png );
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 40px;
+}
+
+.gridAllLeftBtn-dis {
+	background-image: url(../images/tdsEsquerda-des.png );
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 40px;
+}
+
+.barButtonsSearch {
+	background-color: #EEEEEE;
+}
+
+/**
+	estilo da tela de pesquisa generica
+*/
+.panelGridSearch {
+	
+}
+
+/**
+	Estilo utilizado no jsp headerCenter.jspx no panelGrid Principal
+**/
+.headerCenterPanelGrid {
+	width: 100%;
+	background-color: #EEEEEE;
+	vertical-align: top;
+	border: 1px solid #FFFFFF;
+}
+
+/**
+	Estilo dos panels que aparecem no centro da tela.
+**/
+panelStackCenter {
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	vertical-align: top;
+	overflow: scroll;
+	width: 80%;
+}
+
+.tableBreadCrumbs {
+	background-color: #EEEEEE;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: top;
+}
+
+.rowBreadCrumbs {
+	background-color: #EEEEEE;
+}
+
+.tableButtons {
+	border: 0px;
+	margin: 0px;
+	border-right: 1px solid #ABABAB;
+	top: 0px;
+	left: 0px
+}
+
+/*
+----------- Data Table Component classes
+*/
+.iceDatTbl {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	border: 1px solid #BAB;
+	background-color: #FFFFFF;
+	vertical-align: top;
+}
+
+.iceDatTblOutline {
+	background-color: #E1E0D9;
+	border: 1px solid #ABABAB;
+	margin: 0px;
+	left: 0px;
+	top: opx;
+}
+
+.tableDataGridHdr { /*the header of a data tables */
+	background-color: #E1E0D9;
+	background-image: url( "../images/table_col_header.gif" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	font-weight: normal;
+	text-align: center;
+	color: #000389;
+	border-right: 1px solid #EEEEEE;
+	border-top: 1px solid #EEEEEE;
+	padding: 0px;
+	white-space: nowrap;
+	height: 10px;
+}
+
+.tableDataGridPadrao tr td {
+	padding: 0px 5px;
+}
+
+.tableDataGridPadrao th tr td {
+	padding: 1px 3px;
+}
+
+/* data tables are rendered with alternating row colors */
+.iceDatTblRow1 {
+	background-color: #FFFFFF;
+	height: 0px;
+}
+
+.iceDatTblRow1:HOVER {
+	background-color: #CCCCCC;
+}
+
+.iceDatTblRow2:HOVER {
+	background-color: #CCCCCC;
+}
+
+.iceDatTblRow2 {
+	background-color: #EEEEEE;
+}
+
+/* set the common attributes for the column classes */
+.iceDatTblCol1,.iceDatTblCol2,.iceDatTblCol3 {
+	color: #000000;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+/* now you can add or override any attributes for the specific columns */
+.iceDatTblCol1 {
+	text-align: center;
+}
+
+.iceDatTblFooter {
+	background: url('../images/RodapeFundo.png');
+	color: white;
+}
+
+.tableCol {
+	padding: 0px 1px 0px 1px;
+	text-align: left;
+}
+
+.tableColGridEditavel {
+	/*padding: 0px 1px 0px 1px;*/
+	text-align: left;
+  white-space: nowrap;
+  width: 30px;
+}
+
+.tab1GridHierarquico {
+	padding: 0px 1px 0px 1px;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.tableColValor {
+	white-space: nowrap;
+}
+
+.tableColSelected {
+	background-color: #E1E0D9;
+	background-image: url( "../images/table_col_header.gif" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	color: #000000;
+	padding: 0px;
+	text-align: center;
+	vertical-align: center;
+}
+
+.tableColWrapText {
+	color: #000000;
+	padding: 0px;
+	text-align: left;
+	white-space: normal;
+}
+
+.tableColRemocao {
+	background-color: #E1E0D9;
+	background-image: url( "../images/table_col_header.gif" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	color: #000000;
+	padding: 0px;
+	text-align: center;
+	vertical-align: center;
+}
+
+.rowCondicao {
+	height: 3px;
+	background: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+}
+
+.rowCondicao2 {
+	height: 3px;
+	background: #D5E3F7;
+	margin: 0px;
+	padding: 0px;
+}
+
+/*
+-----------FIM Data Table Component classes
+*/ /*
+----------- Data Scroller Component classes
+*/
+.iceDtdPgrScrOut { /* the class for the outside table */
+	background-color: #FFFFFF;
+	margin: 10px;
+}
+
+.iceDtdPgrScrBtn { /* the cells behind the scroll buttons */
+	background-color: #FFFFFF;
+	padding: 0px;
+}
+
+.iceDtdPgrTbl { /* the container for the pagination*/
+	background-color: #FFFFFF;
+}
+
+/* set the common attributes for the pagination numbers */
+.iceDtdPgrScrCol a,.iceDtdPgrCol a {
+	text-decoration: none;
+	font-weight: normal;
+	background-color: #FFFFFF;
+	color: #666666;
+	display: block;
+	padding: 0px 5px 0px 5px;
+	border: 1px solid #FFFFFF;
+}
+
+* html .iceDtdPgrCol a {
+	width: 1%;
+}
+
+/* override the attributes for the currently selected page */
+.iceDtdPgrScrCol a {
+	color: #FFFFFF;
+	border: 1px solid #2A6CC2;
+	background-color: #2A6CC2;
+}
+
+* html .iceDtdPgrScrCol a {
+	width: 1%;
+}
+
+/* set the attributes for the mouseover on none-current pages */
+.iceDtdPgrCol a:hover {
+	color: #000000;
+	border: 1px solid #2A6CC2;
+}
+
+/*
+ Data scroller Styles
+*/
+.leftDataControlColumn {
+	text-align: right;
+}
+
+.rightDataControlcolumn {
+	text-align: left;
+}
+
+/*!*/
+.formBorderHighlight table {
+	border-collapse: collapse;
+}
+
+.listDescriptor table {
+	padding: 0px;
+	margin: 0px;
+}
+
+.listDescriptor td {
+	background-color: #efefef;
+}
+
+.contentLayoutGridColumn  td {
+	vertical-align: top;
+}
+
+.listReceipt td {
+	width: 90px;
+	text-align: left; /*font-size:12px;*/
+}
+
+/*
+=================== Style class definitions for ICE Standard Extended Component Appearance ==============
+*/
+.iceInpTxt-showMask {
+	border: 0px;
+	background-color: #F9F5D1;
+	margin: 2px;
+	padding: 0px;
+	color: #999999;
+}
+
+.iceInpTxt,.iceTextarea,.iceInpTxt-number, .iceSelInpTxtTxt {
+	border: 1px solid #ABABAB;
+	background-color: #FFFFFF;
+	margin: 2px;
+	padding: 0px;
+}
+
+.iceCheckbox input,.iceRadioBtn input,.iceBooleanCheckbox {
+	margin: 2px;
+	padding: 0px;
+}
+
+.iceInpTxt {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	padding: 0px;
+}
+
+.iceInpTxt-number {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	padding: 0px;
+	text-align: right;
+}
+
+.iceInpTxt,.iceInpSecrt,.iceInpTxt-number, .iceSelInpTxtTxt {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	border: 1px solid #d9d9d9;
+	margin: 2px;
+	padding: 0px;
+}
+
+.iceInpTxtInvalid {
+	border: 1px solid #ABABAB;
+	background-color: #FFC6C6;
+	margin: 2px;
+	padding: 0px;
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.iceInpTxt-readOnly,.iceInpTxt-number-readOnly {
+	border: 1px solid #ABABAB;
+	background-color: #EEEEEE;
+	margin: 2px;
+	padding: 0px;
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.iceInpTxtLovString-readOnly {
+	border: 1px solid #ABABAB;
+	background-color: #EEEEEE;
+	margin: 2px;
+	padding: 0px;
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.iceInpTxt-number-readOnly {
+	text-align: right;
+}
+
+.iceSelOneMnu {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.iceSelOneMnu-dis {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+	padding: 0px;
+}
+
+.iceTextarea {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+	padding: 0px;
+}
+
+.iceTextarea-readyOnly {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+	padding: 0px;
+	border: 1px solid #ABABAB;
+	background-color: #DDDDDD;
+}
+
+.iceCmdLnk {
+	text-decoration: inherit;
+	font-weight: bold;
+	color: #000389;
+}
+
+.iceCmdLnk-dis {
+	color: #ABABAB;
+	text-decoration: none;
+	cursor: default;
+	white-space: nowrap;
+}
+
+.iceOutTxt {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+	padding: 0px;
+}
+
+iceOutLbl {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+	padding: 0px;
+	white-space: nowrap;
+}
+
+.iceCmdBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+}
+
+.iceInpFileBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+}
+
+buttonUploadBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+}
+
+.iceCmdBtn-dis {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+}
+
+/*
+=================== ICE Component Appearence ==============
+*/ /*
+----------- Calendar Component classes
+*/
+.iceSelInpDate { /* calendar outline & background color */
+	background-color: #FFFFFF;
+	border: 1px solid #ABABAB;
+	/* removed margin from calendar outline - better absolute positioning of popup */
+	/*margin:10px;*/
+}
+
+.iceSelInpDateIFrameFix {
+	z-index: -1;
+	position: absolute;
+	display: block;
+	filter: mask();
+}
+
+.iceSelInpDateInput {
+	width: 150px;
+	cursor: auto;
+}
+
+.iceSelInpDateOpenPopup {
+	display: inline;
+	text-decoration: none;
+	background-color: transparent;
+	background-image: url( "../../gui/images/cal_button.png" );
+	background-repeat: no-repeat;
+	text-align: center;
+	border: none;
+	width: 16px;
+	height: 16px;
+}
+
+.iceSelInpDateClosePopup {
+	display: inline;
+	text-decoration: none;
+	background-color: transparent;
+	background-image: url( "../images/cal_off.gif" );
+	background-repeat: no-repeat;
+	text-align: center;
+	border: none;
+	width: 16px;
+}
+
+.iceSelInpDateMonthYear {
+	background-color: #EFEFEF;
+	background-image: url( "../images/table_col_header.gif" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	font-weight: normal;
+	text-align: center;
+	color: #000000;
+	padding: 4px 1px 4px 1px; /*border-right:1px solid #CCCCCC;*/
+}
+
+.iceSelInpDateMonthYear img {
+	border: none;
+}
+
+.iceSelInpDateMovePrev {
+	text-decoration: none;
+	display: inline;
+	background-color: transparent;
+	background-image: url( "../images/cal_arrow_left.gif" );
+	background-repeat: no-repeat;
+	text-align: center;
+	border: none;
+	width: 17px;
+	height: 16px;
+}
+
+.iceSelInpDateMoveNext {
+	text-decoration: none;
+	display: inline;
+	background-color: transparent;
+	background-image: url( "../images/cal_arrow_right.gif" );
+	background-repeat: no-repeat;
+	text-align: center;
+	border: none;
+	width: 17px;
+}
+
+.iceSelInpDateWeek { /* the days of the week row */
+	font-weight: normal;
+	color: #2A6CC2;
+	text-align: center;
+	padding: 0px 5px 0px 5px;
+	border-bottom: 1px solid #000000;
+}
+
+/* set the look for the days of the week backgrounds */
+.iceSelInpDateDay,.iceSelInpDateCur {
+	/* the background & alignment for the days */
+	padding: 3px;
+	text-align: center;
+}
+
+.iceSelInpDateCur .iceOutTxt {
+	color: #FFFFFF;
+}
+
+/* now set the attributes for the numbers for each day of the week */
+.iceSelInpDateDay a { /* the day text */
+	text-decoration: none;
+	background-color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	color: #000000;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	display: block;
+}
+
+.iceSelInpDateCur a {
+	text-decoration: none;
+	background-color: #2A6CC2;
+	border: 1px solid #2A6CC2;
+	color: #FFFFFF;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	display: block;
+}
+
+/* now set the color attributes for the hover effect on non-current days */
+.iceSelInpDateDay a:hover { /* the day text */
+	text-decoration: none;
+	color: #2A6CC2;
+}
+
+/*
+----------- Table Row Selection --------
+*/
+.iceRowSelSelected {
+	background-color: #2A6CC2;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+}
+
+.iceRowSelSelected span {
+	
+}
+
+.iceRowSelMouseOver {
+	background-color: #D5E3F7;
+}
+
+.iceRowSelMouseOver span {
+	
+}
+
+/*
+----------- PanelPopup ----------
+*/
+.icePanelPopup {
+	color: #666666;
+	width: auto;
+	padding: 0px;
+	z-index: 1000;
+	background-color: #FBFCFE;
+	background-image: url( "../images/FundologoInterno.jpg" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	border: 1px solid #CCCCCC;
+}
+
+.icePanelPopupHeader {
+	background-color: #1060EA;
+	background-image: url( "../images/window_top.gif" );
+	background-position: top;
+	background-repeat: repeat-x;
+	height: 3px;
+}
+
+.icePanelPopupBody {
+	padding: 10px;
+}
+
+.icePanelPopupFooter {
+	float: right;
+	height: auto;
+	background-color: #DDDDDD;
+	height: 0px;
+}
+
+/*
+  panelPopup demo
+*/
+.popupButton {
+	text-align: right;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.popupTitle span {
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+	padding: 4px;
+	color: #000000;
+}
+
+.popupModalBody {
+	margin-top: 15px;
+}
+
+.popupModalBody input {
+	float: right;
+	margin-right: 2px;
+	margin-top: 40px;
+}
+
+.panelPopupHeader .iceOuputtext,.icePanelPopupHeader {
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+	padding: 4px;
+	color: #FFFFFF;
+}
+
+.popupControls td {
+	vertical-align: middle;
+}
+
+.linkLista {
+	text-decoration: inherit;
+	font-weight: lighter;
+	color: #000389;
+}
+
+/*
+* Estilo para o painel central
+*/
+.panelCenter {
+	background-color: #FFFFFF;
+	vertical-align: top;
+}
+
+.panelCenterMessages {
+	background-color: #BBBBBB;
+	height: auto;
+	width: 500px;
+	position: absolute;
+	left: 37%;
+	top: 35%;
+	border: 1px solid #000000;
+}
+
+.panelCenterButtons {
+	background-color: #FDFDFD;
+	margin-bottom: 1%;
+	padding: 0px;
+	background-image: url( ../images/blue_header.gif );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	height: 25px;
+}
+
+.panelCenterButtonsSemBackground {
+	background-color: transparent;
+	margin: 0px;
+	padding: 0px;
+	background-position: bottom;
+	background-repeat: repeat-x;
+	height: 25px;
+	overflow: scroll;
+}
+
+-----------
+message  ---------- * /
+.iceMsg {
+	color: #000000;
+	font-weight: bold;
+}
+
+.iceMsgFatal { \
+	
+}
+
+.iceMsgError {
+	color: #F40000;
+	font-weight: bold;
+}
+
+.iceMsgWarn {
+	color: #000000;
+	font-weight: bold;
+}
+
+.iceMsgInfo {
+	color: #008000;
+	font-weight: bold;
+}
+
+/*
+----------- messages ----------
+*/
+.iceMsgs {
+	
+}
+
+.iceMsgsFatal {
+	
+}
+
+.iceMsgsError {
+	font-weight: bold;
+	color: #F40000;
+}
+
+.iceMsgsWarn {
+	font-weight: bold;
+	color: #000000;
+}
+
+.iceMsgsInfo {
+	font-weight: bold;
+	color: #006633;
+}
+
+/*
+    Classes for the connection status indicator
+*/
+.iceOutConStatActv {
+	margin: 0px;
+	width: 25px;
+	height: 25px;
+	background-image: url( ../images/connect_active.gif );
+	border: 1px;
+	position: absolute;
+	top: 5px;
+	left: 248px;
+}
+
+.iceOutConStatCaution {
+	margin: 0px;
+	width: 25px;
+	height: 25px;
+	background-image: url( ../images/connect_caution.gif );
+	border: 1px;
+	position: absolute;
+	top: 5px;
+	left: 248px;
+}
+
+.iceOutConStatDisconnect {
+	margin: 0px;
+	width: 25px;
+	height: 25px;
+	background-image: url(../images/connect_disconne.gif);
+	border: 1px;
+	position: absolute;
+	top: 5px;
+	left: 248px;
+}
+
+.headerTop {
+	background-color: #000389;
+	vertical-align: center;
+}
+
+.headerLine {
+	background-color: #BBBBBB;
+	height: 15px;
+}
+
+.graphic {
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	border-top: 0px;
+}
+
+.breadCrumbsHeader {
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	border-top: 0px;
+	text-align: left;
+	vertical-align: top;
+	background-color: #EEEEEE;
+	margin: 0px;
+}
+
+.breadCrumbsCurrentPage {
+	font-weight: bold;
+	background-color: #EEEEEE;
+	color: #336699;
+	border: 0px;
+}
+
+.breadCrumbs {
+	font-weight: normal;
+	background-color: #EEEEEE;
+	color: #336699;
+	border: 0px;
+}
+
+.identificadorRegistroBreadCrumbs {
+	font-weight: normal;
+	background-color: #EEEEEE;
+	color: #000000;
+	border: 0px;
+}
+
+.panelBreadCrumbs {
+	text-align: left;
+	vertical-align: top;
+	padding: 0px;
+}
+
+/*
+--------------- autoComplete classes ------
+*/
+.iceSelInpText {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+	border: 1px solid #ABABAB;
+	background-color: #FFFFFF;
+	margin: 2px;
+	padding: 0px;
+}
+
+.iceSelInpList {
+	position: absolute;
+	display: block;
+	border-top: 1px solid #ABABAB;
+	border-right: 1px solid #666666;
+	border-left: 1px solid #ABABAB;
+	border-bottom: 1px solid #333333;
+}
+
+.iceSelInpRow {
+	display: block;
+	background-color: #FFFFFF;
+	color: #333333;
+	padding: 0px;
+	padding-left: 10px;
+	border-bottom: 1px solid #DEDEDE;
+	position: relative;
+}
+
+.iceSelInpSelRow {
+	display: block;
+	background-color: #2A6CC2;
+	color: #FFFFFF;
+	padding: 0px;
+	padding-left: 10px;
+	border-bottom: 1px solid #FFFFFF;
+	position: relative;
+}
+
+.autoCompleteCol {
+	width: 200px;
+	white-space: nowrap;
+}
+
+.autoCompleteCol2 {
+	width: 100px;
+	border-left: 1px solid silver;
+}
+
+.iceSelInpSelRow {
+	color: #FFFFFF;
+}
+
+/*
+--------------- autoComplete disable class ------
+*/
+.iceSelInpText-dis {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #ABABAB;
+	border: 1px dotted #CCCCCC;
+	cursor: default;
+}
+
+/**
+	Estilo para linhas do detalhe dinâmico.
+**/
+.rowDetail {
+	background-color: #FFFFFF;
+}
+
+/**
+	Estilo do DataGrid quando o mesmo é utilizado
+	para montar tela de detalhe.
+**/
+.tableDetail {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.colDetailName {
+	text-align: left;
+	width: 25%;
+}
+
+.colDetailStatus {
+	text-align: right;
+	width: 5%;
+}
+
+.colDetailValue {
+	text-align: left;
+	width: 70%;
+	white-space: nowrap;
+}
+
+/**
+Style para labels de campos obrigatórios
+**/
+.iceOutputTextObrigatorio {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 0px 2px 0px;
+	font-weight: bold;
+}
+
+/**
+Style para labels de campos retorno LOV.
+**/
+.iceOutputTextRetornoLovLabel {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	margin-left: 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 2px;
+	font-style: italic;
+}
+
+/**
+Style para labels de campos retorno LOV.
+**/
+.outputTextLikeInputText {
+	margin: 2px;
+	border: 2px solid #666666;
+	font-weight: normal;
+	padding-top: 3px;
+	width: 75%;
+	background-color: #FFFFFF;
+}
+
+/**
+Style para valores de retorno do Lov na tela de Detalhe.
+**/
+.outputTextRetornoLov {
+	margin: 2px;
+	border: 1px solid silver;
+	font-weight: normal;
+	padding-top: 3px;
+	width: 75%;
+	background: #DDDDDD;
+	font: #BBBBBB;
+}
+
+/**
+Style para valores de retorno do Lov na tela de Detalhe.
+**/
+.outputTextRetornoLovEnabled {
+	margin: 2px;
+	border: 1px solid #777777;
+	font-weight: normal;
+	padding-top: 3px;
+	padding-left: 3px;
+	width: 75%;
+	background: #FFFFFF;
+	font: #BBBBBB;
+}
+
+/**
+Estilo de botões ativos
+**/
+.btnGridActivate {
+	border-style: inset;
+	border-width: 2px;
+	border-color: #EEEEEE;
+}
+
+/**
+Estilo de botões ativos
+**/
+.btnGridDeActivate {
+	border-style: outset;
+	border-width: 0px;
+		margin: 2px;
+	border-color: #EEEEEE;
+}
+
+.TLoginLogotipo {
+	background: #FBFCFE;
+	background-image: url( ../images/FundoLogo.jpg );
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.TLogotipoInterno { /*background: #FBFCFE;	*/
+	/*background-image: url( ../images/FundologoInterno.jpg );*/
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.TLoginTxt {
+	font: Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: none;
+}
+
+.TLoginBox {
+	font: 10px Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: none;
+	background: #FFFFFF;
+	width: 130px;
+	border: 1px solid #666666;
+}
+
+.TLoginPanel {
+	text-align: center;
+	vertical-align: center;
+}
+
+.TLoginBtn {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	width: 90px;
+	margin: 2px;
+}
+
+.styleCenterDefault {
+	left: 30%;
+	top: 20%;
+	position: absolute;
+}
+
+.classViewButtonBar {
+	width: 95%;
+	white-space: nowrap;
+}
+
+.classExpandButtonBar {
+	width: 2%;
+	text-align: right;
+}
+
+.classGridViewButtonBar {
+	width: 50%;
+	text-align: right;
+	border-left: solid 2px #DDDDDD;
+	border-right: solid 2px #DDDDDD;
+}
+
+.classTableButtonBar {
+	height: 30px;
+	margin: 0px;
+	padding: 0px;
+	text-align: right;
+}
+
+.searchButtonBar {
+	background-color: #FDFDFD;
+	margin: 0px;
+	padding: 0px;
+	background-image: url( ../images/blue_header.gif );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	height: 30px;
+}
+
+.classButtonBar {
+	margin: 0px;
+}
+
+.classRegistrosBar {
+	text-align: right;
+}
+
+.classButtonBarMenu {
+	text-align: left;
+	margin: 0px;
+}
+
+.groupInfoDetail {
+	text-align: left;
+	border-bottom: 1px solid #BBBBBB;
+	width: 100%;
+}
+
+.fontInfoDetail {
+	color: #000389;
+}
+
+.btnPopupExcluir {
+	width: 50px;
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+}
+
+.panelGroupDetailSolicitacao {
+	vertical-align: top;
+	white-space: nowrap;
+	padding-left: 5px;
+}
+
+/*
+--------------- Estilo do Progress bar
+*/
+.iceOutputProgress {
+	margin: 10px;
+}
+
+.iceOutputProgressBackground {
+	border: 1px solid #ABABAB;
+	width: 300px;
+	height: 13px;
+}
+
+.iceOutputProgressFill {
+	background-image: #026AFF;
+	background-position: top left;
+	background-repeat: repeat-x;
+	display: block;
+}
+
+.iceOutputProgressText {
+	color: black;
+}
+
+/*
+   Classes for the output progress bar
+*/
+.iceOutputProgressIndeterminateActiveClass {
+	background-color: #EFEFEF;
+	background-image: url( ../images/in_progress.gif );
+	background-position: center;
+	background-repeat: repeat-x;
+}
+
+.iceOutputProgressIndeterminateInactiveClass {
+	background-color: #EFEFEF;
+	background-image: url( ../images/in_progress_inactive.gif );
+	background-position: center;
+	background-repeat: repeat-x;
+}
+
+/*
+----------- Estilo do FileUpload
+*/
+.iceFileUploadText {
+	border: 1px solid #ABABAB;
+	background-color: #FFFFFF;
+	margin: 2px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.iceFileUploadButton {
+	border: 1px solid #ABABAB;
+	background-color: #FFFFFF;
+	margin: 2px;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+/**
+	Estilo do painel de serviços onde serão visualizados tela de pesquisa 
+	ou tela de configuração do DataGrid.
+**/
+.panelCenterServices {
+	background-color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	text-align: left;
+}
+
+/**
+	Estilo do dataGrid de configuaração do DataGrid.
+**/
+.panelGridCustomize {
+	margin: 0px;
+	padding: 0px;
+	width: 50%;
+	text-align: left;
+	background-color: #EEEEEE;
+	vertical-align: top
+}
+
+,
+/**
+	Colunas das listas de colunas existentes no dataGrid.
+**/
+.tableColCustomizeColumns {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	white-space: nowrap;
+	text-align: left;
+}
+
+/**
+	Colunas das listas de colunas existentes no dataGrid.
+**/
+.panelGroupCustomize {
+	border-left: 1px solid #FFFFFF;
+	background-color: #EEEEEE;
+	width: 35%;
+	text-align: left;
+}
+
+.panelGroupButtonsCustomize {
+	width: 30%;
+	text-align: left;
+	padding-left: 0px;
+	padding-right: 0px;
+	vertical-align: top;
+	border: 1px solid #EEEEEE;
+}
+
+/**
+Estilo da barra vertical de opções de ações.
+**/
+.verticalContentBar1 {
+	vertical-align: top;
+	width: 3%;
+	margin-top: 2px;
+	margin-right: 0px;
+}
+
+.verticalContentBar2Close {
+	vertical-align: top;
+	margin-top: 2px;
+}
+
+.verticalContentBar2Open {
+	vertical-align: top;
+	margin-top: 2px;
+	width: 15%;
+	margin-right: 0px;
+	margin-left: 0px;
+	border-top: 1px solid #EEEEEE;
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.verticalContentBar3 {
+	vertical-align: top;
+	width: 100%;
+	margin-top: 2px;
+	overflow: auto;
+}
+
+.verticalActionBarButton {
+	vertical-align: top;
+	text-align: left;
+	margin-top: 2px;
+}
+
+.verticalActionBar {
+	vertical-align: top;
+	border-right: 1px solid #EEEEEE;
+	margin-top: 2px;
+}
+
+.actionColumns {
+	white-space: nowrap;
+	text-align: left;
+	vertical-align: top;
+}
+
+.contentBarPageColumn1 {
+	width: 20%;
+	text-align: left;
+}
+
+.contentBarPageColumn2 {
+	width: 100%;
+	text-align: left;
+}
+
+.contentBarPageColumn3 {
+	width: 5%;
+	text-align: right;
+}
+
+.contentFooterPageColumn1 {
+	width: 20%;
+	text-align: left;
+}
+
+.contentFooterPageColumn2 {
+	padding-left: 4px;
+	padding-right: 8px;
+	width: 10%;
+	text-align: left;
+}
+
+.contentFooterPageColumn3 {
+	border-left: 1px solid #BBBBBB;
+	padding-left: 8px;
+	padding-right: 0px;
+	width: 10%;
+	text-align: left;
+}
+
+.contentFooterPageColumn4 {
+	width: 70%;
+	text-align: right;
+}
+
+.contentFooterPageColumn5 {
+	width: 5%;
+	text-align: right;
+}
+
+.barraFuncPadrao1 {
+	width: 33%;
+	text-align: left;
+	white-space: nowrap;
+	padding-right: 0px;
+	border-right: 1px solid #BBBBBB;
+}
+
+.barraFuncPadrao2 {
+	border-left: 1px solid #BBBBBB;
+	padding-left: 4px;
+	padding-right: 0px;
+	width: 15%;
+	text-align: left;
+}
+
+.qtdRegistrosColumns1 {
+	width: 70%;
+	text-align: right;
+	white-space: nowrap;
+	padding: 0px;
+}
+
+.qtdRegistrosColumns2 {
+	width: 5%;
+	text-align: left;
+	white-space: nowrap;
+	padding: 0px;
+}
+
+.qtdRegistrosColumns3 {
+	width: 5%;
+	text-align: left;
+	white-space: nowrap;
+	padding: 0px;
+}
+
+.qtdRegistrosColumns4 {
+	width: 5%;
+	text-align: left;
+	white-space: nowrap;
+	padding: 0px;
+}
+
+.contentBarSubPageColumn1 {
+	width: 50%;
+	text-align: left;
+}
+
+.contentFooterSubPageColumn1 {
+	width: 80%;
+	text-align: left;
+}
+
+.contentFooterSubPageColumn2 {
+	width: 10%;
+	text-align: right;
+}
+
+.contentFooterSubPageColumn3 {
+	width: 10%;
+	text-align: right;
+}
+
+.columnHeaderListDetail {
+	padding-left: 2px;
+	width: 20%;
+	text-align: left;
+	border-left: 1px solid #BBBBBB;
+	white-space: nowrap;
+}
+
+.columnHeaderPesquisa {
+	padding-left: 2px;
+	width: 35%;
+	text-align: left;
+	border-left: 1px solid #BBBBBB;
+	white-space: nowrap;
+}
+
+.columnHeaderConfig {
+	padding-left: 2px;
+	width: 5%;
+	text-align: left;
+	border-left: 1px solid #BBBBBB;
+	white-space: nowrap;
+}
+
+/**
+	Estilo da tela de associação
+**/
+.btnMaxMin {
+	
+}
+
+.titleAssociations {
+	color: #000389;
+	height: 7px;
+}
+
+.barTitleAssociations {
+	width: 100%;
+	background-color: #EEEEEE;
+}
+
+.barBotoesAssociations {
+	width: 100%;
+	background-color: #FFFFFF;
+	border-top: 2px groove #BBBBBB;
+	border-bottom: 2px groove #BBBBBB;
+}
+
+.botaoAssociar {
+	width: 50%;
+	text-align: right;
+}
+
+.botaoDesassociar {
+	width: 50%;
+	text-align: left;
+}
+
+.botaoDesassociacao {
+	background-image: url( ../images/seta-desassocia.gif );
+	background-position: left;
+	background-repeat: no-repeat;
+	width: 90px;
+}
+
+.botaoDesassociacao-dis {
+	background-image: url( ../images/seta-desassocia.gif );
+	background-position: left;
+	background-repeat: no-repeat;
+	width: 90px;
+}
+
+.botaoAssociacao {
+	background-image: url( ../images/seta-associa.gif );
+	background-position: left;
+	background-repeat: no-repeat;
+	width: 90px;
+}
+
+.botaoAssociacao-dis {
+	background-image: url( ../images/seta-associa.gif );
+	background-position: left;
+	background-repeat: no-repeat;
+	width: 90px;
+}
+
+.tituloAssociacao {
+	width: 50%;
+	text-align: left;
+}
+
+.botaoMaxMin {
+	width: 10%;
+	text-align: right
+}
+
+.qtdRegistros {
+	width: 40%;
+	text-align: left;
+}
+
+.rowCloseBar {
+	text-align: right;
+	vertical-align: top;
+	background-image: url( ../images/blue_header.gif );
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.rowBodyOptions {
+	
+}
+
+.actionLink {
+	white-space: nowrap;
+	background-color: #FFFFFF;
+}
+
+.actionLink:HOVER {
+	white-space: nowrap;
+	background-color: #DDDDDD;
+}
+
+.rowCenter1 {
+	vertical-align: top;
+	text-align: left;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	background-color: #EEEEEE;
+}
+
+.messages {
+	background-color: #EEEEEE;
+	background-image: url( "../images/comments.png" );
+	background-position: left;
+	background-repeat: no-repeat;
+	text-align: left;
+	vertical-align: middle;
+	border-right: 1px solid #BBBBBB;
+	border-top: 1px solid #BBBBBB;
+	border-left: 1px solid #BBBBBB;
+	border-bottom: 1px solid #BBBBBB;
+	margin: 4px;
+}
+
+.linhaDetalhe {
+	border-bottom: 1px solid #666666;
+}
+
+.colunaDetalhe1 {
+	padding-right: 10px;
+	text-align: right;
+	width: 15%;
+	white-space: nowrap;
+}
+
+.colunaDetalhe2 {
+	white-space: nowrap;
+	text-align: left;
+	width: 85%;
+}
+
+.iceSelInpDateInput-dis {
+	border: 1px solid #ABABAB;
+	background-color: #EEEEEE;
+	margin: 2px;
+	padding: 0px;
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.popupBody {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #BBBBBB;
+	background-color: #EEEEEE;
+	vertical-align: top;
+}
+
+.popupHeader {
+	background-color: #FFFFFF;
+	background-image: url( "../images/blue_header.gif" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	font-weight: normal;
+	text-align: center;
+	border-right: 1px solid #EEEEEE;
+	border-top: 1px solid #EEEEEE;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	white-space: nowrap;
+	height: 10px;
+}
+
+.tabBody {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	border-right: 1px solid #ABABAB;
+	border-bottom: 1px solid #ABABAB;
+	border-left: 1px solid #ABABAB;
+	background-color: #FFFFFF;
+	width: 100%;
+}
+
+.tabCompleta {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	border-bottom: 1px solid #ABABAB;
+	background-color: #FFFFFF;
+	height: 15px;
+	width: 100%;
+	color: #FFFFFF;
+	text-align: right;
+}
+
+/******************************CSS das ABAS************************************/
+
+/*.abaDesativada {
+	background-color: transparent;
+	background-image: url(../../gui/images/abaSelecionada.png);
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 148px;
+	font-weight: normal;
+	text-align: center;
+	/*font-style: italic;
+	white-space: nowrap;
+	vertical-align: center;
+}
+
+.abaDesativada:HOVER {
+	padding-top: 5px;
+	border-bottom: 1px solid #ABABAB;
+	background-color: #DDDDDD;
+	background-image: url( "" );
+	height: 15px;
+	width: 100%;
+	font-weight: normal;
+	text-align: center;
+	/*font-style: italic;
+	white-space: nowrap;
+	vertical-align: center;
+}
+
+.abaAtivada {
+	padding-top: 5px;
+	background-color: transparent;
+	background-image: url( "../images/on-mid-top.gif" );
+	background-repeat: repeat-x;
+	background-position: top;
+	height: 15px;
+	width: 100%;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+	white-space: nowrap;
+	vertical-align: center;
+}*/
+
+.abaDeselecionada {
+	float: left;
+	left: 0px;
+	position: relative;
+	text-align: center;
+	background-color: transparent;
+	background-image: url(../../gui/images/abaDeselecionada.png);
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 148px;
+	font-weight: normal;
+	text-align: center;
+	/*font-style: italic;*/
+	vertical-align: center;
+  padding-top:4px;
+}
+
+.abaSelecionada {
+	float: left;
+	left: 0px;
+	position: relative;
+	text-align: center;
+	background-color: transparent;
+	background-image: url(../../gui/images/abaSelecionada.png);
+	background-repeat: no-repeat;
+	height: 23px;
+	width: 148px;
+	font-weight: normal;
+	text-align: center;
+	/*font-style: italic;*/
+	vertical-align: center;
+  padding-top:4px;
+}
+
+.linkAba {
+	font-weight: bold;
+	color: black;
+	margin-right: 7px;
+}
+
+.linkAba-dis {
+	font-weight: bold;
+	color: black;
+	margin-right: 7px;
+}
+
+.linhaGrupoAbas {
+  padding-top: 1%;
+  margin-left: 1%;
+	height: 23px;
+}
+
+.abaGrupos {
+	border: 1px solid #00000;
+	background-color: #ABABAB;
+	height: 24px;
+}
+
+
+
+/******************************************************************************/
+
+
+.tab {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	border-right: 1px solid #ABABAB;
+	border-top: 1px solid #ABABAB;
+	border-left: 1px solid #ABABAB;
+}
+
+.tabSubPageTable {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	border: 0;
+	background-color: #FFFFFF;
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+	height: 215px;
+}
+
+.tabSubPageTableMin {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	border: 0;
+	background-color: #FFFFFF;
+	text-align: left;
+	vertical-align: top;
+	width: 0px;
+	height: 0px;
+	visibility: hidden;
+}
+
+.tabSubPage {
+	width: 100%;
+	text-align: left;
+	vertical-align: top;
+}
+
+.tabRow {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	border-right: 1px;
+	border-top: 1px;
+	border-left: 1px;
+	border-bottom: 0px;
+}
+
+.rodaPeClass {
+	width: 100%;
+	height: 18px;
+	background: url('../images/rodapeFundo.png');
+	vertical-align: top;
+}
+
+.footerParts {
+	width: 33%;
+	text-align: left;
+	white-space: nowrap;
+	padding-right: 0px;
+}
+
+.footerParts2 {
+	width: 3%;
+	text-align: center;
+	white-space: nowrap;
+	padding-right: 0px;
+}
+
+.footerParts3 {
+	width: 1%;
+	text-align: center;
+	white-space: nowrap;
+	padding-right: 0px;
+}
+
+.footerParts4{
+	width: 33%;
+	text-align: right;
+	white-space: nowrap;
+	padding-right: 0px;
+}
+
+.listaWhereBarra {
+	white-space: nowrap;
+}
+
+/*
+----------- PanelPopup & panelTooltip ----------
+*/
+
+.popupTopoE{
+  width: 50%;
+  height: 20px;
+  text-align: left;
+  padding-left: 10px;
+  vertical-align: middle;
+  white-space: nowrap;	
+  background: url(../images/topoPopupEsquerdo.png) top left no-repeat;
+  /*border: #aaaaaa solid 1px;*/;  
+}
+
+.popupTopoD{
+  width: 50%;
+  text-align: right;
+  padding-right: 3px;
+  vertical-align: middle;
+  height: 20px;
+  background: url(../images/topoPopupDireito.png) top right no-repeat;
+}
+
+.btnCancelar{
+	height:20px;
+	width:80px;
+	padding-left: 20px;
+	cursor: pointer;
+	background: url(../images/btnCancelar.png) no-repeat;
+	border: 0px;
+}
+
+.btnConfirmar{
+	height:20px;
+	width:80px;
+	padding-left: 20px;
+	cursor: pointer;
+	background: url(../images/btnConfirmar.png) no-repeat;
+	border: 0px;
+}
+
+.headerPopup1 {
+	width: 50%;
+	text-align: left;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.headerPopup2 {
+	width: 50%;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.icePnlPop {
+	padding: 0px;
+	z-index: 1000;
+	/*background: #F5F5F5;
+	border: 1px solid #d9d9d9;*/
+	color: #666666; ,
+	overflow: hidden;
+}
+
+.icePnlPopHdr {
+	width: 100%;
+	font-weight: bold;
+	/*background: #FFF url(../images/topoPopupMeio.png) repeat-x top left;
+	border-bottom: 1px solid #d9d9d9;*/
+}
+
+.icePnlPopHdr .iceOutTxt {
+	text-align: center;
+	vertical-align: middle;
+	/*color: #fff;*/
+	font-weight: bold;
+}
+
+.icePnlPopBody {
+	padding: 5px;
+	height: 100%;
+	bottom:0px;
+	background: #F5F5F5;
+	overflow: hidden;
+}
+
+.icePnlPopFtr {
+	float: right;
+	height: auto;
+	background-color: #DDDDDD;
+}
+
+.popupTopTextDrag,.popupTopTextModal {
+	/*margin: 2px 0 0 4px;*/
+	display: inline;
+	float: left;
+}
+
+.popupTopClose,.popupTopCloseModal {
+	vertical-align: middle;
+	/*margin: 4px;*/
+	display: inline;
+	float: right;
+}
+
+.popupContentText {
+	display: block;
+}
+
+/*
+----------- PanelPopup & panelTooltip ----------
+*/
+.icePnlTlTip {
+	padding: 0px;
+	z-index: 1000;
+	background: green;
+	border: 0px;
+	color: #666666;
+	width: 0px;
+	height: 0px;
+}
+
+.icePnlTlTipHdr {
+	
+}
+
+.icePnlTlTipHdr .iceOutTxt {
+	
+}
+
+.icePnlTlTipBody {
+	padding: 10px;
+	height: auto;
+	width: auto;
+	background: #FEFFCA;
+	border: 1px solid #DDDDDD;
+}
+
+.icePnlTlTipFtr {
+	float: right;
+	height: auto;
+	background-color: black;
+	width: auto;
+}
+
+/* panel divider */
+.icePnlDvr,.icePnlDvrHor {
+	width: 100%;
+	height: 300px;
+}
+
+.icePnlDvrCnt,.icePnlDvrHorCnt {
+	border: 1px solid #ABABAB;
+	/*width: 100%;*/
+	height: 100%;
+}
+
+.icePnlDvrFst,.icePnlDvrSnd {
+	height: 100%;
+	display: block;
+	float: left;
+	overflow: auto;
+}
+
+.icePnlDvrSpt {
+	width: 2px;
+	height: 100%;
+	display: inline;
+	background-color: #EFEFEF;
+	border-left: 1px solid #ABABAB;
+	border-right: 1px solid #ABABAB;
+	float: left;
+	cursor: e-resize;
+}
+
+.icePnlDvrHorFst,.icePnlDvrHorSnd {
+	width: 100%;
+	display: block;
+	overflow: auto;
+	display: block;
+}
+
+.icePnlDvrHorSpt {
+	width: 100%;
+	height: 2px;
+	background-color: #EFEFEF;
+	border-top: 1px solid #ABABAB;
+	border-bottom: 1px solid #ABABAB;
+	cursor: n-resize;
+}
+
+.iceSelMnyCb input,.iceSelOneRb input,.iceSelBoolChkbx {
+	margin: 0 5px 2px 2px;
+	padding: 0px;
+	vertical-align: middle;
+}
+
+/*
+----------- Panel Collapsible --------
+*/
+.icePnlClpsbl {
+	border: 1px solid #d9d9d9;
+}
+
+.icePnlClpsblCnt .icePnlClpsbl {
+	border: none;
+}
+
+.icePnlClpsblHdr {
+	font: tahoma;
+	color: #484848;
+	padding: 6px 0 0 8px;
+	font-weight: bold;
+	height: 20px;
+	background: #FFF url( '../images/PnlHdr_bgslice.gif' ) repeat-x top left;
+	border-bottom: 1px solid #d9d9d9;
+}
+
+.icePnlClpsblHdr .iceCmdLnk,.icePnlClpsblColpsdHdr .iceCmdLnk {
+	padding-left: 22px;
+}
+
+.icePnlClpsblHdr .icePnlGrp a {
+	font-weight: bold;
+}
+
+.icePnlClpsblCnt {
+	font: tahoma;
+	color: #494949;
+	background: #f5f5f5;
+	padding: 4px 4px 4px 9px;
+	border-bottom: none;
+}
+
+.icePnlClpsblCnt .icePnlClpsblHdr {
+	font: tahoma;
+	color: #484848;
+	padding: 0 0 0 0;
+	font-weight: bold;
+	height: 20px;
+	border: none;
+	margin-top: 8px;
+}
+
+.icePnlClpsblCnt .icePnlClpsblHdr .iceOutTxt {
+	background: none;
+}
+
+.icePnlClpsblCnt .icePnlClpsblColpsdHdr {
+	font: tahoma;
+	color: #484848;
+	padding: 0 0 0 0;
+	font-weight: bold;
+	height: 20px;
+	border: none;
+	margin-top: 8px;
+}
+
+.icePnlClpsblCnt .icePnlClpsblColpsdHdr .iceOutTxt {
+	background: none;
+}
+
+.icePnlClpsblCnt .icePnlClpsblCnt {
+	border-left: none;
+	border-right: none;
+	padding: 0 0 0 10px;
+}
+
+.icePnlClpsblColpsd {
+	border: 1px solid #d9d9d9;
+}
+
+.icePnlClpsblCnt .icePnlClpsblColpsd {
+	border: none;
+}
+
+.icePnlClpsblColpsdHdr {
+	font: tahoma;
+	color: #484848;
+	padding: 6px 0 0 8px;
+	font-weight: bold;
+	height: 20px;
+	background: #FFF url( '../images/PnlHdr_bgslice.gif' ) repeat-x top left;
+	border-bottom: none;
+}
+
+.icePnlClpsblColpsdHdr .iceOutTxt,.icePnlClpsblHdr .iceOutTxt {
+	padding-left: 22px;
+}
+
+.icePnlClpsblColpsdCnt {
+	der: none;
+}
+
+.icePnlClpsblHdr,.icePnlClpsblHdr-dis,.icePnlClpsblColpsdHdr,.icePnlClpsblColpsdHdr-dis
+	{
+	cursor: pointer;
+}
+
+.icePnlClpsblHdr div,.icePnlClpsblHdr-dis div,.icePnlClpsblColpsdHdr div,.icePnlClpsblColpsdHdr-dis div
+	{
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 18px;
+}
+
+.icePnlClpsblHdr div,.icePnlClpsblHdr-dis div {
+	background: url( '../images/PnlHdr_down.gif' ) no-repeat top left;
+	padding: 2px 0 0 5px;
+	margin: -2px 0 0 -3px;
+}
+
+.icePnlClpsblColpsdHdr div,.icePnlClpsblColpsdHdr-dis div {
+	background: url( '../images/PnlHdr_collapsed.gif' ) no-repeat top left;
+	padding: 2px 0 0 5px;
+	margin: -2px 0 0 -3px;
+}
+
+.textHeaderClpSel {
+	font-weight: bold;
+}
+
+.textHeaderClp {
+	font-weight: normal;
+}
+
+.icePnlClpsblHdr img,.icePnlClpsblColpsdHdr img {
+	border: 0;
+}
+
+.centroPagina {
+	height: 100%;
+	vertical-align: top;
+}
+
+.containerCentral {
+	height: 100%;
+	vertical-align: top;
+	background-color: #FFFFFF;
+}
+
+.paginaMaxSize {
+	height: 100%;
+	vertical-align: top;
+	background-color: #FFFFFF;
+}
+
+.listDetailCentro {
+	height: 99%;
+	vertical-align: top;
+	background-color: #FFFFFF;
+}
+
+.painelListaDetlhe {
+	height: 100%;
+	vertical-align: top;
+	background-color: #FFFFFF;
+}
+
+.titulosHeader {
+	text-align: left;
+	width: 95%;
+}
+
+.paginaAssociacao {
+	vertical-align: top;
+	height: 100%;
+}
+
+.iceInpTxt-showMask {
+	border: 0px;
+	background-color: #F9F5D1;
+	margin: 2px;
+	padding: 0px;
+	color: #999999;
+}
+
+.detlaheGrid {
+	background-color: #FFFFFF;
+	margin: 2px;
+	border: 1px solid #ABABAB;
+}
+
+.tdPontilhada {
+	white-space: nowrap;
+}
+
+.tableExportImport {
+	border: 1px solid #484848;
+	color: blue;
+	height: 100px;
+}
+
+.rowCancelarImportExport {
+	text-align: right;
+}
+
+/**
+Style para labels de campos obrigatórios
+**/
+.iceOutputTextMetadados {
+	font-family: Lucida Sans Unicode, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-weight: bold;
+	color: red;
+}
+
+.grupoSlider {
+	width: 20%;
+	vertical-align: top;
+	text-align: left;
+	border: 1px solid #ABABAB;
+}
+
+.grupoPrincipal {
+	width: 80%;
+	vertical-align: top;
+	text-align: left;
+	border: 1px solid #ABABAB;
+}
+
+.itemMenu {
+	margin-left: 3px;
+}
+
+.infUsuarioError {
+	border-top: 1px solid #005CA2;
+	border-left: 1px solid #005CA2;
+	border-bottom: 1px solid #005CA2;
+	background-color: #EEEEEE;
+}
+
+.infValueError {
+	font-style: normal;
+}
+
+.infLabelError {
+	font-weight: bold;
+}
+
+.colLabelError {
+	text-align: right;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.colValueError {
+	text-align: left;
+	vertical-align: top;
+}
+
+.iceDatTblScrlBdyTbl {
+	width: 100%;
+}
+
+.tabelaGrupoResumoBloco {
+	text-align: top;
+	vertical-align: top;
+}
+
+.tabelaGrupoResumoBlocoCol1 {
+	text-align: top;
+	vertical-align: top;
+}
+
+.tabelaGrupoResumoBlocoCol2 {
+	text-align: top;
+	vertical-align: top;
+}
+
+}
+.iceBox {
+	background-color: #EFEFEF;
+	border: thin solid #D9D9D9;
+	padding: 3px;
+	border-spacing: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+/**************** COMPONENTS ******************************/
+.richDatGrd {
+	border: thin solid #D9D9D9;
+	overflow-x: auto;
+	background-color: #EFEFEF;
+	font-size: small;
+}
+
+.richDatGrd th span,.iceCmdSrtHdr,.iceCmdSrtHdr td {
+	font-size: small;
+	font-weight: bold;
+}
+
+.richDatGrid th {
+	font-weight: bold;
+	overflow: hidden;
+}
+
+.richDatGrd img {
+	border: none;
+}
+
+.richDatGrd .iceDatTbl {
+	margin: 0px;
+}
+
+.richDatGrd .iceDatPgrScrBtn,.richDatGrd .iceDatPgrTbl {
+	background-color: inherit;
+}
+
+.iceDatPgrTbl {
+	background-color: #FFFFFF;
+}
+
+.richDatGrd .iceDatTblCol1,.richDatGrd .iceDatTblCol2,.richDatGrd .iceDatTblColHdr1,.richDatGrd .iceDatTblColHdr2
+	{
+	border-right: none;
+}
+
+.rdgColOn {
+	background-color: #EFEFEF;
+}
+
+.richDatGrd .iceInpTxt {
+	border: none;
+}
+
+.richDatGrd .iceSelInpDatePopup {
+	min-width: 172px;
+}
+
+.richDatGrd .iceSelInpDateInput {
+	width: 75px;
+}
+
+.richDatGrdCol {
+	overflow: hidden;
+}
+
+.treeTable .iceCmdLnk,.treeTable .iceOutTxt {
+	color: #003333;
+}
+
+.treeTableHdr {
+	padding: 0;
+}
+
+.treeTableCol,.treeTableCol1,.treeTableCol2 {
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	color: #000000;
+	text-align: left;
+	padding: 0;
+}
+
+.dropTarget {
+	background-color: #fda505;
+}
+
+.treeTableCol div {
+	height: 23px;
+}
+
+.treeTableCol2 div {
+	height: 23px;
+}
+
+.treeTableCol1 div {
+	height: 23px;
+	white-space: nowrap;
+}
+
+.treeTableCol td span.iceOutTxt {
+	padding-left: 5px;
+}
+
+.treeTableCol2 td span.iceOutTxt {
+	padding-left: 5px;
+}
+
+.treeTableCol1 td span.iceOutTxt {
+	padding-left: 5px;
+}
+
+.treeTable td span.iceOutTxt {
+	padding: 5px;
+}
+
+.iceDatTblCol,.iceDatTblCol1,.iceDatTblCol2 {
+	padding: 0;
+}
+
+.iceCmdSrtHdr,.iceCmdSrtHdr td {
+	font-weight: bold;
+}
+
+.iceDatTbl td span.iceOutTxt {
+	margin: 2px;
+	padding: 3px;
+}
+
+.colHover {
+	background-color: yellow;
+}
+
+.iceDatTblColHdr,.iceDatTblColHdr1,.iceDatTblColHdr2,.iceDatTblColGrpHdrCol
+	{ /*the header of a data tables */
+	background-color: #E1E0D9;
+	background-image: url( "../images/table_col_header.gif" );
+	background-position: bottom;
+	background-repeat: repeat-x;
+	font-weight: normal;
+	text-align: center;
+	color: #000389;
+	border-right: 1px solid #EEEEEE;
+	border-top: 1px solid #EEEEEE;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	white-space: nowrap;
+	height: 10px;
+}
+
+.iceDatTbl table {
+	width: 100%;
+}
+
+/************** EDITABLE DATATABLE ************************/
+.editTblCol,.editTblCol1,.editTblCol2 {
+	padding: 0;
+}
+
+.editTbl .iceSelInpDateInput {
+	width: 100px;
+}
+
+.ediTbl .iceCmdLnk span.iceOutTxt {
+	color: #428F99;
+}
+
+.editTbl td span.iceOutTxt {
+	margin: 2px;
+	padding: 3px;
+}
+
+.editTblHdr {
+	padding: 0;
+}
+
+.editTblColHdr1,.editTblColHdr2 {
+	padding: 3px
+}
+
+.editTblMnuPopVrtItem a span.iceOutTxt {
+	color: #FFA600;
+	font-weight: bold;
+}
+
+/*************** TAB VIEW *****************************/
+.yui-skin-sam .yui-navset .yui-nav a em,.yui-skin-sam .yui-navset .yui-navset-top .yui-nav a em
+	{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.yui-skin-sam .yui-navset .yui-content,.yui-skin-sam .yui-navset .yui-navset-top .yui-content
+	{
+	padding: 0;
+	background: #FFF;
+}
+
+/*************** TRI STATE CHECKBOX ********************/
+.triStateCheckbox {
+	display: inline;
+}
+
+.icePnlPop table {
+	height: auto;
+}
+
+.icePnlPop,.icePnlTlTip {
+	position: absolute;
+}
+
+.divInLine {
+	display: inline;
+}
+
+.divBlock {
+	display: block;
+}
+
+.divGrupo {
+	border: 1px solid #ABABAB;
+	width: 100%;
+	height: 100%;
+}
+
+.detalhePadrao {
+	width: 1%;
+	vertical-align: top;
+}
+
+.detalheGrupos {
+	width: 100%;
+	height: 100%;
+	vertical-align: bottom;
+}
+
+.panelCenterButtonsFerramentas {
+	background-color: #FDFDFD;
+	margin: 0px;
+	padding: 0px;
+	background-image: url( ../../gui/images/barraFerramenta.png );
+	background-position: bottom;
+	background-repeat: repeat-x;
+}
+
+.barraFerramentasHeader {
+	padding-bottom: 3px
+}
+
+
+.linhaGrupoConteudo {
+	height: 100%;
+}
+
+.barraEdicaoDetalhe {
+	padding-right: 3px
+}
+
+a.linkBotaoBarraEdicao:hover {
+	background-color: gray;
+}
+
+a.linkBotaoBarraEdicao {
+	background-color: transparent;
+}
+
+.barraTitulos {
+	vertical-align: top;
+}
+
+.barrabotoes {
+	vertical-align: top;
+}
+
+.linhaGrupo {
+	vertical-align: top;
+	height: 100%;
+}
+
+.linhaBarraEdicao {
+	vertical-align: bottom;
+	height: 1%;
+}
+
+.tableRowEditavel1{
+	height: 25px;
+}
+
+.tableRowEditavel2{
+	height: 25px;
+}
+.rowBarraGrid{
+	height: 35px;	
+}
+
+.textAreaDetalheReadOnly {
+	background-color: #F6F6F6; 
+	border: 0 none; 
+	resize: none; 
+	width: 335px;
+	overflow-x: hidden;
+	font-family: Lucida Sans Unicode,Arial,Helvetica,sans-serif;
+}
+
+.areaDetalheReadOnly {
+	width: 335px; 
+	white-space: normal; 
+	display: block;  
+	padding: 3px; 
+	padding-left: 0px;
+	height:auto !important; 
+	height:23px; 
+	background-color: #F6F6F6; 
+	border-bottom: 2px solid #FFF;
+}
+
+.gridResultadoCombina{
+	font-weight: bold;
+}
+
+.iceSelInpTxtList{
+	border-color: #ABABAB #666666 #333333 #ABABAB;
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    position: absolute;
+}
+
+.iceSelInpTxtSelRow {
+    background-color: #EEEEEE;
+    border-bottom: 1px solid #FFFFFF;
+    color: #000000;
+    display: block;
+    padding: 2px 2px 2px 10px;
+    position: relative;
+}
+
+.iceSelInpTxtRow{
+	 background-color: #FFFFFF;
+    border-bottom: 1px solid #DEDEDE;
+    color: #333333;
+    display: block;
+    padding: 2px 2px 2px 10px;
+    position: relative;
+}
+
+.valorInvalidoLovString input{
+	border:  1px solid #FF0000;	
+}
+
+.valorInvalidoLov {
+	border:  1px solid #FF0000;	
+}

@@ -1,0 +1,26 @@
+<ice:panelSeries xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	rendered="#{servicoMB.servicosGerais  != null}"
+	value="#{servicoMB.servicosGerais}" var="serv" styleClass="divInline" style="text-align: center;">
+	
+	<ice:commandLink action="#{serv.executaServico}"
+		rendered="#{!serv.desabilitado and !serv.downloadArquivo}" styleClass="buttonInsideBar">
+		<ice:graphicImage value="#{serv.nomeImagem}"
+			onmouseover="Tip('#{serv.rotulo}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();" />
+	</ice:commandLink>
+	<ice:commandLink action="#{serv.executaServico}"
+		rendered="#{serv.desabilitado and !serv.downloadArquivo}" disabled="true"
+		styleClass="buttonInsideBar">
+		<ice:graphicImage value="#{serv.nomeImagemDesabilitada}"
+			onmouseover="Tip('#{serv.rotulo}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();" />
+	</ice:commandLink>
+	
+	<ui:include src="servicoLink.jspx">
+		<ui:param name="servicoLinkMB" value="#{serv}" />
+	</ui:include>
+	
+</ice:panelSeries>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<ice:outputDeclaration doctypeRoot="HTML"
+		doctypePublic="-//W3C//DTD HTML 4.01 Transitional//EN"
+		doctypeSystem="http://www.w3.org/TR/html4/loose.dtd" />
+	<f:loadBundle basename="SynCtrl-UsuMessagesResources"
+		var="bundleAccessControl" />
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<link href="gui/css/styleTamanho11.css" rel="stylesheet" type="text/css" />
+	<link href="gui/css/boxArredondado.css" rel="stylesheet" type="text/css" />
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;" value="#{portal.styleSynGuiJsf}" escape="false" />
+	</head>
+	<body>
+
+	<!--Tabela que centraliza a caixa-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" style="position:fixed;">
+		<tr height="30%">
+			<td width="100%" colspan="3"></td>
+		</tr>
+		<tr>
+			<td width="50%"></td>
+			<td>
+      <!--Desenha o topo da janela-->
+			<div class="topoE">
+  			<div class="topoM"></div>
+  			<div class="topoD"></div>
+  
+  			<!--Desenha as laterais da caixa-->
+  			<div class="ladoE">
+    			<div class="ladoD">
+      			<div class="conteudo">
+
+	<h:form>
+		<table border="0">
+		  <tr>
+        <td align="center" colspan="2">
+          <img src="./images/logoSynchro.png" style="padding-right: 50px;"/>
+          <img src="./images/header.png" />
+        </td>
+      </tr>
+		  <tr>
+        <td colspan="3" align="center">
+          <br />
+          <ice:messages globalOnly="true" />
+          <br />
+        </td>
+      </tr>
+      <tr>
+        <td>        
+          
+          <table border="0" width="300">
+						<tr>
+							<td width="120" class="TLoginTxt" align="right">
+                <ice:outputText value="${bundleAccessControl.lbl_codigoUsuario}" />
+              </td>
+							<td align="center">
+                <h:inputText value="#{primeiroAcesso.codLogin}" size="16" maxlength="50" styleClass="TLoginBox" disabled="#{primeiroAcesso.desabilitaLogin}" />
+							</td>
+						</tr>
+						<tr>
+							<td class="TLoginTxt" align="right">
+                <ice:outputText value="${bundleAccessControl.lbl_senhaAtual}" />
+              </td>
+							<td align="center">
+							 <h:inputSecret value="#{primeiroAcesso.senhaAtual}" size="16" maxlength="40" styleClass="TLoginBox" />
+							</td>
+						</tr>
+						<tr>
+							<td class="TLoginTxt" align="right">
+                <ice:outputText value="${bundleAccessControl.lbl_novaSenha}" />
+              </td>
+							<td align="center">
+							 <h:inputSecret value="#{primeiroAcesso.novaSenha}" size="16" maxlength="40" styleClass="TLoginBox" />
+							</td>
+						</tr>
+						<tr>
+							<td class="TLoginTxt" align="right">
+                <ice:outputText value="${bundleAccessControl.lbl_confNovaSenha}" />
+              </td>
+							<td align="center">
+							 <h:inputSecret value="#{primeiroAcesso.confirmacaoNovaSenha}" size="16" maxlength="40" styleClass="TLoginBox" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" width="300"><br /><br />
+						    <h:commandButton value="#{bundleAccessControl.lbl_Ok}" action="#{primeiroAcesso.alterarSenha}" styleClass="TLoginBtn" />
+							  <h:commandButton value="#{bundleAccessControl.lbl_Limpar}" action="#{primeiroAcesso.clean}" styleClass="TLoginBtn" />
+								<h:commandButton value="#{bundleAccessControl.lbl_Voltar}" action="toPortal" styleClass="TLoginBtn" disabled="#{primeiroAcesso.desabilitaLogin}" />
+							</td>
+						</tr>
+					</table>
+							
+        </td>
+        <!--td align="center"><img src="./images/encrypted2.png" style="margin-right:15px;" /></td-->
+        <td>
+        
+            <table width="300" cellspacing="10" border="0" style="vertical-align: top; border: #a3a261 solid 1px; background: #fffe99;">
+									<tr>
+										<td>
+                      <ice:panelGroup	rendered="#{primeiroAcesso.condicoesNovaSenha != null}"	style="text-align: left;">
+  											<ice:outputText	value="A nova senha deve atender aos seguintes requisitos:"	style="color: red;font-weight: bold;" />
+  
+  											<ul>
+    											<ice:panelSeries value="#{primeiroAcesso.condicoesNovaSenha}"	var="cond" style="font-weight: bold;">
+    												<LI >
+    												<ice:outputText value="#{cond}" />
+    												</LI>
+    											</ice:panelSeries>
+  											</ul>
+  										</ice:panelGroup>
+                    </td>
+									</tr>
+								</table>
+								</td>
+
+							</tr>
+							
+						</table>
+		        <div align="center">
+      					<br />
+      					<br />
+      					<ice:outputText styleClass="TLoginTxt" value="© Copyright 2011 Todos os Direitos Reservados" /> 
+      					<br />
+      					<ice:outputText styleClass="TLoginTxt" value="Synchro Sistema de Informação" /> 
+      
+      				</div>
+      				
+	           </h:form>
+
+            </div>
+    			</div>
+  			</div>
+  
+  			<!--Desenha o rodapé da caixa-->
+  			<div class="rodapeE">
+    			<div class="rodapeM"></div>
+    			<div class="rodapeD"></div>
+  			</div>
+
+			</div>
+
+			</td>
+			<td width="50%"></td>
+		</tr>
+		<tr height="30%">
+			<td width="100%" colspan="3"></td>
+		</tr>
+
+	</table>
+
+	</body>
+	</html>
+</f:view>

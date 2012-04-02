@@ -1,0 +1,53 @@
+.columnModulos{
+vertical-align : top;
+}
+
+.columnHistorico{
+vertical-align : top;
+}
+
+.columnLimpeza{
+vertical-align : top;
+width: 100%;
+margin: 0px 0px 0px 0px;
+}
+
+.linhaLimpeza1{
+vertical-align : top;
+width: 100%;
+margin: 0px 0px 0px 0px;
+}
+
+.linhaLimpeza2{
+vertical-align : top;
+width: 100%;
+margin: 0px 0px 0px 0px;
+}
+
+.ajustaAltura1{
+vertical-align : top;
+width: 100%;
+margin: 0px 0px 0px 0px;
+overflow-y: scroll; 
+}
+
+.linhaLimpeza3{
+vertical-align : top;
+margin: 0px 0px 0px 0px;
+background-image: url(../../gui/images/blue_header.gif);
+}
+.columnArvore{
+vertical-align : top;
+width: 55%;
+margin: 0px 0px 0px 0px;
+}
+
+.columnConfiguracao{
+vertical-align : top;
+width: 45%;
+margin: 0px 0px 0px 0px;
+}
+
+.barraEdicaoHistorico{
+padding-right: 1px;
+}

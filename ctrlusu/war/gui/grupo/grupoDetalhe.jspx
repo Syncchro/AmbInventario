@@ -1,0 +1,13 @@
+<ice:panelGroup
+ xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ice="http://www.icesoft.com/icefaces/component"
+  rendered="#{grupoMB != null}"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  style="padding-top: 3px;"
+>
+
+		<ui:include src="#{pageMB.detalhe.jspNameFormulario}">
+			<ui:param name="listaCampoMB" value="#{grupoMB.camposDetalhe}"></ui:param>
+        </ui:include>	
+</ice:panelGroup>

@@ -1,0 +1,15 @@
+<ice:panelGroup xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="text-align: center;white-space: nowrap;">
+
+		<ui:include src="../servicos/barraBotoesGerais.jspx">
+			<ui:param name="servicoMB" value="#{pageMB.servicos}" />
+		</ui:include>
+		
+		<ui:include src="../servicos/barraBotoesEspecificos.jspx">
+			<ui:param name="servicoMB" value="#{pageMB.servicos}" />
+		</ui:include>
+		
+</ice:panelGroup>

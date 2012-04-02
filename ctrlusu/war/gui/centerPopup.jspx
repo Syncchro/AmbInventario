@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view   xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jstl/core"
+          xmlns:ice="http://www.icesoft.com/icefaces/component"  
+          xmlns:ui="http://java.sun.com/jsf/facelets" >
+          
+<!-- Adiciona bundle utilizado por toda a aplicacao. -->  
+<f:loadBundle
+        basename="SynGuiJsfMessagesResources"
+        var="bundle"  /> 
+                       
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!-- Adiciona title do portal baseado no arquivo de propriedades. -->
+	<title >
+		#{portal.nomeAplicacao}
+	</title>
+	<!-- Adiciona estilo do SynGuiJSF igual para todas as aplicacoes. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;" value="#{portal.styleSynGuiJsf}" escape="false" />
+	<!-- Adiciona estilo que controla o tamanho da fonte na aplicação -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;" value="#{portal.headerPagina.estiloFonteAtual}" escape="false" />
+	<!-- Adiciona estilo do SynGuiJSF definido no arquivo de propriedades. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;" value="#{portal.styleAplicacao}" escape="false" />
+
+    <!-- Importa arquivos de JavaScript -->
+   	<script type="text/javascript" src="gui/js/JavaScriptUtil.js"></script>
+	<script type="text/javascript" src="gui/js/Parsers.js"></script>
+   	<script type="text/javascript" src="gui/js/InputMask.js"></script>
+   	<script src="gui/js/SynUtil.js"></script>
+	<script src="gui/js/expande.js"></script>
+	
+	<!-- Adiciona scripts na aplicacao de acordo com arquivo de configuracoes. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.scriptAplicacao}" escape="false" />
+	
+	
+</head>
+<body leftmargin="0" topmargin="0" onload="window.focus();">
+<!-- Importa arquivos de JavaScript para tooltipo dentro do body -->  
+	<script type="text/javascript" src="gui/js/wz_tooltip.js"></script>
+	<script type="text/javascript" src="gui/js/tip_balloon.js"></script>
+	<script type="text/javascript" src="gui/js/tip_centerwindow.js"></script>
+	<script type="text/javascript" src="gui/js/tip_followscroll.js"></script>
+	
+<!-- Form criado para correto funcionamento do lov quando acionado por um popup. -->
+<!-- Este form é recuperado pelo script realizar um submit e aparecer os campos de retorno do lov populado. -->
+<ice:panelGroup>
+	<ice:form id="formLov">
+	</ice:form>
+</ice:panelGroup>
+<ice:panelGroup id="divCentral"	>
+	
+	<ice:form id="formPopup">
+		<ice:panelGrid
+	        columns="1" border="0" cellspacing="0" 
+	        cellpadding="0"  width="100%"
+	        rowClasses="messages,centroPagina" styleClass="containerCentral">
+	
+			<ice:panelGroup>
+				<!-- Adiciona area de mensagens logo abaixo do Header da pagina. -->
+				<ice:messages globalOnly="true" />
+			</ice:panelGroup>
+		 	<ice:panelGroup style="height: 100%;">
+		 	<!-- Inclui o JSP da pagina se existir pagina na Session e o JSP da pagina caso 
+		 		contrario e o JSP central padrao ou definido no arquivo de propriedades. -->
+					<ui:include src="#{portal.jspPaginaPopup}">
+						<ui:param name="pageMB" value="#{currentPageBeanPopup}"></ui:param>
+					</ui:include>
+			</ice:panelGroup>
+			<ice:panelGroup>
+					<ui:include src="popup/popupGenerico.jspx"></ui:include>
+			</ice:panelGroup>
+		</ice:panelGrid>
+	</ice:form>
+</ice:panelGroup>
+</body>
+</html>
+</f:view>
+

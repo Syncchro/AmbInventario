@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<br.com.synchro.framework.gui.to.PaginaTO>
+  <codigo>tAtualizadorImportacao</codigo>
+  <rotulo>Aplicar Pacote de Atualizações</rotulo>
+  <tipo>CUSTOM</tipo>
+  <pageBeanClass>br.com.synchro.framework.atualizador.presentation.managedbean.ImportPacoteMB</pageBeanClass>
+  <indInclusao>N</indInclusao>
+  <indAlteracao>N</indAlteracao>
+  <indExclusao>N</indExclusao>
+  <indAssociacao>true</indAssociacao>
+  <nomeJsp>../../atualizador/jsp/importarArquivo.jspx</nomeJsp>
+  <id>300920</id>
+  <servicos/>
+  <navegacoes/>
+  <campos>
+    <br.com.synchro.framework.gui.to.CampoPaginaTO>
+      <paginaTO reference="../../.."/>
+      <codigo>id</codigo>
+      <rotulo>Id</rotulo>
+      <tipo>String</tipo>
+      <indPesquisa>S</indPesquisa>
+      <ctrlEditavel>3</ctrlEditavel>
+      <ctrlVisivel>3</ctrlVisivel>
+      <ordem>0</ordem>
+      <tamanho>1</tamanho>
+      <indRequerido>N</indRequerido>
+      <maxLinhas>1</maxLinhas>
+      <indGrid>S</indGrid>
+      <id>400040</id>
+      <indLovMultiSelect>N</indLovMultiSelect>
+    </br.com.synchro.framework.gui.to.CampoPaginaTO>
+  </campos>
+  <grupos/>
+  <hint>Atualizar META-DADOS do Sistema</hint>
+  <indPesquisa>N</indPesquisa>
+</br.com.synchro.framework.gui.to.PaginaTO>

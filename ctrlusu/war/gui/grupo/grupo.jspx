@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="width: 98%; height: #{alturaGrupo}; margin-left: 15px; margin-right: 1%;float:"
+	rendered="#{agrupadorMB.abstractGrupos != null}" columns="1"
+	rowClasses="linhaGrupoAbas, linhaGrupoConteudo" cellspacing="0"
+	cellpadding="0" border="0">
+	<ice:column>
+
+		<ice:panelGroup styleClass="divBlock"
+			style="height: 23px; width: 100%;">
+
+			<ice:graphicImage value="/gui/images/esquerdaAbas-des.png"
+				onmouseover="Tip('#{bundle.lbl_hintMostrarAbasEsquerda}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();esquerda('#{agrupadorMB.estiloAba}');" width="23px" height="23px"
+				style="float: left;" />
+
+			<ice:graphicImage value="/gui/images/todasAbas.png"
+				onmouseover="Tip('#{bundle.lbl_hintMostrarTodasAbas}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" width="23px" height="23px"
+				style="float: right; cursor: pointer;"
+				onclick="UnTip();trocarVisibilidadeTodasAbas(this);" />
+
+			<ice:graphicImage value="/gui/images/direitaAbas-des.png"
+				onmouseover="Tip('#{bundle.lbl_hintMostrarAbasDireita}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+				onmouseout="UnTip();" onclick="UnTip();direita('#{agrupadorMB.estiloAba}');" width="23px" height="23px"
+				style="float: right;" />
+
+			<ice:panelGroup styleClass="#{agrupadorMB.estiloAba}"
+				style="height: 23px; overflow: hidden;width: 30px;">
+
+				<ice:panelGroup styleClass="divInline" style="overflow:hidden;">
+
+					<ice:panelSeries value="#{agrupadorMB.abstractGrupos}" var="grupo"
+						style="width: 20000px; height: 23px;">
+
+						<ice:panelGroup styleClass="abaDeselecionada" style="float: left"
+							rendered="#{!grupo.selecionado}">
+							<ice:commandLink action="#{grupo.selecionaGrupo}"
+								disabled="#{grupo.selecionado and !grupo.navegacao}"
+								styleClass="linkAba" style="text-align: right;"
+								onmouseover="Tip('#{grupo.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+								onmouseout="UnTip();" onclick="UnTip();">
+								<ice:outputText value="#{grupo.rotulo}"></ice:outputText>
+							</ice:commandLink>
+							<ice:panelGroup
+								style="float: right; margin-right: 3px; margin-top:-1px;" rendered="#{grupo.imagemNavegacao}">
+								<ice:commandLink action="#{grupo.executaImagem}"
+									rendered="#{grupo.imagemNavegacao}">
+									<ice:graphicImage value="#{grupo.imagem}"
+										onmouseover="Tip('#{bundle.lbl_hintNavegarSubTela}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+										onmouseout="UnTip();" onclick="UnTip();">
+									</ice:graphicImage>
+								</ice:commandLink>
+							</ice:panelGroup>
+						</ice:panelGroup>
+
+						<ice:panelGroup styleClass="abaSelecionada" style="float: left"
+							rendered="#{grupo.selecionado}">
+							<ice:outputText value="#{grupo.rotulo}" styleClass="linkAba"
+								style="text-align: right;"
+								onmouseover="Tip('#{grupo.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+								onmouseout="UnTip();" onclick="UnTip();">
+							</ice:outputText>
+							<ice:panelGroup
+								style="float: right; margin-right: 3px; margin-top: -1px;" rendered="#{grupo.imagemNavegacao}">
+								<ice:commandLink action="#{grupo.executaImagem}"
+									rendered="#{grupo.imagemNavegacao}">
+									<ice:graphicImage value="#{grupo.imagem}"
+										onmouseover="Tip('#{bundle.lbl_hintNavegarSubTela}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+										onmouseout="UnTip();" onclick="UnTip();">
+									</ice:graphicImage>
+								</ice:commandLink>
+							</ice:panelGroup>
+						</ice:panelGroup>
+
+					</ice:panelSeries>
+				</ice:panelGroup>
+			</ice:panelGroup>
+
+		</ice:panelGroup>
+
+		<ice:panelGroup
+			style="display: none; float: right; background-color: #f2f1f7; border: 1px solid #818181; width: 148px; padding: 3px" styleClass="divTodasAbasPopup">
+			<ice:panelSeries value="#{agrupadorMB.abstractGrupos}" var="grupo"
+				style="padding-left: 3px;">
+				<ice:panelGroup
+					style="border-bottom: 1px solid #BBBBBB; width: 142px; float: left;"
+					styleClass="divInline">
+					<ice:commandLink action="#{grupo.selecionaGrupo}"
+						disabled="#{grupo.selecionado and !grupo.navegacao}"
+						styleClass="linkAba" style="text-align: right;"
+						onmouseover="Tip('#{grupo.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+						onmouseout="UnTip();"
+						onclick="trocarVisibilidadeDIV(this.parentNode.parentNode.parentNode);">
+						<ice:outputText value="#{grupo.rotulo}"></ice:outputText>
+					</ice:commandLink>
+				</ice:panelGroup>
+				<br />
+			</ice:panelSeries>
+		</ice:panelGroup>
+
+	</ice:column>
+
+	<ice:panelGroup styleClass="divBlock divGrupo">
+		<ui:include src="#{agrupadorMB.nomeJsp}">
+			<ui:param name="grupoMB" value="#{agrupadorMB.grupoSelecionado}"></ui:param>
+		</ui:include>
+	</ice:panelGroup>
+
+</ice:panelGrid>
+

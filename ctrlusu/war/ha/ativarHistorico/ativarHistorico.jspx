@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets" columns="2"
+	columnClasses="columnArvore,columnConfiguracao" style="width: 100%;">
+
+	<f:loadBundle basename="SynHAMessagesResources" var="bundleHA" />
+	<ui:include src="ativarHistoricoArvore.jspx">
+		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+	</ui:include>
+
+	<ice:column>
+		<ui:include src="ativarHistoricoConfiguracaoPadrao.jspx">
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+
+		<ui:include src="ativarHistoricoBarraInferior.jspx">
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+	</ice:column>
+
+</ice:panelGrid>

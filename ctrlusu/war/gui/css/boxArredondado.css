@@ -1,0 +1,56 @@
+/*********************Caixa com cantos arredondados************************/
+
+.topoE{
+  background: url(../../gui/images/boxArredondado/topoE.png) top left no-repeat;
+  /*border: #aaaaaa solid 1px;*/;  
+}
+
+.topoM{
+  height: 30px;
+  margin: 0px 30px 0px 30px;
+  background: url(../../gui/images/boxArredondado/topoM.png) repeat-x;
+}
+
+.topoD{
+  height: 30px;
+  width: 30px;
+  margin-top:-30px;
+  float: right;
+  background: url(../../gui/images/boxArredondado/topoD.png) no-repeat;
+}
+
+.ladoE{
+  margin:0px 0px 0px 0px;
+  background: url(../../gui/images/boxArredondado/ladoE.png) repeat-y;
+}
+
+.conteudo{
+  margin-right: 30px;
+  background: #eeeeee;
+  /*padding: 15px;*/
+}
+
+.ladoD{
+  margin-left:30px;
+  top: 0px;
+  background: url(../../gui/images/boxArredondado/ladoD.png) right repeat-y; 
+}
+
+.rodapeE{
+  height:30px;
+  background: url(../../gui/images/boxArredondado/rodapeE.png) left no-repeat;
+}
+
+.rodapeM{
+  height:30px;
+  margin: 0px 30px 0px 30px;
+  background: url(../../gui/images/boxArredondado/rodapeM.png) repeat-x;
+}
+
+.rodapeD{
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin-top:-30px;
+  background: url(../../gui/images/boxArredondado/rodapeD.png) no-repeat;
+}

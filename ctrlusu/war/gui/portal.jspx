@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<!-- Adiciona bundle utilizado por toda a aplicacao. -->
+	<f:loadBundle basename="SynGuiJsfMessagesResources" var="bundle" />
+
+
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!-- Adiciona title do portal baseado no arquivo de propriedades. -->
+	<title>#{portal.nomeAplicacao}</title>
+	<!-- 
+		<ice:outputText style="padding-top:0px; padding-bottom:0px;" value="#{portal.nomeAplicacao}" escape="false" />
+	</title> -->
+	<!-- Adiciona estilo do SynGuiJSF igual para todas as aplicacoes. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.styleSynGuiJsf}" escape="false" />
+	<!-- Adiciona estilo que controla o tamanho da fonte na aplicação -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.headerPagina.estiloFonteAtual}" escape="false" />
+
+	<!-- Adiciona estilo do SynGuiJSF definido no arquivo de propriedades. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.styleAplicacao}" escape="false" />
+
+	<!-- Adiciona scripts na aplicacao de acordo com arquivo de configuracoes. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.scriptAplicacao}" escape="false" />
+
+	<!-- Adiciona o FavIcon (Ícone da URL e Favoritos). Adiciono duas  referências pq IE e Firefox entendem
+	de forma diferente.-->
+	<link type="image/x-icon" href="images/favicon.ico" rel="icon" />
+	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+	<!-- Importa arquivos de JavaScript -->
+	<script type="text/javascript" src="gui/js/JavaScriptUtil.js"></script>
+	<script type="text/javascript" src="gui/js/Parsers.js"></script>
+	<script type="text/javascript" src="gui/js/InputMask.js"></script>
+	<script src="gui/js/SynUtil.js"></script>
+	<script src="gui/js/expande.js"></script>
+
+	<!-- Define mensagens internacionalizadas para as funcoes do JavaScritpt -->
+	<ice:outputHtml>
+		<script>setBundle_MSG_VALOR_INVALIDO('#{bundle.err_js_valor_invalido}');</script>
+	</ice:outputHtml>
+
+
+	</head>
+	<body leftmargin="0" topmargin="0">
+	<!-- Importa arquivos de JavaScript para tooltipo dentro do body -->
+	<script type="text/javascript" src="gui/js/wz_tooltip.js"></script>
+	<script type="text/javascript" src="gui/js/tip_balloon.js"></script>
+	<script type="text/javascript" src="gui/js/tip_centerwindow.js"></script>
+	<script type="text/javascript" src="gui/js/tip_followscroll.js"></script>
+	<ice:panelBorder id="painelPrincipal" layout="hide east" border="0"
+		cellpadding="0" cellspacing="0" styleClass="mainBorderLayout"
+		renderWest="#{portal.renderWest}">
+
+		<f:facet name="north">
+			<ice:panelGroup>
+				<ui:include src="headerBase.jspx"></ui:include>
+			</ice:panelGroup>
+		</f:facet>
+
+		<f:facet name="west">
+			<ice:panelGroup>
+				<ui:include src="#{portal.jspFileMenu}"></ui:include>
+			</ice:panelGroup>
+		</f:facet>
+		<f:facet name="center">
+			<ice:form>
+				<ice:panelGroup>
+					<ui:include src="portal/barraServicos.jspx">
+						<ui:param name="pageMB" value="#{currentPageBean}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+				<ice:panelGroup id="divCentral" style="overflow-y: scroll;">
+					<ui:include src="portal/center.jspx"></ui:include>
+				</ice:panelGroup>
+			</ice:form>
+		</f:facet>
+
+		<f:facet name="south">
+			<ice:panelGroup>
+				<ui:include src="#{portal.jspFileFooter}"></ui:include>
+				<ice:form rendered="#{popupGenerico.visivel}">
+					<ui:include src="popup/popupGenerico.jspx"></ui:include>
+				</ice:form>
+			</ice:panelGroup>
+		</f:facet>
+	</ice:panelBorder>
+
+	<ice:form id="atualizaTelaPrincipal"></ice:form>
+	</body>
+	</html>
+</f:view>

@@ -1,0 +1,18 @@
+<ice:panelGroup
+	 xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ice="http://www.icesoft.com/icefaces/component"
+	rendered="#{pageMB.gridAtivo}"
+>
+<ice:inputText 
+		style="padding-top:0px; padding-bottom:0px; text-align: right;"  
+		maxlength="3" 
+		action="#{gridMB.gridPaginador.atualiza}"
+		size="3" 
+		value="#{gridMB.registrosPorPagina}"  
+		partialSubmit="true" 
+		converter="SynIntegerConverterFooterPage" 
+		onfocus="javascript:aplicaMascaraNumero(this, 2, 'false');"
+		onblur="javascript:preencheValorDefault(this, 10);"/>
+
+</ice:panelGroup>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" width="100%"
+	style="background-color: #EEEEEE">
+
+
+
+	<ice:panelGrid cellpadding="3" cellspacing="0" border="0" columns="9"
+		columnClasses="barrabotoes,barrabotoes,barrabotoes,barrabotoes,barraTitulos">
+
+		<ice:panelGroup style="border: 1px solid #ABABAB;"
+			styleClass="panelCenterButtonsFerramentas">
+			<ice:panelGrid border="0" cellpadding="0px" cellspacing="0px"
+				headerClass="barraFerramentasHeader" columns="2">
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.lbl_BarraServicosLayout}"
+						style="font-size: 10px; font-weight: normal;" />
+				</f:facet>
+				<ui:include src="../portal/barraBotoesLayout.jspx">
+					<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+				</ui:include>
+			</ice:panelGrid>
+		</ice:panelGroup>
+
+		<ice:panelGroup style="border: 1px solid #ABABAB;"
+			styleClass="panelCenterButtonsFerramentas"
+			rendered="#{pageMB.barraServicosAtiva and pageMB.barraGrupoAcoesVisivel}">
+			<ice:panelGrid border="0" cellpadding="0px" cellspacing="0px"
+				headerClass="barraFerramentasHeader" columns="2">
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.lbl_BarraServicoPersistencia}"
+						style="font-size: 10px; font-weight: normal;" />
+				</f:facet>
+				<ui:include src="../listadetalhe/barraBotaoAlterarListaDetalhe.jspx" />
+				<ice:panelGroup
+					rendered="#{pageMB.barraServicosAtiva and pageMB.persistenciaAtiva}">
+					<ui:include src="../persistencia/persistencia.jspx">
+						<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+						<ui:param name="persistenciaMB" value="#{pageMB.persistencia}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+			</ice:panelGrid>
+		</ice:panelGroup>
+
+		<ice:panelGroup style="border: 1px solid #ABABAB;"
+			styleClass="panelCenterButtonsFerramentas"
+			rendered="#{(pageMB.barraServicosAtiva and (pageMB.exportImport != null and (pageMB.exportExcelAtivo or pageMB.importExcelAtivo) or (pageMB.exclusaoViaPlanilhaAtiva)))}">
+			<ice:panelGrid border="0" cellpadding="0px" cellspacing="0px"
+				headerClass="barraFerramentasHeader" columns="2">
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.lbl_BarraServicoExportImport}"
+						style="font-size: 10px; font-weight: normal;" />
+				</f:facet>
+				<ui:include src="../exportimport/exportarExcel.jspx">
+					<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+				</ui:include>
+				<ui:include src="../exclusaoPlanilha/botaoBarraFerramentasExclusaoPlanilha.jspx">
+					<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+				</ui:include>
+			</ice:panelGrid>
+		</ice:panelGroup>
+
+		<ice:panelGroup style="border: 1px solid #ABABAB;"
+			styleClass="panelCenterButtonsFerramentas"
+			rendered="#{pageMB.barraServicosAtiva and pageMB.barraGrupoFerramentasVisivel}">
+			<ice:panelGrid border="0" cellpadding="0px" cellspacing="0px"
+				headerClass="barraFerramentasHeader" columns="2">
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.lbl_BarraServicoFerramenta}"
+						style="font-size: 10px; font-weight: normal;" />
+				</f:facet>
+				<ui:include src="../servicos/barraServicosFerramentas.jspx">
+					<ui:param name="pageMB" value="#{pageMB}" />
+					<ui:param name="servicoMB" value="#{pageMB.servicos}" />
+				</ui:include>
+			</ice:panelGrid>
+		</ice:panelGroup>
+
+		<ice:panelGroup style="border: 1px solid #ABABAB;height: 44px;"
+			styleClass="panelCenterButtonsFerramentas"
+			rendered="#{pageMB.barraServicosAtiva and pageMB.navegacaoPagina != null and pageMB.navegacaoPagina.existeNavegacao}">
+			<ice:panelGrid border="0" cellpadding="0px" cellspacing="0px"
+				headerClass="barraFerramentasHeader" columns="2">
+				<f:facet name="header">
+					<ice:outputText value="#{bundle.lbl_BarraServicoNavegacao}"
+						style="font-size: 10px; font-weight: normal;" />
+				</f:facet>
+				<ui:include src="../navegacao/navegacoes.jspx">
+					<ui:param name="pageMB" value="#{pageMB}" />
+					<ui:param name="navegacaoMB" value="#{pageMB.navegacaoPagina}" />
+				</ui:include>
+			</ice:panelGrid>
+		</ice:panelGroup>
+
+
+		<!--  Barras customizadas  -->
+
+		<ice:column rendered="#{pageMB.itensBarraFerramenta[0] != null}">
+			<ui:include src="itemBarraCustomizada.jspx">
+				<ui:param name="itenBarraFerramenta"
+					value="#{pageMB.itensBarraFerramenta[0]}" />
+			</ui:include>
+		</ice:column>
+		<ice:column rendered="#{pageMB.itensBarraFerramenta[1] != null}">
+			<ui:include src="itemBarraCustomizada.jspx">
+				<ui:param name="itenBarraFerramenta"
+					value="#{pageMB.itensBarraFerramenta[1]}" />
+			</ui:include>
+		</ice:column>
+		<ice:column rendered="#{pageMB.itensBarraFerramenta[2] != null}">
+			<ui:include src="itemBarraCustomizada.jspx">
+				<ui:param name="itenBarraFerramenta"
+					value="#{pageMB.itensBarraFerramenta[2]}" />
+			</ui:include>
+		</ice:column>
+		<ice:column rendered="#{pageMB.itensBarraFerramenta[3] != null}">
+			<ui:include src="itemBarraCustomizada.jspx">
+				<ui:param name="itenBarraFerramenta"
+					value="#{pageMB.itensBarraFerramenta[3]}" />
+			</ui:include>
+		</ice:column>
+		<ice:column>
+			<ui:include src="../portal/headerPagina.jspx" />
+			<ui:include src="../portal/headerIdentificadorRegistro.jspx" />
+		</ice:column>
+	</ice:panelGrid>
+
+	<ice:panelGroup>
+		<ice:outputConnectionStatus showPopupOnDisconnect="true" />
+	</ice:panelGroup>
+</ice:panelGroup>

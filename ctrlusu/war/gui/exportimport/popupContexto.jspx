@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" columns="1">
+	<br />
+	<ice:panelGroup>
+		<ice:outputText value="#{bundle.importacaoExcel_msg_cabecalhoPopupContexto}"
+			styleClass="iceOutputTextObrigatorio" />
+		<br />
+		<br />
+
+		<ice:panelSeries var="listMsg"
+			value="#{paginaMB.exportImport.infoContextoFuncional}">
+			<ice:outputText value="#{listMsg.rotulo}" />
+			<ice:outputText value="#{listMsg.valor}" />
+			<br />
+		</ice:panelSeries>
+
+		<br />
+		<ice:outputText value="#{bundle.importacaoExcel_msg_rodapePopupContexto}"
+			styleClass="iceOutputTextObrigatorio" />
+	</ice:panelGroup>
+	<br />
+	<br />
+	<ice:panelGrid columns="2">
+		<ice:panelGroup>
+			<ice:commandButton id="confirmaImportacao" value="#{bundle.lbl_sim}"
+				action="#{paginaMB.exportImport.importarArquivo}" />
+		</ice:panelGroup>
+		<ice:panelGroup>
+			<ice:commandButton id="cancelaImportacao" value="#{bundle.lbl_nao}"
+				action="#{paginaMB.exportImport.fecharPopup}" />
+		</ice:panelGroup>
+	</ice:panelGrid>
+</ice:panelGrid>

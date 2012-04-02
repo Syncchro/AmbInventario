@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets" columns="1" 
+        cellpadding="0" 
+		cellspacing="0" 
+		width="100%" 
+		border="0" style="border-top: 2px solid white;">
+        
+		<!-- Inclui JSP com botão do Painel do configurador do dataGrid. -->
+		<f:subview id="assoc">
+        <ice:panelGroup >
+        	<ui:include src="../associacao/associacaoPage.jspx">
+        		<ui:param name="assocPageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+        </f:subview>
+        
+        <ice:panelGroup styleClass="barBotoesAssociations" >
+        	<ice:panelGrid columns="2" width="100%" cellpadding="5px" cellspacing="0" columnClasses="botaoAssociar,botaoDesassociar">
+        		<ice:panelGroup>
+	       			<ice:commandButton value="#{bundle.association_lbl_associar}"     disabled="#{!pageMB.associacaoHabilitada}" action="#{pageMB.associar}" styleClass="botaoAssociacao"></ice:commandButton>
+        		</ice:panelGroup>	
+        		<ice:panelGroup>
+        			<ice:commandButton value="#{bundle.association_lbl_desassociar}"  disabled="#{!pageMB.desassociacaoHabilitada}" action="#{pageMB.desassociar}" styleClass="botaoDesassociacao"></ice:commandButton>
+        		</ice:panelGroup>
+        	</ice:panelGrid>
+	    </ice:panelGroup>
+	    
+        <f:subview id="desassoc">
+        
+        <!-- Inclui JSp coma area de funcionalidades da tela. -->
+        <ice:panelGroup >
+        
+        	<ui:include src="../associacao/associacaoPage.jspx">
+        		<ui:param name="assocPageMB" value="#{pageMB.paginaDesassociada}"></ui:param>
+        	</ui:include>
+        	
+        </ice:panelGroup>
+       </f:subview> 
+</ice:panelGrid>

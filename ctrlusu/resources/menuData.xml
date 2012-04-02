@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<MENU>
+	<ROOT>
+		<NOME>Controle de Usuário</NOME>
+		<ITENS>
+			<ITEM id="tCtrlUsuContextoOrganizacao" tipo="TELA">
+				<NOME>Organizações do Usuário</NOME>
+			</ITEM>
+			<ITEM id="tCtrlUsuUsuarios" tipo="TELA">
+				<NOME>Cadastro de usuários</NOME>
+			</ITEM>
+			<ITEM id="tCtrlUsuPapeis" tipo="TELA">
+				<NOME>Cadastro de papéis</NOME>
+			</ITEM>
+			<ITEM id="tCtrlUsuOrganizacoes" tipo="TELA">
+				<NOME>Cadastro de organizações</NOME>
+			</ITEM>
+			<ITEM id="tCtrlUsuAlertasOrganizacao" tipo="TELA">
+				<NOME>Alertas</NOME>
+			</ITEM>
+			<ITEM>
+				<NOME>Histórico de Dados</NOME>
+				<ITENS>
+					<ITEM id="tHAAtivarHistorico" tipo="TELA">
+						<NOME>Ativar Histórico</NOME>
+					</ITEM>
+				</ITENS>
+			</ITEM>
+		</ITENS>
+	</ROOT>
+</MENU>

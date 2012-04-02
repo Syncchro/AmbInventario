@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<!-- Adiciona bundle utilizado por toda a aplicacao. -->
+	<f:loadBundle basename="SynGuiJsfMessagesResources" var="bundle" />
+
+
+	<html>
+	<head>
+
+	<link type="text/css" rel="stylesheet" href="../css/styleDefault.css" />
+	<link type="text/css" rel="stylesheet" href="../css/styleTamanho16.css" />
+	<link type="image/x-icon" href="./images/favicon.ico" rel="icon" />
+	<link type="image/x-icon" href="./images/favicon.ico"
+		rel="shortcut icon" />
+
+	<script type="text/javascript" src="../../gui/js/JavaScriptUtil.js"></script>
+	<script type="text/javascript" src="../../gui/js/Parsers.js"></script>
+	<script type="text/javascript" src="../../gui/js/InputMask.js"></script>
+	<script src="../../gui/js/SynUtil.js"></script>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Adiciona title do portal baseado no arquivo de propriedades. -->
+	<title>#{portal.nomeAplicacao}</title>
+	</head>
+
+	<body style="width: 100%; height: 100%"
+		onload="ajustaAltura();limpaListaCriada();">
+
+	<ice:panelBorder border="0" cellpadding="0" cellspacing="0"
+		renderWest="false" renderEast="false" id="painelPrincipal" renderSouth="false"
+		style="width: 100%">
+		<f:facet name="north">
+			<ice:panelGroup>
+				<ui:include src="../error/headerError.jspx"></ui:include>
+			</ice:panelGroup>
+		</f:facet>
+
+		<f:facet name="center">
+			<ice:panelGroup id="divErroCentral" style="overflow: auto;">
+				<ice:form style="margin: 0px;">
+					<ice:panelGroup style="overflow: auto; height: 100%">
+						<ice:outputText
+							value="#{bundle.ambiente_diagnostico_msg}" escape="false"/>
+
+						<ice:panelGrid columns="1" style="width: 100%">
+
+							<br />
+							<ice:panelGrid
+								style="text-align: center; margin-left: auto;margin-right: auto; margin-bottom: auto;"
+								columns="3">
+								<ice:column>
+									<ice:graphicImage value="/gui/images/homologado.png"
+										styleClass="graphic" height="16px" width="16px" />
+									<ice:outputText value="#{bundle.ambiente_diagnostico_ok}" />
+								</ice:column>
+								<ice:column>
+									<ice:graphicImage
+										value="/gui/images/ambiente_homologado_com_problema.png"
+										styleClass="graphic" height="16px" width="16px" />
+									<ice:outputText value="#{bundle.ambiente_diagnostico_erro}" />
+								</ice:column>
+							</ice:panelGrid>
+
+							<br />
+
+							<ice:dataTable var="variavelAmbiente"
+								value="#{popUpInformacoesAmbienteMB.ambienteSituacaoCritico}"
+								style="width: 95%; margin-left: auto;margin-right: auto;">
+								<ice:column>
+									<f:facet name="header">
+										<ice:outputText value="#{bundle.ambiente_coluna_variavel}" />
+									</f:facet>
+									<ice:outputText value="#{variavelAmbiente.rotulo}" />
+								</ice:column>
+
+								<ice:column>
+									<f:facet name="header">
+										<ice:outputText value="#{bundle.ambiente_coluna_valor}" />
+									</f:facet>
+									<ice:outputText value="#{variavelAmbiente.valor}" />
+								</ice:column>
+
+								<ice:column>
+									<f:facet name="header">
+										<ice:outputText value="#{bundle.ambiente_coluna_situacao}" />
+									</f:facet>
+									<ice:graphicImage
+										rendered="#{variavelAmbiente.situacao == 'HOMOLOGADO'}"
+										value="/gui/images/homologado.png" styleClass="graphic"
+										height="16px" width="16px" />
+									<ice:graphicImage
+										rendered="#{variavelAmbiente.situacao == 'PROBLEMA' or variavelAmbiente.situacao == 'DESCONHECIDO'}"
+										value="/gui/images/ambiente_homologado_com_problema.png"
+										styleClass="graphic" height="16px" width="16px" />
+								</ice:column>
+							</ice:dataTable>
+
+						</ice:panelGrid>
+					</ice:panelGroup>
+				</ice:form>
+			</ice:panelGroup>
+		</f:facet>
+	</ice:panelBorder>
+	</body>
+	</html>
+</f:view>
+

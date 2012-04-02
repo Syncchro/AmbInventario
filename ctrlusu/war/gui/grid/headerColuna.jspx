@@ -1,0 +1,21 @@
+<ice:panelGrid
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    rendered="#{pageMB.gridAtivo}"
+    width="100%" style="text-align: center;"
+>
+    	<ice:panelGroup>
+			<ice:commandLink  value="#{gridMB.camposGrid[linhaGrid].rotulo}" action="#{gridMB.camposGrid[linhaGrid].alteraOrdenacao}" >
+				<ice:outputText value=" - #{gridMB.camposGrid[linhaGrid].posicao}" rendered="#{gridMB.camposGrid[linhaGrid].posicao > 0}"/>
+				<ice:graphicImage  value="#{gridMB.camposGrid[linhaGrid].ordem.imagem}"  rendered="#{gridMB.camposGrid[linhaGrid].ordem.imagem != null}" styleClass="graphic"/>
+			</ice:commandLink>                                	
+		</ice:panelGroup>
+		<ice:panelGroup rendered="#{gridMB.filtroVisivel}">
+   								<ice:inputText  valueChangeListener="#{gridMB.camposGrid[linhaGrid].alteraFiltro}" 
+   									partialSubmit="true" 
+   									value="#{gridMB.camposGrid[linhaGrid].filtro}" 
+   									title="#{gridMB.camposGrid[linhaGrid].rotulo}">
+  									</ice:inputText>
+		</ice:panelGroup>									
+</ice:panelGrid>

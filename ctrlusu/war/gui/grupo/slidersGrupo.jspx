@@ -1,0 +1,35 @@
+<ice:panelCollapsible 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ice="http://www.icesoft.com/icefaces/component"
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+ expanded="#{sliderGrupo.aberto}" rendered="#{sliderGrupo.sliderVisivel}" >
+        	    <f:facet name="header">
+        	    	<ice:panelGroup>
+                  <ice:outputText value="#{sliderGrupo.nome}" styleClass="#{sliderGrupo.estiloHeader}"/>
+              </ice:panelGroup>
+          </f:facet>
+          <ice:panelSeries value="#{sliderGrupo.abstractGrupos}" var="grupo">
+     			<ice:panelGroup  style="width: 100%; white-space: nowrap;">
+					<ice:commandLink action="#{grupo.executaImagem}"  rendered="#{grupo.imagemNavegacao}" styleClass="linkAba" >
+						<ice:graphicImage 
+								value="#{grupo.imagem}" 
+								styleClass="linkAba"
+								onmouseover="Tip('#{bundle.lbl_hintNavegarSubTela}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+     									onmouseout="UnTip();"
+     									onclick="UnTip();" >
+     							</ice:graphicImage>
+					</ice:commandLink>
+					<ice:commandLink
+					    action="#{grupo.selecionaGrupo}" 
+					    disabled="#{grupo.selecionado and !grupo.navegacao}" 
+					    styleClass="linkAba" 
+					    style="text-align: right;" 
+					  	onmouseover="Tip('#{grupo.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+     							onmouseout="UnTip();"
+     							onclick="UnTip();">
+						<ice:outputText value="#{grupo.rotulo}" ></ice:outputText>
+					</ice:commandLink>
+		</ice:panelGroup>
+	</ice:panelSeries>
+</ice:panelCollapsible>

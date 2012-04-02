@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets" style="text-align: left;">
+	<ice:panelSeries value="#{portal.headerPagina.contextPagesList}"
+		var="absPage">
+		<ice:commandLink id="headerPageLnkBreadCrumbs"
+			value="#{absPage.pagina.tituloPagina}"
+			action="#{portal.headerPagina.recoverPageContext}"
+			styleClass="breadCrumbs"
+			onmouseover="Tip('#{absPage.pagina.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();"
+			rendered="#{!absPage.pagina.paginaCorrente &amp;&amp; absPage.pagina.linkBreadCrumbs}">
+			<f:param id="headerPageLnkBreadCrumbs0Param1" name="indexPage"
+				value="#{absPage.posicao}" />
+			<!-- <ice:outputText style="font-size: 11px;" value=" >> " styleClass="breadCrumbsCurrentPage" /> -->
+		</ice:commandLink>
+		<ice:outputText value="#{absPage.pagina.tituloPagina}"
+			rendered="#{absPage.pagina.paginaCorrente || !absPage.pagina.linkBreadCrumbs}"
+			onmouseover="Tip('#{absPage.pagina.hint}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+			onmouseout="UnTip();" onclick="UnTip();"
+			styleClass="breadCrumbsCurrentPage" />
+		<ice:outputText rendered="#{!absPage.pagina.paginaCorrente}"
+			style="font-size: 11px;" value=" >> "
+			styleClass="breadCrumbsCurrentPage" />
+	</ice:panelSeries>
+</ice:panelGroup>

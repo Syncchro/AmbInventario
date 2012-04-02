@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets" columns="1"
+	rowClasses="linhaLimpeza1,linhaLimpeza2,linhaLimpeza3"
+	style="width: 100%;">
+
+	<f:loadBundle basename="SynHAMessagesResources" var="bundleHA" />
+
+
+	<ice:panelGroup style="vertical-align: top;">
+		<ui:include src="limparHistoricoBarraSelecionaData.jspx">
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+	</ice:panelGroup>
+
+	<ice:panelGroup styleClass="ajustaAltura1" style="overflow-y: scroll;">
+		<ui:include src="limparHistoricoArvore.jspx">
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+	</ice:panelGroup>
+
+</ice:panelGrid>

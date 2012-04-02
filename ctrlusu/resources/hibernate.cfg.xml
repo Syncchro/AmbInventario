@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+		<!-- USADO EM EMPACOTAMENTO WAR, INCLUI MAPEAMENTO DE TABELAS DE OUTROS COMPONENTES E CONEXAO VIA DATASOURCE -->
+
+    	<property name="hibernate.connection.datasource">java:comp/env/jdbc/CTRL_USU</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="hibernate.jdbc.batch_size">50</property>
+        <property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</property>
+        <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
+        <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show-sql">true</property>
+        <property name="hibernate.jdbc.batch_size">50</property>
+        
+        
+        
+        
+        <!-- Os mapeamentos das tabelas do SynJSF -->     
+ 		<mapping class="br.com.synchro.framework.gui.dao.bean.SynTelaWhereClauseHBTO"/> 
+ 		<mapping class="br.com.synchro.screendefinition.runtime.domain.model.Definicao"/> 
+ 		<mapping class="br.com.synchro.framework.gui.dao.bean.SynTelaWhereHBTO"/> 
+ 		<mapping class="br.com.synchro.framework.gui.dao.bean.SynTelaConfHBTO"/> 
+ 		<mapping class="br.com.synchro.framework.gui.dao.bean.SynTelaUsuWhereDefault"/>
+ 		<mapping class="br.com.synchro.framework.gui.dao.bean.SynPreferenciaUsuarioHBTO"/>
+
+ 		<!-- SD Runtime -->
+		<mapping class="br.com.synchro.screendefinition.runtime.domain.model.Definicao" />	
+        
+        <!-- VALIDADOR -->
+        <mapping class="br.com.synchro.framework.validador.loader.dao.view.ValidadorCampoObrigatorioHBTO"  />
+        <mapping class="br.com.synchro.framework.validador.loader.dao.view.ValidatorTableConstraintsHBTO"  />
+
+        <!-- SYNHA -->
+       <mapping class="br.com.synchro.framework.ha.to.TabelaTO"/>
+       <mapping class="br.com.synchro.framework.ha.to.CampoTO"/>
+       <mapping class="br.com.synchro.framework.ha.to.RelacionamentoTO"/>
+       <mapping class="br.com.synchro.framework.ha.to.TelaTabelaTO" />
+       <mapping class="br.com.synchro.framework.ha.configuracao.to.ConfiguracaoTO"/>
+       <mapping class="br.com.synchro.framework.ha.configuracao.to.TabelaAuditadaTO"/>
+       <mapping class="br.com.synchro.framework.ha.configuracao.to.CampoAuditadoTO"/>
+       <mapping class="br.com.synchro.framework.ha.to.HistoricoTO"/>
+	   <mapping class="br.com.synchro.framework.ha.dao.bean.view.ViewHistoricoRegistroRaizHBTO" />
+	   <mapping class="br.com.synchro.framework.ha.dao.bean.view.ViewHistRegistrosFilhosHBTO" />
+	   <mapping class="br.com.synchro.framework.ha.limpeza.to.HaLimpezaHistTO" />
+       <mapping class="br.com.synchro.framework.ha.limpeza.to.HaLimpezaEntidadeTO" />
+       <mapping class="br.com.synchro.framework.ha.integration.adapter.VwTabelasHBTO" />
+  	   <mapping class="br.com.synchro.framework.ha.limpeza.dao.bean.view.ViewLogLimpezaHBTO" />
+     
+ 		<!-- ##################### MD ##################### -->
+        <mapping class="br.com.synchro.framework.md.to.ConstraintInfoTO"  />
+        <mapping class="br.com.synchro.framework.md.to.ConstraintTO"  />
+        <mapping class="br.com.synchro.framework.md.to.TabColunaTO"  />
+        <mapping class="br.com.synchro.framework.md.to.TabelaTO"  />
+
+		<!-- VIEWS CTRLUSU --> 
+		<mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAssociacaoOrgPapeisHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAssociacaoOrgUsuarioHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAssociacaoPapeisOrgHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAssociacaoPerfilUsuarioHBTO" />        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAssociacaoUsuarioOrgHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAssociacaoUsuarioPerfilHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewDesassociacaoOrgPapeisHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewDesassociacaoOrgUsuarioHBTO" />        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewDesassociacaoPapeisOrgHBTO" />                
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewDesassociacaoPapeisUsuHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewDesassociacaoUsuarioOrgHBTO" />                        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewDesassociacaoUsuPapeisHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewTSecUsuarioHBTO"  />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewTSecDominioHBTO"/>
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewTSecDominioAdminHBTO"/>
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewTSecPerfilHBTO"  />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewPermissaoPerfilHBTO"  />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.view.ViewAlertaOrganizacoes" />
+
+        
+		<!-- TABELAS CTRLUSU -->
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.SynPerfilDominioHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.SynPerfilDominioHBTOId" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecDominioHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecHistDominioPapelHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecHistDominioUsuarioHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecHistPerfilPermissaoHBTO" />                 
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecHistUsuarioPerfilHBTO" />        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecPerfilHBTO"  />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecUsuarioDominioHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecUsuarioDominioHBTOId" />        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecUsuarioHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecPermissaoHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecPerfilPermissaoHBTO" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecPerfilPermissaoHBTOId" />        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecUsuarioPerfilDominioHBTO" />        
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.TSecUsuarioPerfilDominioHBTOId" />
+        <mapping class="br.com.synchro.framework.ctrlusu.dao.bean.AlertaOrganizacoes" />
+		<mapping class="br.com.synchro.framework.ctrlusu.dao.bean.AlertaXOrganizacao" /> 
+		
+	
+
+		<event type="post-insert">
+			<listener class="br.com.synchro.framework.ha.trigger.hibernate.GeradorHistoricoListener"/>
+		</event>
+		<event type="pre-insert">
+			<listener class="br.com.synchro.framework.db.validator.trigger.DbValidatorListener"/>
+		</event>
+		<event type="pre-update">
+			<listener class="br.com.synchro.framework.db.validator.trigger.DbValidatorListener"/>
+			<listener class="br.com.synchro.framework.ha.trigger.hibernate.GeradorHistoricoListener"/>
+		</event>
+		<event type="pre-delete">
+			<listener class="br.com.synchro.framework.db.validator.trigger.DbValidatorListener"/>
+			<listener class="br.com.synchro.framework.ha.trigger.hibernate.GeradorHistoricoListener"/>
+		</event>   
+
+    </session-factory>
+</hibernate-configuration>

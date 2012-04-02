@@ -1,0 +1,17 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	styleClass="headerCenterPanelGrid divBlock"
+	width="100%" style="border: 0px none;overflow-y: auto; height: 35;" id="headerIdentificadorRegistro">
+	
+		<ice:outputText value="#{portal.headerPagina.titleBreadCrumbs}"
+			styleClass="identificadorRegistroBreadCrumbs" />
+		<ice:outputText value=" >> "
+			rendered="#{portal.headerPagina.visibleTitleBreadCrumbs and portal.headerPagina.titleBreadCrumbsPageAtual != null}"
+			styleClass="identificadorRegistroBreadCrumbs" />
+		<ice:outputText
+			value="#{portal.headerPagina.titleBreadCrumbsPageAtual}"
+			styleClass="identificadorRegistroBreadCrumbs"
+			style="font-weight: bold;" />
+</ice:panelGroup>

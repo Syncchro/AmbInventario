@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<f:view xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<!-- Adiciona bundle utilizado por toda a aplicacao. -->
+	<f:loadBundle basename="SynGuiJsfMessagesResources" var="bundle" />
+
+	<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!-- Adiciona title do portal baseado no arquivo de propriedades. -->
+	<title>#{portal.nomeAplicacao}</title>
+	<!-- Adiciona estilo do SynGuiJSF igual para todas as aplicacoes. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.styleSynGuiJsf}" escape="false" />
+	<!-- Adiciona estilo que controla o tamanho da fonte na aplicação -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.headerPagina.estiloFonteAtual}" escape="false" />
+	<!-- Adiciona estilo do SynGuiJSF definido no arquivo de propriedades. -->
+	<ice:outputText style="padding-top:0px; padding-bottom:0px;"
+		value="#{portal.styleAplicacao}" escape="false" />
+	<!-- Adiciona o FavIcon (Ícone da URL e Favoritos). Adiciono duas  referências pq IE e Firefox entendem
+	de forma diferente.-->
+	<link type="image/x-icon" href="images/favicon.ico" rel="icon" />
+	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+
+	<!-- Importa arquivos de JavaScript -->
+	<script type="text/javascript" src="gui/js/JavaScriptUtil.js"></script>
+	<script type="text/javascript" src="gui/js/Parsers.js"></script>
+	<script type="text/javascript" src="gui/js/InputMask.js"></script>
+	<script src="gui/js/SynUtil.js"></script>
+	<script src="gui/js/expande.js"></script>
+
+
+	</head>
+	<body leftmargin="0" topmargin="0" onload="window.focus();">
+	<!-- Importa arquivos de JavaScript para tooltipo dentro do body -->
+	<script type="text/javascript" src="gui/js/wz_tooltip.js"></script>
+	<script type="text/javascript" src="gui/js/tip_balloon.js"></script>
+	<script type="text/javascript" src="gui/js/tip_centerwindow.js"></script>
+	<script type="text/javascript" src="gui/js/tip_followscroll.js"></script>
+
+	<ice:panelGroup id="divCentral"
+		rendered="#{lovSession.pesquisaInicialExecutada}">
+		<ice:form>
+
+			<!-- Adiciona area de mensagens logo abaixo do Header da pagina. -->
+			<ice:messages globalOnly="true" />
+
+			<ice:panelGrid cellpadding="0" cellspacing="0" width="100%"
+				border="0">
+
+				<ice:panelGrid styleClass="headerCenterPanelGrid" columns="1">
+					<ice:panelGroup style="width: 100%; text-align:right">
+						<ui:include src="lov/headerLovPopup.jspx">
+							<ui:param name="pageMB" value="#{lovSession}"></ui:param>
+						</ui:include>
+					</ice:panelGroup>
+				</ice:panelGrid>
+
+				<ice:panelGroup>
+					<ui:include src="grid/barraGrid.jspx">
+						<ui:param name="gridMB" value="#{lovSession.grid}"></ui:param>
+						<ui:param name="pageMB" value="#{lovSession}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+
+
+				<!-- Inclui JSp coma area de funcionalidades pesquisa. -->
+				<ice:panelGroup>
+					<ui:include src="paineis/painelFunc.jspx">
+						<ui:param name="pageMB" value="#{lovSession}"></ui:param>
+						<ui:param name="painelFuncMB"
+							value="#{pageMB.paineis['funcionalidades']}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+
+				<ice:panelGroup>
+					<ui:include src="grid/gridPadrao.jspx">
+						<ui:param name="pageMB" value="#{lovSession}"></ui:param>
+						<ui:param name="gridMB" value="#{lovSession.grid}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+				<ice:panelGroup>
+					<ui:include src="lov/botaoLovMultiSelect.jspx">
+						<ui:param name="pageMB" value="#{lovSession}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+
+				<!--  Inclui barra inferior da página -->
+				<ice:panelGroup>
+					<ui:include src="lov/barraInferiorLov.jspx">
+						<ui:param name="pageMB" value="#{lovSession}"></ui:param>
+					</ui:include>
+				</ice:panelGroup>
+
+
+
+
+				<ice:panelGroup>
+					<ui:include src="popup/popupGenerico.jspx"></ui:include>
+				</ice:panelGroup>
+			</ice:panelGrid>
+		</ice:form>
+	</ice:panelGroup>
+	</body>
+	</html>
+</f:view>

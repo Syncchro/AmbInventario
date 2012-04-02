@@ -1,0 +1,40 @@
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	columns="2" border="0"
+	columnClasses="barraEdicaoHistorico"
+	style="text-align: center;">
+
+	<!-- Botao salvar configuracao -->
+	<ice:commandLink action="#{pageMB.salvarConfiguracao}"
+		style="cursor: pointer;">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup style="white-space: nowrap; text-align: center;">
+				<ice:graphicImage value="/ha/images/salvar-exp.png"
+					styleClass="graphic"
+					onmouseover="Tip('#{bundleHA.ativarHistorico_lbl_Salvar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundleHA.ativarHistorico_lbl_BotaoSalvar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+	<!-- Botao Cancelar configuracao -->
+	<ice:commandLink action="#{pageMB.cancelar}" style="cursor: pointer;">
+		<ice:panelGroup style="border: 1px solid #ABABAB; width: 50px">
+			<ice:panelGroup style="white-space: nowrap; text-align: center;">
+				<ice:graphicImage value="/ha/images/cancelar-exp.png"
+					styleClass="graphic"
+					onmouseover="Tip('#{bundleHA.ativarHistorico_lbl_Cancelar}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1000, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();" />
+			</ice:panelGroup>
+			<ice:panelGroup>
+				<ice:outputText value="#{bundleHA.ativarHistorico_lbl_BotaoCancelar}"></ice:outputText>
+			</ice:panelGroup>
+		</ice:panelGroup>
+	</ice:commandLink>
+
+</ice:panelGrid>

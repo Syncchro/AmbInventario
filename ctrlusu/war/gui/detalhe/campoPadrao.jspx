@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:column xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<!-- TextField para campos do tipo String que não sejam retorno de LOV, SEM SUBMIT-->
+	<ice:inputText id="detailDefaultString" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.string and !campoMB.lovPopup and !campoMB.submit and !campoMB.lovComboBox and campoMB.nome != 'senha' and !campoMB.lovMultiSelect}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="false" immediate="false"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+		onblur="javascript:validaCampo(this,'#{campoMB.mascara}');">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultString" for="detailDefaultString"
+		tooltip="true" />
+	<!-- TextField para campos do tipo String que não sejam retorno de LOV, COM SUBMIT-->
+	<ice:inputText id="detailDefaultStringSubmit" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.string and campoMB.submit and !campoMB.lovPopup and !campoMB.lovComboBox and campoMB.nome != 'senha' and !campoMB.lovMultiSelect}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="true" valueChangeListener="#{campoMB.valorAlterado}"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+		onblur="javascript:validaCampo(this,'#{campoMB.mascara}');">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultStringSubmit"
+		for="detailDefaultStringSubmit" tooltip="true" />
+	<!-- TextField para campos do tipo String que sejam LOV-->
+	
+	<ice:panelGrid border="0" cellpadding="0" cellspacing="0" columns="2" style="width: 50px;"
+		rendered="#{campoMB.string  and campoMB.lovPopup and campoMB.nome != 'senha' and !campoMB.lovMultiSelect and campoMB.autoComplete}">
+
+		<ice:selectInputText 
+			id="detailDefaultStringSubmitLOVAutoComplete"
+			readonly="#{!campoMB.editavel}" 
+			value="#{campoMB.valor}"
+			textChangeListener="#{campoMB.lovValueChangeListener}"
+			valueChangeListener="#{campoMB.valorAlterado}"
+			maxlength="#{campoMB.maxLength}" width="#{campoMB.tamanhoEmPixels}"
+			styleClass="#{campoMB.styleInputText}"
+			onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+			onblur="javascript:validaCampo(this,'#{campoMB.mascara}');"
+			partialSubmit="true">
+			<f:attribute name="campo" value="#{campoMB}" />
+			<f:selectItems value="#{campoMB.sugestoesLov}"/>
+		</ice:selectInputText>
+			
+		<ice:commandLink id="detailDefaultLovLnkAutoComplete"
+			disabled="#{!campoMB.editavel}"
+			action="#{campoMB.openLovSubPage}">
+			<ice:graphicImage id="detailDefaultLovLnkImgAutoComplete"
+				value="/gui/images/lupa.png" onmouseover="" onmouseout=""
+				styleClass="graphic" height="16px" width="16px" />
+			<f:param id="detailDefaultLovParamAutoComplete" name="nomeCampoLov"
+				value="#{campoMB.nome}" />
+			<f:param id="linhaDisparoLovAutoComplete" name="rowPK" value="#{rowPK}" />
+		</ice:commandLink>
+			
+
+	</ice:panelGrid>
+	
+	<!-- TextField para campos do tipo String que sejam LOV-->
+	<ice:inputText id="detailDefaultStringSubmitLOV"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.string  and campoMB.lovPopup and campoMB.nome != 'senha' and !campoMB.lovMultiSelect and !campoMB.autoComplete}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="true" valueChangeListener="#{campoMB.valorAlterado}"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+		onblur="javascript:validaCampo(this,'#{campoMB.mascara}');">
+		
+		<f:attribute name="campo" value="#{campoMB}" />
+	</ice:inputText>
+	
+	
+	<!-- ice:inputText id="detailDefaultStringSubmitLOV"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.string  and campoMB.lovPopup and campoMB.nome != 'senha' and !campoMB.lovMultiSelect}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="true" valueChangeListener="#{campoMB.valorAlterado}"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+		onblur="javascript:validaCampo(this,'#{campoMB.mascara}');">
+		
+		<f:attribute name="campo" value="#{campoMB}" />
+	</ice:inputText -->
+
+	<!-- TextField para campos do tipo PASSWORD -->
+	<ice:inputSecret id="detailDefaultPassword" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.string and !campoMB.submit and !campoMB.lovComboBox and campoMB.nome == 'senha' and !campoMB.lovMultiSelect}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="false" immediate="false" redisplay="true"
+		styleClass="#{campoMB.styleInputText}" />
+
+	<!-- TextArea para campos do tipo String que possuam mais de uma linha que não sejam retorno de LOV, SEM SUBMIT-->
+	<ice:inputTextarea id="detailDefaultTextArea"
+		styleClass="#{campoMB.styleInputTextArea}" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.textArea and !campoMB.submit and !campoMB.lovMultiSelect and !campoMB.lovPopup}"
+		partialSubmit="false" cols="#{campoMB.tamanho}"
+		rows="#{campoMB.maxLinhas}" immediate="false"
+		onfocus="javascript:aplicaMascaraTextArea(this,'#{campoMB.maxLength}');" 
+		maxlength="#{campoMB.maxLength}"
+		/>
+	<!-- TextArea para campos do tipo String que possuam mais de uma linha que não sejam retorno de LOV, COM SUBMIT-->
+	<ice:inputTextarea id="detailDefaultTextAreaSubmit"
+		styleClass="#{campoMB.styleInputTextArea}" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.textArea and campoMB.submit and !campoMB.lovMultiSelect and !campoMB.lovPopup}"
+		partialSubmit="true" cols="97" rows="#{campoMB.maxLinhas}"
+		immediate="false" valueChangeListener="#{campoMB.valorAlterado}"
+		onfocus="javascript:aplicaMascaraTextArea(this,'#{campoMB.maxLength}');"
+		maxlength="#{campoMB.maxLength}" 
+		/>	
+
+	<!-- TextArea para campos do tipo String que possuam mais de uma linha e que sejam LOV-->
+	<ice:inputTextarea id="detailDefaultTextAreaSubmitLOV"
+		styleClass="#{campoMB.styleInputTextArea}" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.textArea and campoMB.lovPopup and !campoMB.lovMultiSelect}"
+		partialSubmit="true" cols="#{campoMB.tamanho}" rows="#{campoMB.maxLinhas}"
+		immediate="false" valueChangeListener="#{campoMB.valorAlterado}"
+		onfocus="javascript:aplicaMascaraTextArea(this,'#{campoMB.maxLength}');"
+		maxlength="#{campoMB.maxLength}">
+			
+		<f:attribute name="campo" value="#{campoMB}" />	
+	</ice:inputTextarea>
+	
+	<!-- TextField com convert para number utilizado para campos do tipo BigDecimal  que não sejam retorno de LOV, SEM SUBMIT -->
+	<ice:inputText id="detailDefaultBigDecimal"
+		converter="SynConverterDecimal" value="#{campoMB.valor}" 
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.bigDecimal and !campoMB.retornoLov and !campoMB.lovPopup and !campoMB.submit and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		style="padding: 0 2px 0 0;" partialSubmit="false"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		immediate="false" styleClass="#{campoMB.styleInputText}"
+		onblur="javascript:this.mask.update();"		
+		onfocus="javascript:aplicaMascaraDecimal(this,'#{campoMB.qtdDecimais}','#{campoMB.formatoNumerico}');">
+
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+		<f:attribute name="formatoDecimal" value="#{campoMB.formatoNumerico}" />
+		<f:attribute name="qtdDecimais" value="#{campoMB.qtdDecimais}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultBigDecimal"
+		for="detailDefaultBigDecimal" tooltip="true" />
+
+
+	<!-- TextField com convert para number utilizado para campos do tipo BigDecimal  que não sejam retorno de LOV, COM SUBMIT -->
+	<ice:inputText id="detailDefaultBigDecimalSubmit"
+		converter="SynConverterDecimal" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.bigDecimal and !campoMB.retornoLov and !campoMB.lovPopup and campoMB.submit and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		style="padding: 0 2px 0 0;" partialSubmit="true"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		immediate="false" valueChangeListener="#{campoMB.valorAlterado}"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascaraDecimal(this,'#{campoMB.qtdDecimais}','#{campoMB.formatoNumerico}');">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+		<f:attribute name="formatoDecimal" value="#{campoMB.formatoNumerico}" />
+		<f:attribute name="qtdDecimais" value="#{campoMB.qtdDecimais}" />
+
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultBigDecimalSubmit"
+		for="detailDefaultBigDecimalSubmit" tooltip="true" />
+
+	<!-- TextField com convert para number utilizado para campos do tipo BigDecimal que sejam retorno de LOV-->
+	<ice:inputText id="detailLovDecimal" converter="SynConverterDecimal"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.bigDecimal and campoMB.retornoLov and !campoMB.lovPopup  and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="true" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		styleClass="#{campoMB.styleInputText}"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		onfocus="javascript:aplicaMascaraDecimal(this,'#{campoMB.qtdDecimais}','#{campoMB.formatoNumerico}');">
+		
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+		<f:attribute name="formatoDecimal" value="#{campoMB.formatoNumerico}" />
+		<f:attribute name="qtdDecimais" value="#{campoMB.qtdDecimais}" />
+	</ice:inputText>
+
+	<!-- TextField com convert para number utilizado para campos do tipo Long  que não sejam retorno de LOV, SEM SUBMIT -->
+	<ice:inputText id="detailDefaultLong" converter="LongConverter"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.long and !campoMB.lovPopup and !campoMB.submit and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="false" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		styleClass="#{campoMB.styleInputText}"
+		onblur="javascript:this.mask.update();"	
+		onfocus="javascript:aplicaMascaraNumero(this, #{campoMB.maxLength});">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultLong" for="detailDefaultLong"
+		tooltip="true" />
+
+	<!-- TextField com convert para number utilizado para campos do tipo Long  que não sejam retorno de LOV, COM SUBMIT -->
+	<ice:inputText id="detailDefaultLongSubmit" converter="LongConverter"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.long and !campoMB.lovPopup and campoMB.submit and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="true" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascaraNumero(this, #{campoMB.maxLength});">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultLongSubmit"
+		for="detailDefaultLongSubmit" tooltip="true" />
+
+	<!-- TextField com convert para number utilizado para campos do tipo Long  que seja LOV -->
+	<ice:inputText id="detailLovLong" converter="LongConverter"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.long and campoMB.lovPopup  and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="true" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		styleClass="#{campoMB.styleInputText}"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		onfocus="javascript:aplicaMascaraNumero(this, #{campoMB.maxLength});">
+		
+		<f:attribute name="campo" value="#{campoMB}" />
+	</ice:inputText>
+
+
+
+	<!-- TextField com convert para number utilizado para campos do tipo Integer  que não sejam retorno de LOV, SEM SUBMIT -->
+	<ice:inputText id="detailDefaultInteger" converter="IntegerConverter"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.integer and !campoMB.lovPopup and !campoMB.submit and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="false" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		styleClass="#{campoMB.styleInputText}"
+		onblur="javascript:this.mask.update();"	
+		onfocus="javascript:aplicaMascaraNumero(this, #{campoMB.maxLength});">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultInteger" for="detailDefaultInteger"
+		tooltip="true" />
+
+	<!-- TextField com convert para number utilizado para campos do tipo Integer  que não sejam retorno de LOV, COM SUBMIT -->
+	<ice:inputText id="detailDefaultIntegerSubmit"
+		converter="IntegerConverter" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.integer and !campoMB.lovPopup and campoMB.submit and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="true" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		styleClass="#{campoMB.styleInputText}"
+		onfocus="javascript:aplicaMascaraNumero(this, #{campoMB.maxLength} );">
+		<f:validator validatorId="SynLengthValidator" />
+		<f:attribute name="maxLength" value="#{campoMB.maxLength}" />
+	</ice:inputText>
+	<ice:message id="msg-detailDefaultIntegerSubmit"
+		for="detailDefaultIntegerSubmit" tooltip="true" />
+
+	<!-- TextField com convert para number utilizado para campos do tipo Integer que seja LOV-->
+	<ice:inputText id="detailLovInteger" converter="IntegerConverter"
+		value="#{campoMB.valor}" readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.integer and campoMB.lovPopup  and !campoMB.lovComboBox and !campoMB.lovMultiSelect}"
+		partialSubmit="true" size="#{campoMB.tamanho}"
+		maxlength="#{campoMB.maxLength}" immediate="false"
+		styleClass="#{campoMB.styleInputText}"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		onfocus="javascript:aplicaMascaraNumero(this, #{campoMB.maxLength} );">
+		
+		<f:attribute name="campo" value="#{campoMB}" />
+	</ice:inputText>
+
+
+	<!-- TextField como calendario, somente quando é Date e está habilitado, SEM SUBMIT -->
+	<ice:selectInputDate id="detailDefaultDate"
+		styleClass="#{campoMB.styleInputText}" value="#{campoMB.valor}"
+		rendered="#{campoMB.date  and !campoMB.retornoLov and !campoMB.submit and !campoMB.lovMultiSelect}"
+		renderAsPopup="true" partialSubmit="true" immediate="false"
+		popupDateFormat="dd/MM/yyyy" disabled="#{!campoMB.editavel}">
+		<f:convertDateTime type="both" timeZone="#{portal.timeZone}" />
+	</ice:selectInputDate>
+	<ice:message id="msg-detailDefaultDate" for="detailDefaultDate"
+		tooltip="true" />
+
+	<!-- TextField como calendario, somente quando é Date  e está habilitado, COM SUBMIT -->
+	<ice:selectInputDate id="detailDefaultDateSubmit"
+		styleClass="#{campoMB.styleInputText}" value="#{campoMB.valor}"
+		popupDateFormat="dd/MM/yyyy"
+		rendered="#{campoMB.date  and !campoMB.retornoLov and campoMB.submit and !campoMB.lovMultiSelect}"
+		renderAsPopup="true" partialSubmit="true" immediate="false"
+		disabled="#{!campoMB.editavel}"
+		valueChangeListener="#{campoMB.valorAlterado}">
+		<f:convertDateTime type="both" timeZone="#{portal.timeZone}" />
+	</ice:selectInputDate>
+	<ice:message for="detailDefaultDateSubmit" tooltip="true" />
+
+	<!-- TextField como calendario, somente quando é  DateTime e está habilitado, COM SUBMIT -->
+	<ice:selectInputDate id="detailDefaultHoraSubmit"
+		styleClass="#{campoMB.styleInputText}" value="#{campoMB.valor}"
+		popupDateFormat="dd/MM/yyyy HH:mm:ss"
+		rendered="#{campoMB.dateTime  and !campoMB.retornoLov and campoMB.submit and !campoMB.lovMultiSelect and campoMB.editavel}"
+		renderAsPopup="true" partialSubmit="true" immediate="false"
+		disabled="#{!campoMB.editavel}"
+		valueChangeListener="#{campoMB.valorAlterado}">
+		<f:convertDateTime timeZone="#{portal.timeZone}" />
+	</ice:selectInputDate>
+	<ice:message for="detailDefaultHoraSubmit" tooltip="true" />
+
+	<!-- TextField como calendario, somente quando é  DateTime e está habilitado, SEM SUBMIT -->
+	<ice:selectInputDate id="detailDefaultHora"
+		styleClass="#{campoMB.styleInputText}" value="#{campoMB.valor}"
+		popupDateFormat="dd/MM/yyyy HH:mm:ss"
+		rendered="#{campoMB.dateTime  and !campoMB.retornoLov and !campoMB.submit and !campoMB.lovMultiSelect and campoMB.editavel}"
+		renderAsPopup="true" partialSubmit="true" immediate="false"
+		disabled="#{!campoMB.editavel}">
+		<f:convertDateTime timeZone="#{portal.timeZone}" />
+	</ice:selectInputDate>
+	<ice:message for="detailDefaultHora" tooltip="true" />
+
+	<!-- Outputext para campos que são DateTime e estão desabilitados-->
+	<ice:inputText id="detailDefaultHoraDisable"
+		converter="SynDateTimeConverter" value="#{campoMB.valor}"
+		readonly="true"
+		rendered="#{campoMB.dateTime and !campoMB.retornoLov and !campoMB.lovMultiSelect and !campoMB.editavel}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="false" immediate="false"
+		styleClass="iceInpTxt-readOnly"
+		onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+		onblur="javascript:validaCampo(this,'#{compoMB.mascara}');" />
+
+	<!-- TextArea para campos quando o tipo de lov associado ao campo for multipla seleção. -->
+	<ice:inputTextarea id="detailDefaultTextAreaMultiSelectLOV"
+		styleClass="#{campoMB.styleInputTextArea}" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.lovMultiSelect and  !campoMB.submit}"
+		partialSubmit="false" cols="#{campoMB.tamanho}"
+		rows="#{campoMB.maxLinhas}" immediate="false"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		maxlength="#{campoMB.maxLength}">
+		
+		<f:attribute name="campo" value="#{campoMB}" />
+	</ice:inputTextarea>
+
+
+	<!-- TextArea para campos quando o tipo de lov associado ao campo for multipla seleção.  COM SUBMIT-->
+	<ice:inputTextarea id="detailDefaultTextAreaSubmitMultiLOV"
+		styleClass="#{campoMB.styleInputTextArea}" value="#{campoMB.valor}"
+		readonly="#{!campoMB.editavel}"
+		rendered="#{campoMB.lovMultiSelect and  campoMB.submit}"
+		partialSubmit="true" cols="#{campoMB.tamanho}"
+		rows="#{campoMB.maxLinhas}" immediate="false"
+		valueChangeListener="#{campoMB.valorAlterado}"
+		maxlength="#{campoMB.maxLength}">
+		
+		<f:attribute name="campo" value="#{campoMB}" />
+	</ice:inputTextarea>
+
+	
+	<ice:commandLink id="detailDefaultLovLnk"
+		disabled="#{!campoMB.editavel}" rendered="#{campoMB.lovPopup and !campoMB.autoComplete }"
+		action="#{campoMB.openLovSubPage}">
+		<ice:graphicImage id="detailDefaultLovLnkImg"
+			value="/gui/images/lupa.png" onmouseover="" onmouseout=""
+			styleClass="graphic" height="16px" width="16px" />
+		<f:param id="detailDefaultLovParam" name="nomeCampoLov"
+			value="#{campoMB.nome}" />
+		<f:param id="linhaDisparoLov" name="rowPK" value="#{rowPK}" />
+	</ice:commandLink>
+
+	<ice:graphicImage rendered="#{campoMB.lovMultiSelect}"
+		id="headerPageLnkHelpImg" value="gui/images/bt-ajuda-in.png"
+		onmouseover="Tip('#{bundle.lbl_helpMultiValores}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+		onmouseout="UnTip();" onclick="UnTip();"></ice:graphicImage>
+
+	<!--  Campo do tipo lista de valores quando o mesmo é comboBox, SEM SUBMIT -->
+	<ice:selectOneMenu id="detailDefaultCombo"
+		value="#{campoMB.valorString}" rendered="#{campoMB.lovComboBox and  !campoMB.submit}"
+		disabled="#{!campoMB.editavel}" partialSubmit="false" immediate="true">
+		<f:selectItems value="#{campoMB.listaValores}"></f:selectItems>
+	</ice:selectOneMenu>
+
+	<!--  Campo do tipo lista de valores quando o mesmo é comboBox, COM SUBMIT -->
+	<ice:selectOneMenu id="detailDefaultComboSubmit"
+		value="#{campoMB.valorString}" rendered="#{campoMB.lovComboBox and  campoMB.submit}"
+		disabled="#{!campoMB.editavel}" partialSubmit="true" immediate="true"
+		valueChangeListener="#{campoMB.valorAlterado}">
+		<f:selectItems value="#{campoMB.listaValores}"></f:selectItems>
+	</ice:selectOneMenu>
+
+	<!-- Outputext para campos que são retorno do LOV com estilo específico -->
+	<ice:inputText value="#{campoMB.valor}" readonly="true"
+		rendered="#{campoMB.retornoLov and !campoMB.bigDecimal and !campoMB.lovMultiSelect and !campoMB.textArea}"
+		size="#{campoMB.tamanho}" maxlength="#{campoMB.maxLength}"
+		partialSubmit="false" immediate="false"
+		styleClass="iceInpTxt-readOnly"
+		onfocus="javascript:aplicaMascara(this,'#{campoMB.mascara}');"
+		onblur="javascript:validaCampo(this,'#{compoMB.mascara}');">
+		<f:converter converterId="SynGridConverter" />
+	</ice:inputText>
+
+
+	<!-- Outputext para campos que possuem mascara -->
+	<ice:outputLabel value="#{campoMB.mascaraRotulo}" readonly="true"
+		rendered="#{campoMB.mascara != null}" partialSubmit="false"
+		immediate="false" styleClass="iceInpTxt-showMask" />
+
+</ice:column>

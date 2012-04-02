@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        id="centerBar">
+    <div styleClass="styleCenterDefault">
+	   	<table width="100%"  cellpadding="0" cellspacing="0" bordercolor="#E0DCBE">
+			    <tr>
+				    <td>
+						<table width="100%" >
+					        <tr>
+						        <td class="TLogotipoInterno">
+						        	<img src="images/centerPortal.jpg" align="center" hspace="70%" /><br/><br/>
+									<div align="center"><br/><br/>
+										<ice:outputText styleClass="TLoginTxt" value="(c)Copyright 2005 Todos os Direitos Reservados"/>
+										<br/>
+										<ice:outputText styleClass="TLoginTxt" value="Synchro Sistemas de Informação"/>
+										<br/><br/>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+		    	</tr>
+		</table>
+	</div>  		
+</ice:panelGrid>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets" columns="1" 
+        cellpadding="0" 
+		cellspacing="0" 
+		width="100%" 
+		border="0" 
+		>
+        
+
+		<ice:panelGroup styleClass="barTitleAssociations" >
+			<ice:panelGrid columns="3" width="100%" cellpadding="5px" cellspacing="0" columnClasses="tituloAssociacao,qtdRegistros,botaoMaxMin">
+        		<ice:panelGroup>
+	       			<ice:outputText styleClass="titleAssociations" value="#{assocPageMB.tituloPagina}"/>
+        		</ice:panelGroup>	
+        		<ice:panelGroup>
+        			<ice:panelGrid columns="2" cellpadding="0" cellspacing="0" >
+	        			<ice:outputText  value="#{bundle.search_lbl_numero_registros}"/>
+	        			<ui:include src="../pesquisa/qtdRegistros.jspx">
+	        					<ui:param name="pesquisaMB" value="#{assocPageMB.pesquisa}"></ui:param>
+	        			</ui:include>
+        			</ice:panelGrid>
+        		</ice:panelGroup>
+        	</ice:panelGrid>
+	       	
+	    </ice:panelGroup>
+
+  		<ice:panelGroup>
+        	<ui:include src="../grid/barraGrid.jspx">
+        		<ui:param name="gridMB" value="#{assocPageMB.grid}"></ui:param>
+        		<ui:param name="pageMB" value="#{assocPageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+        
+        <!-- Inclui JSp com a area do contexto de pesquisa. -->
+        <ice:panelGroup style="display: block; width: 99.4%; background: #EEEEEE; padding: 3px" rendered="#{assocPageMB.pesquisa.textoContextoPesquisaVisivel}">
+        	<ui:include src="../pesquisa/barraContextoPesquisa.jspx">
+        		<ui:param name="pesquisaMB" value="#{assocPageMB.pesquisa}"></ui:param>
+        		<ui:param name="painelFuncMB" value="#{assocPageMB.paineis['funcionalidades']}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+        
+        <!-- Inclui JSp coma area de funcionalidades da tela. -->
+        <ice:panelGroup >
+        	<ui:include src="../paineis/painelFunc.jspx">
+        		<ui:param name="pageMB" value="#{assocPageMB}"></ui:param>
+        		<ui:param name="painelFuncMB" value="#{assocPageMB.paineis['funcionalidades']}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+        
+		<!--  Inlcui Grid da tela de associação. -->      	
+        <ice:panelGroup>
+        	<ui:include src="../grid/gridPadrao.jspx" >
+        		<ui:param name="gridMB" value="#{assocPageMB.grid}"></ui:param>
+        		<ui:param name="listaCampoMB" value="#{assocPageMB.detalhe.camposDetalhePadrao}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+        
+</ice:panelGrid>

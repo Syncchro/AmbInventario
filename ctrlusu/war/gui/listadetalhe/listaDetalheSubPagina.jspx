@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        xmlns:ui="http://java.sun.com/jsf/facelets" columns="1" 
+        cellpadding="0" 
+		cellspacing="0" 
+		width="100%" 
+		border="0">
+        
+		<!--  Inlcui JSP (Lista / Detalhe) padrao. -->      	
+        <ice:panelGroup >
+        	<ui:include src="painelListaDetalhe.jspx">
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+
+        <!--  Inclui barra inferior da página -->
+        <ice:panelGroup >
+        	<ui:include src="barraPainelListaDetalhe.jspx">
+        		<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+        	</ui:include>
+        </ice:panelGroup>
+
+ 		     
+</ice:panelGrid>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ice="http://www.icesoft.com/icefaces/component"
+        columns="1">
+
+	<br/>
+	<ice:panelGroup>
+		<ice:outputText value="#{paginaMB.verificadorPendencia.msgPendenciasRegistro}" styleClass="iceOutputTextObrigatorio"/>
+	</ice:panelGroup>
+	<br/><br/>
+	<ice:panelGrid columns="2">
+	
+		<ice:panelGroup>
+    		<ice:commandButton id="confirmaGravacaoSim" 
+    			value="#{bundle.lbl_sim}" 
+    			action="#{paginaMB.verificadorPendencia.gravarPendenciasRegistro}" />
+    		</ice:panelGroup>
+ 		<ice:panelGroup>
+ 			<ice:commandButton id="confirmaGravacaoNao" 
+ 				value="#{bundle.lbl_nao}" 
+ 				action="#{paginaMB.verificadorPendencia.descartarPendenciasRegistro}" 
+ 			/>
+ 		</ice:panelGroup>
+	</ice:panelGrid>        
+        
+</ice:panelGrid>

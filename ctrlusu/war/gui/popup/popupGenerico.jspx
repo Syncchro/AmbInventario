@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelPopup
+	 xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ice="http://www.icesoft.com/icefaces/component"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+	id="popupGenerico"
+          draggable="#{popupGenerico.draggable}"
+          rendered="#{popupGenerico.visivel}"
+          style="#{popupGenerico.style}"
+          modal="#{popupGenerico.modal}"
+          
+		>
+			<f:facet name="header">
+				<ice:panelGrid width="#{popupGenerico.widthTela}" cellpadding="0" cellspacing="0" columns="2" 
+					styleClass="popupHeader" rendered="#{popupGenerico.visivel}" columnClasses="headerPopup1,headerPopup2" >
+					<ice:outputText value="#{popupGenerico.tituloPopup}" style="cursor: default;"/>
+			    	<ice:commandButton id="popupGenericoBtnClose" 
+			        	type="button"
+			        	image="/gui/images/popupclose.gif"
+			            action="#{popupGenerico.fecharPopup}"
+			            style="cursor: pointer;" 
+			            immediate="true"
+			            rendered="#{popupGenerico.exibeBotaoFechar}"
+			            />
+				</ice:panelGrid>
+			</f:facet>
+			<f:facet name="body">
+		    		<ui:include src="#{popupGenerico.jspCorrente}">
+		    			<ui:param name="paginaMB" value="#{popupGenerico.paginaOrigem}"></ui:param>
+		    		</ui:include>
+			</f:facet>
+</ice:panelPopup>
+
+
+<!--
+########################################################################### 
+Workaround para problema com popup modal (abaixo tópico do fórum IceFaces):
+###########################################################################
+
+Hi, 
+I would like to report an issue about the modal popups like the title says. 
+Once a modal popup appears on the screen, it keeps the other field uneditable 
+like it should BUT when closing this popup, the fields appear to be editable 
+but you cannot add characters. However delete characters is possible? 
+
+###
+
+Simple workaround : don't use "rendered" on your <ice:panelPopup> 
+Keep "visible" attr bound to the same value. 
+
+###
+
+Hi, 
+
+Thanks for the workaround! Works like a charm. 
+
+Sidenote for readers of the post: I did had to put the rendered somewhere since 
+some logic is in the body of the popup that could take a lot of extra memory so 
+I set the rendered to a ice:panelGroup inside the popup facet body. 
+This way the body of the popup does not slow down the initial page-request and 
+eat memory that it doesn't need anyway.
+ -->

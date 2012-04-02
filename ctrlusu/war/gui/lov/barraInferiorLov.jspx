@@ -1,0 +1,45 @@
+<ice:panelGrid
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:ice="http://www.icesoft.com/icefaces/component" width="100%" columns="1" styleClass="panelCenterButtons"
+        cellpadding="0" 
+		cellspacing="0" 
+		border="0">
+
+	<ice:panelGroup>
+		<ice:panelGrid 
+				columnClasses="contentFooterPageColumn1,contentFooterPageColumn4"
+				cellpadding="0" 
+				cellspacing="0" 
+				border="0"
+				columns="4"
+				width="100%">
+			<ice:panelGroup style="white-space: nowrap; text-align: left;" >
+			      	<ui:include src="../paginador/paginador.jspx">
+				        <ui:param name="paginadorMB" value="#{pageMB.grid.gridPaginador}"></ui:param>
+			       	</ui:include>
+		    </ice:panelGroup>
+			<ice:panelGroup>
+				<ice:panelGrid 
+					columnClasses="qtdRegistrosColumns1,qtdRegistrosColumns2,qtdRegistrosColumns3,qtdRegistrosColumns4"
+					cellpadding="0" 
+					cellspacing="0" 
+					border="0"
+					columns="4"
+					width="100%">
+					<!-- Inclui quantidade de registros da pesquisa -->
+		    		<ice:outputText rendered="#{pageMB.pesquisaAtiva}" value="#{pageMB.grid.lblNroRegistros}"/>
+					<ui:include src="../pesquisa/qtdRegistros.jspx">
+		        		<ui:param name="pesquisaMB" value="#{pageMB.pesquisa}"></ui:param>
+	       			</ui:include>
+	       			<!-- Inclui quantidade de registros do dataGrid -->
+	       			<ice:outputText  value="#{bundle.search_lbl_por_pagina}"/>
+					<ui:include src="../grid/qtdRegistrosPagina.jspx">
+		        		<ui:param name="gridMB" value="#{pageMB.grid}"></ui:param>
+	       			</ui:include>
+	       		</ice:panelGrid>
+			</ice:panelGroup>
+		</ice:panelGrid>
+	</ice:panelGroup>
+</ice:panelGrid>

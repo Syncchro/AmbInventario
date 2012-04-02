@@ -1,0 +1,29 @@
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	style="margin: 15px 0 0 15px">
+
+	<ice:panelGrid columns="1" cellpadding="5px">
+		<ui:include src="dadosPessoais.jspx">
+			<ui:param name="dadosPessoais" value="#{pageMB.dadosPessoais}"></ui:param>
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+			
+		<ui:include src="preferencias.jspx">
+			<ui:param name="preferencias" value="#{pageMB.preferencias}"></ui:param>
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+		
+		<ui:include src="alterarSenha.jspx">
+			<ui:param name="alterarSenha" value="#{pageMB.alterarSenha}"></ui:param>
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>		
+
+		<ui:include src="barraEdicao.jspx">
+			<ui:param name="pageMB" value="#{pageMB}"></ui:param>
+		</ui:include>
+		
+	</ice:panelGrid>
+
+</ice:panelGroup>

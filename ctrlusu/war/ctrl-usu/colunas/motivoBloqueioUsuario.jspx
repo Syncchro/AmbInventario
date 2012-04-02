@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:ice="http://www.icesoft.com/icefaces/component"
+   width="100%" columns="1">
+
+ <f:loadBundle
+        basename="SynCtrl-UsuMessagesResources"
+        var="bundleAccessControl"  />
+
+		<ice:panelGroup>
+			<ice:outputText rendered="#{data['numTentativaLogin'] ge pageMB.qtdMaximoTentativa and data['indBloqueado'] eq 'S'}" value="Número de tentativas excedidas" ></ice:outputText>
+			<ice:outputText rendered="#{data['qtdDiasInativade'] gt pageMB.qtdMaximoDias and data['indBloqueado'] eq 'S' and data['numTentativaLogin'] lt pageMB.qtdMaximoTentativa}" value="Inatividade" ></ice:outputText>
+			<ice:outputText rendered="#{data['indBloqueado'] eq 'S' and data['numTentativaLogin'] lt pageMB.qtdMaximoTentativa and data['qtdDiasInativade'] le pageMB.qtdMaximoDias}" value="Manual" ></ice:outputText>
+		</ice:panelGroup>
+
+</ice:panelGrid>

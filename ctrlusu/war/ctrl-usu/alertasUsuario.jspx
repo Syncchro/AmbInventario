@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGrid xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" columns="1"
+	style="width: 100%;">
+	<f:loadBundle basename="SynCtrl-UsuMessagesResources"
+		var="bundleAccessControl" />
+
+	<ice:panelGroup
+		style="height: 350px; overflow-y: auto; border: 1px solid #ddd; width: 100%;">
+		<ice:panelSeries var="alerta" value="#{alertasUsuarioMB.alertas}">
+			<ice:panelGroup
+				style="padding-bottom: 10px;width: 100%;margin-bottom: 5px">
+				
+				<ice:panelGroup styleClass="headerAlertaUsuario">
+					<ice:graphicImage value="/ctrl-usu/images/alerta.png" style="margin-left: 5px;" />
+					<ice:outputText value="#{alerta.assunto}"
+						style="font-weight: bold;margin-left: 5px;vertical-align: top;" />
+				</ice:panelGroup>
+				<ice:inputTextarea value="#{alerta.mensagem}" rows="5"
+					styleClass="textAreaAlertaUsuario" />
+
+				<ice:outputText
+					value="#{bundleAccessControl.alertasUsuario_lbl_Responsavel}: " style="padding-left: 5px;"/>
+				<ice:outputText value="#{alerta.responsavel}" />
+				<br />
+				<ice:outputText
+					value="#{bundleAccessControl.alertasUsuario_lbl_InicioVig}: " style="padding-left: 5px;"/>
+				<ice:outputText value="#{alerta.dtInicioVigencia}">
+					<f:converter converterId="SynGridConverter" />
+				</ice:outputText>
+				<ice:outputText
+					value="  #{bundleAccessControl.alertasUsuario_lbl_FimVig}: " />
+				<ice:outputText value="#{alerta.dtFimVigencia}">
+					<f:converter converterId="SynGridConverter" />
+				</ice:outputText>
+			</ice:panelGroup>
+		</ice:panelSeries>
+	</ice:panelGroup>
+
+	<ice:panelGroup style="text-align: right;">
+		<ice:commandButton value="#{bundleAccessControl.lbl_Ok}"
+			action="#{alertasUsuarioMB.fecharPopUp}" />
+	</ice:panelGroup>
+</ice:panelGrid>

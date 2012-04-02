@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	rendered="#{pageMB.pesquisaAtiva}"
+>
+
+	<ice:commandLink  action="#{pesquisaMB.refazPesquisa}" styleClass="buttonInsideBar" >
+		<ice:graphicImage  value="/gui/images/executar-exp.png" 
+		onmouseover="Tip('#{bundle.lbl_btnRefresh}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+ 		onmouseout="UnTip();"   
+ 		onclick="UnTip();"
+ 		height="16px"            
+ 		width="16px"/>
+	</ice:commandLink>
+
+</ice:panelGroup>

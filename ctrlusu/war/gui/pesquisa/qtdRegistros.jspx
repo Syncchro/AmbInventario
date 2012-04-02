@@ -1,0 +1,19 @@
+<ice:panelGroup
+	 xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ice="http://www.icesoft.com/icefaces/component"
+	rendered="#{pageMB.pesquisa !=null}"
+	style="padding-right:10px"
+>
+<ice:inputText 
+			style="padding-top:0px; padding-bottom:0px; text-align: right;"  
+			action="#{pesquisaMB.refazPesquisa}" 
+			valueChangeListener="#{pesquisaMB.numeroRegistrosAlterado}"
+			maxlength="5" 
+			size="5" 
+			value="#{pesquisaMB.numeroRegistros}" 
+			partialSubmit="true" 
+			converter="SynIntegerConverterFooterPage"
+			onfocus="javascript:aplicaMascaraNumero(this, 3, 'false');"
+			onblur="javascript:preencheValorDefault(this, 200);"/>
+</ice:panelGroup>		

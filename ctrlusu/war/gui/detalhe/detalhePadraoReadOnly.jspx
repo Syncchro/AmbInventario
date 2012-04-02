@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<ice:panelGroup xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets" width="100%"
+	rendered="#{pageMB.detalheAtivo}">
+
+	<ice:dataTable value="#{listaCampoMB}" var="campoDetalhe"
+		style="border: none" border="0" cellpadding="0" cellspacing="0">
+		<ice:column
+			style="background: #FFFFFF; border: none; padding: 0 5px 0 0; text-align: right; width: 15%;white-space: nowrap; vertical-align: top">
+
+			<ice:panelGroup style="white-space: nowrap; padding: 3px;">
+				<ice:outputText value="#{campoDetalhe.rotulo}:"
+					onmouseover="Tip('#{campoDetalhe.descricao}', BALLOON, true, ABOVE, true, PADDING, 8, DELAY, 1500, CENTERMOUSE, true);"
+					onmouseout="UnTip();" onclick="UnTip();" escape="true"
+					styleClass="iceOutputTextObrigatorio"
+					style="margin: 2px 0px 2px 2px; padding: 2px 0px 2px 2px;" />
+				<!-- styleClass="iceOutputTextObrigatorio" -->
+			</ice:panelGroup>
+		</ice:column>
+
+		<ice:column
+			style="border: none; padding: 0; white-space: normal; text-align: left; width: 335px;background-color: #FFF">
+
+			<ice:panelGroup styleClass="areaDetalheReadOnly">
+				<!--  <ice:panelGroup
+					style="width: 335px; white-space: normal; display: inline-block;">  -->
+
+				<!-- Campos input / textArea exibo apenas o seu valor -->
+				<ice:outputText value="#{campoDetalhe.valor}" escape="true"
+					rendered="#{!campoDetalhe.lovComboBox and !campoDetalhe.textArea}"
+					style="padding-left: 0px; margin-left: 0px;"
+					converter="SynGridConverter">
+					<f:attribute name="formatoDecimal"
+						value="#{campoDetalhe.formatoNumerico}" />
+					<f:attribute name="tipoCampo" value="#{campoDetalhe.tipoCampo}"/>
+				</ice:outputText>
+
+				<ice:inputTextarea  value="#{campoDetalhe.valor}" rows="#{((campoDetalhe.valueLength / 45) > 4 or campoDetalhe.valueLength == 4) ? ((campoDetalhe.valueLength / 45) > 10 ? 10 : (campoDetalhe.valueLength / 45)) : 4}" cols="45" rendered="#{campoDetalhe.textArea}" 
+				         	readonly="true"
+						    styleClass="textAreaDetalheReadOnly"
+				         />
+
+				<!-- Caso seja um campo Select, exibo o Label do valro selecionado e não o seu Valor -->
+				<ice:outputText value="#{campoDetalhe.labelSelecionadaCombo}"
+					escape="true"
+					rendered="#{campoDetalhe.lovComboBox and !campoDetalhe.date and !campoDetalhe.dateTime}"
+					style="padding-left: 0px; margin-left: 0px;" />
+
+			</ice:panelGroup>
+
+		</ice:column>
+	</ice:dataTable>
+</ice:panelGroup>
