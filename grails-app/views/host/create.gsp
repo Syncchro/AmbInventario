@@ -39,10 +39,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="objLocais"><g:message code="host.objLocais.label" default="Obj Locais" /></label>
+                                    <label for="objLocal"><g:message code="host.objLocal.label" default="Obj Locais" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objLocais', 'errors')}">
-                                    <g:select name="objLocais.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.objLocais?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objLocal', 'errors')}">
+                                    <g:select name="objLocal.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.objLocal?.id}"  />
                                 </td>
                             </tr>
                         

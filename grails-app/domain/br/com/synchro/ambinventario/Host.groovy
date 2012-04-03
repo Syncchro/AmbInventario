@@ -11,5 +11,6 @@ class Host {
 	
     static constraints = {
 		nome(blank:false , maxSize:50 , unique:true , minSize:5)
+		objLocal (nullable:true)
     }
 }

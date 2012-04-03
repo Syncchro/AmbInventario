@@ -27,8 +27,9 @@ class Ambiente {
 	static constraints = {
 		ambiente(blank:false , maxSize:50 , unique:true , minSize:3)
 		urlConsole(blank:false , maxSize:50 , unique:true , minSize:3)
-		instrucaoAdicionais(blank:false , maxSize:150 , unique:true , minSize:10)
+		instrucaoAdicionais(blank:false , maxSize:150 , unique:true)
 		fisicaVirtual(nullable:false) 
+		objHost(nullable:true)
     }
 
 	public String toString() {

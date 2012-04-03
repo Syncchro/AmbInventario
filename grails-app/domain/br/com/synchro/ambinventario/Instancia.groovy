@@ -18,8 +18,9 @@ class Instancia {
     
 	static constraints = {
 		instancia(blank:false)
+		obsInstancia(blank:true)
 		objAmbiente(nullable:false)
-		objSoftware(nullable:false)
+		objSoftware(nullable:true)
 		objSolicitante(nullable:false)
     }
 
