@@ -1,7 +1,5 @@
 package br.com.synchro.ambinventario
 
-import br.com.synchro.ambinventario.Ambientes;
-
 class AmbientesController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

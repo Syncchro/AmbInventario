@@ -4,9 +4,9 @@ class Host {
 	
 	
     String nome
+	Locais objLocais
 	
-	
-	static belongsTo = [Host,Locais]
+	static belongsTo = [Locais]
 	static hasMany = [ambiente:Ambientes]
 	
     static constraints = {

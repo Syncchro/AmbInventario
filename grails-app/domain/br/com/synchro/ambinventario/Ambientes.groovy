@@ -18,20 +18,17 @@ class Ambientes {
 	Integer memoriaTotal
 	//Em megabytes, apenas numeros inteiros
 	String obsAmbiente
-	Locais objLocal
-	SistemasOperacionais objSO
+	Host objHosts
 
-    static belongsTo = [Locais,SistemasOperacionais] 
+    static belongsTo = [Host] 
 	static hasMany = [objInstancia:Instancias]
 	static optionals = ["obsAmbiente"]
     
 	static constraints = {
 		ambiente(blank:false , maxSize:50 , unique:true , minSize:3)
-		URLConsole(blank:false , maxSize:50 , unique:true , minSize:3)
+		urlConsole(blank:false , maxSize:50 , unique:true , minSize:3)
 		instrucaoAdicionais(blank:false , maxSize:150 , unique:true , minSize:10)
 		fisicaVirtual(nullable:false) 
-		objLocal(nullable:false)
-		objSO(nullable:false)
     }
 
 	public String toString() {
