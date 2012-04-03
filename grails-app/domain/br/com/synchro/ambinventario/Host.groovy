@@ -2,7 +2,6 @@ package br.com.synchro.ambinventario
 
 class Host {
 	
-	
     String nome
 	Local objLocal
 	

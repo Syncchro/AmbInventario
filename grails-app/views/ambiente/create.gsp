@@ -8,13 +8,21 @@
         <g:set var="entityName" value="${message(code: 'ambiente.label', default: 'Ambiente')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
-    <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+    <div id="nav">
+            <div class="homePagePanel">
+                <div class="panelTop"></div>
+                <div class="panelBody">
+                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
+                    <ul>
+                        <li><span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span></li>
+                    </ul>
+                </div>
+                <div class="panelBtm"></div>
+            </div>
         </div>
+        <div id="pageBody">
         <div class="body">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <br/><br/>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -125,6 +133,7 @@
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
                 </div>
             </g:form>
+        </div>
         </div>
     </body>
 </html>
