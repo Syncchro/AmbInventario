@@ -1,6 +1,6 @@
 
 
-<%@ page import="ambivent.Ambientes" %>
+<%@ page import="br.com.synchro.ambinventario.Ambientes" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -42,10 +42,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                  <label for="instrucaoAdicionais"><g:message code="ambientes.instrucaoAdicionais.label" default="Instrucao Adicionais" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'instrucaoAdicionais', 'errors')}">
+                                    <g:textField name="instrucaoAdicionais" maxlength="150" value="${ambientesInstance?.instrucaoAdicionais}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                   <label for="fisicaVirtual"><g:message code="ambientes.fisicaVirtual.label" default="Fisica Virtual" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'fisicaVirtual', 'errors')}">
-                                    <g:select name="fisicaVirtual" from="${ambivent.TipoAmbiente?.values()}" keys="${ambivent.TipoAmbiente?.values()*.name()}" value="${ambientesInstance?.fisicaVirtual?.name()}"  />
+                                    <g:select name="fisicaVirtual" from="${br.com.synchro.ambinventario.TipoAmbiente?.values()}" keys="${br.com.synchro.ambinventario.TipoAmbiente?.values()*.name()}" value="${ambientesInstance?.fisicaVirtual?.name()}"  />
                                 </td>
                             </tr>
                         
@@ -54,7 +63,7 @@
                                   <label for="objLocal"><g:message code="ambientes.objLocal.label" default="Obj Local" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'objLocal', 'errors')}">
-                                    <g:select name="objLocal.id" from="${ambivent.Locais.list()}" optionKey="id" value="${ambientesInstance?.objLocal?.id}"  />
+                                    <g:select name="objLocal.id" from="${br.com.synchro.ambinventario.Locais.list()}" optionKey="id" value="${ambientesInstance?.objLocal?.id}"  />
                                 </td>
                             </tr>
                         
@@ -63,7 +72,7 @@
                                   <label for="objSO"><g:message code="ambientes.objSO.label" default="Obj SO" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'objSO', 'errors')}">
-                                    <g:select name="objSO.id" from="${ambivent.SistemasOperacionais.list()}" optionKey="id" value="${ambientesInstance?.objSO?.id}"  />
+                                    <g:select name="objSO.id" from="${br.com.synchro.ambinventario.SistemasOperacionais.list()}" optionKey="id" value="${ambientesInstance?.objSO?.id}"  />
                                 </td>
                             </tr>
                         
@@ -107,6 +116,33 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'obsAmbiente', 'errors')}">
                                     <g:textField name="obsAmbiente" value="${ambientesInstance?.obsAmbiente}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="senhaConsole"><g:message code="ambientes.senhaConsole.label" default="Senha Console" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'senhaConsole', 'errors')}">
+                                    <g:textField name="senhaConsole" value="${fieldValue(bean: ambientesInstance, field: 'senhaConsole')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="urlConsole"><g:message code="ambientes.urlConsole.label" default="Url Console" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'urlConsole', 'errors')}">
+                                    <g:textField name="urlConsole" value="${ambientesInstance?.urlConsole}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="usuarioConsole"><g:message code="ambientes.usuarioConsole.label" default="Usuario Console" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'usuarioConsole', 'errors')}">
+                                    <g:textField name="usuarioConsole" value="${ambientesInstance?.usuarioConsole}" />
                                 </td>
                             </tr>
                         

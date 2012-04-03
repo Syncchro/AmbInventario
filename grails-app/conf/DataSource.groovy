@@ -15,14 +15,14 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop','update'
+            dbCreate = "create" // one of 'create', 'create-drop','update'
             url = "jdbc:oracle:thin:@localhost:1521:xe"
         }
     }
 	
     test {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create"
             url = "jdbc:oracle:thin:@localhost:1521:xe"
         }
     }

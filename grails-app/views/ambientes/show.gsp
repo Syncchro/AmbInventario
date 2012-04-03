@@ -1,5 +1,5 @@
 
-<%@ page import="ambivent.Ambientes" %>
+<%@ page import="br.com.synchro.ambinventario.Ambientes" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -33,6 +33,13 @@
                             <td valign="top" class="name"><g:message code="ambientes.ambiente.label" default="Ambiente" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: ambientesInstance, field: "ambiente")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="ambientes.instrucaoAdicionais.label" default="Instrucao Adicionais" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: ambientesInstance, field: "instrucaoAdicionais")}</td>
                             
                         </tr>
                     
@@ -88,6 +95,27 @@
                             <td valign="top" class="name"><g:message code="ambientes.obsAmbiente.label" default="Obs Ambiente" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: ambientesInstance, field: "obsAmbiente")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="ambientes.senhaConsole.label" default="Senha Console" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: ambientesInstance, field: "senhaConsole")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="ambientes.urlConsole.label" default="Url Console" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: ambientesInstance, field: "urlConsole")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="ambientes.usuarioConsole.label" default="Usuario Console" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: ambientesInstance, field: "usuarioConsole")}</td>
                             
                         </tr>
                     

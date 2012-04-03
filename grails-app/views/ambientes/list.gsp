@@ -1,5 +1,5 @@
 
-<%@ page import="ambivent.Ambientes" %>
+<%@ page import="br.com.synchro.ambinventario.Ambientes" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,13 +26,13 @@
                         
                             <g:sortableColumn property="ambiente" title="${message(code: 'ambientes.ambiente.label', default: 'Ambiente')}" />
                         
+                            <g:sortableColumn property="instrucaoAdicionais" title="${message(code: 'ambientes.instrucaoAdicionais.label', default: 'Instrucao Adicionais')}" />
+                        
                             <g:sortableColumn property="fisicaVirtual" title="${message(code: 'ambientes.fisicaVirtual.label', default: 'Fisica Virtual')}" />
                         
                             <th><g:message code="ambientes.objLocal.label" default="Obj Local" /></th>
                         
                             <th><g:message code="ambientes.objSO.label" default="Obj SO" /></th>
-                        
-                            <g:sortableColumn property="descricaoAmbiente" title="${message(code: 'ambientes.descricaoAmbiente.label', default: 'Descricao Ambiente')}" />
                         
                         </tr>
                     </thead>
@@ -44,13 +44,13 @@
                         
                             <td>${fieldValue(bean: ambientesInstance, field: "ambiente")}</td>
                         
+                            <td>${fieldValue(bean: ambientesInstance, field: "instrucaoAdicionais")}</td>
+                        
                             <td>${fieldValue(bean: ambientesInstance, field: "fisicaVirtual")}</td>
                         
                             <td>${fieldValue(bean: ambientesInstance, field: "objLocal")}</td>
                         
                             <td>${fieldValue(bean: ambientesInstance, field: "objSO")}</td>
-                        
-                            <td>${fieldValue(bean: ambientesInstance, field: "descricaoAmbiente")}</td>
                         
                         </tr>
                     </g:each>
