@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Welcome to Grails</title>
+        <title><g:message code="application.fullname" /></title>
         <meta name="layout" content="main" />
         <style type="text/css" media="screen">
 
@@ -51,7 +51,7 @@
         </style>
     </head>
     <body>
-        <div id="nav">
+       <!-- <div id="nav">
             <div class="homePagePanel">
                 <div class="panelTop"></div>
                 <div class="panelBody">
@@ -95,6 +95,6 @@
                     </g:each>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </body>
 </html>
