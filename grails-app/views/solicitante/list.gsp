@@ -1,10 +1,10 @@
 
-<%@ page import="br.com.synchro.ambinventario.Host" %>
+<%@ page import="br.com.synchro.ambinventario.Solicitante" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'host.label', default: 'Host')}" />
+        <g:set var="entityName" value="${message(code: 'solicitante.label', default: 'Solicitante')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,23 +22,27 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'host.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'solicitante.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="nome" title="${message(code: 'host.nome.label', default: 'Nome')}" />
+                            <g:sortableColumn property="solicitante" title="${message(code: 'solicitante.solicitante.label', default: 'Solicitante')}" />
                         
-                            <th><g:message code="host.objLocais.label" default="Obj Locais" /></th>
+                            <g:sortableColumn property="projetoArea" title="${message(code: 'solicitante.projetoArea.label', default: 'Projeto Area')}" />
+                        
+                            <th><g:message code="solicitante.objSolicitante.label" default="Obj Solicitante" /></th>
                         
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${hostInstanceList}" status="i" var="hostInstance">
+                    <g:each in="${solicitanteInstanceList}" status="i" var="solicitanteInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${hostInstance.id}">${fieldValue(bean: hostInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${solicitanteInstance.id}">${fieldValue(bean: solicitanteInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: hostInstance, field: "nome")}</td>
+                            <td>${fieldValue(bean: solicitanteInstance, field: "solicitante")}</td>
                         
-                            <td>${fieldValue(bean: hostInstance, field: "objLocais")}</td>
+                            <td>${fieldValue(bean: solicitanteInstance, field: "projetoArea")}</td>
+                        
+                            <td>${fieldValue(bean: solicitanteInstance, field: "objSolicitante")}</td>
                         
                         </tr>
                     </g:each>
@@ -46,7 +50,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${hostInstanceTotal}" />
+                <g:paginate total="${solicitanteInstanceTotal}" />
             </div>
         </div>
     </body>

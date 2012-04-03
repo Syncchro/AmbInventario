@@ -4,10 +4,10 @@ class Host {
 	
 	
     String nome
-	Locais objLocais
+	Local objLocais
 	
-	static belongsTo = [Locais]
-	static hasMany = [ambiente:Ambientes]
+	static belongsTo = [Local]
+	static hasMany = [ambiente:Ambiente]
 	
     static constraints = {
 		nome(blank:false , maxSize:50 , unique:true , minSize:5)

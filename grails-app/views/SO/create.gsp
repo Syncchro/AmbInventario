@@ -1,11 +1,11 @@
 
 
-<%@ page import="br.com.synchro.ambinventario.Host" %>
+<%@ page import="br.com.synchro.ambinventario.SO" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'host.label', default: 'Host')}" />
+        <g:set var="entityName" value="${message(code: 'SO.label', default: 'SO')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -18,9 +18,9 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${hostInstance}">
+            <g:hasErrors bean="${SOInstance}">
             <div class="errors">
-                <g:renderErrors bean="${hostInstance}" as="list" />
+                <g:renderErrors bean="${SOInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form action="save" >
@@ -30,19 +30,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="nome"><g:message code="host.nome.label" default="Nome" /></label>
+                                    <label for="so"><g:message code="SO.so.label" default="So" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'nome', 'errors')}">
-                                    <g:textField name="nome" maxlength="50" value="${hostInstance?.nome}" />
+                                <td valign="top" class="value ${hasErrors(bean: SOInstance, field: 'so', 'errors')}">
+                                    <g:textField name="so" maxlength="100" value="${SOInstance?.so}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="objLocais"><g:message code="host.objLocais.label" default="Obj Locais" /></label>
+                                    <label for="descricaoSO"><g:message code="SO.descricaoSO.label" default="Descricao SO" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objLocais', 'errors')}">
-                                    <g:select name="objLocais.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.objLocais?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: SOInstance, field: 'descricaoSO', 'errors')}">
+                                    <g:textField name="descricaoSO" value="${SOInstance?.descricaoSO}" />
                                 </td>
                             </tr>
                         

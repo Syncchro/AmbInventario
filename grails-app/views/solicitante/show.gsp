@@ -1,10 +1,10 @@
 
-<%@ page import="br.com.synchro.ambinventario.Host" %>
+<%@ page import="br.com.synchro.ambinventario.Solicitante" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'host.label', default: 'Host')}" />
+        <g:set var="entityName" value="${message(code: 'solicitante.label', default: 'Solicitante')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,36 +23,30 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="solicitante.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.nome.label" default="Nome" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "nome")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: solicitanteInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.ambiente.label" default="Ambiente" /></td>
+                            <td valign="top" class="name"><g:message code="solicitante.solicitante.label" default="Solicitante" /></td>
                             
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${hostInstance.ambiente}" var="a">
-                                    <li><g:link controller="ambiente" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
+                            <td valign="top" class="value">${fieldValue(bean: solicitanteInstance, field: "solicitante")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.objLocais.label" default="Obj Locais" /></td>
+                            <td valign="top" class="name"><g:message code="solicitante.projetoArea.label" default="Projeto Area" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objLocais?.id}">${hostInstance?.objLocais?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value">${fieldValue(bean: solicitanteInstance, field: "projetoArea")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="solicitante.objSolicitante.label" default="Obj Solicitante" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="solicitante" action="show" id="${solicitanteInstance?.objSolicitante?.id}">${solicitanteInstance?.objSolicitante?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -61,7 +55,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${hostInstance?.id}" />
+                    <g:hiddenField name="id" value="${solicitanteInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

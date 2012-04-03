@@ -1,11 +1,11 @@
 
 
-<%@ page import="br.com.synchro.ambinventario.Host" %>
+<%@ page import="br.com.synchro.ambinventario.Software" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'host.label', default: 'Host')}" />
+        <g:set var="entityName" value="${message(code: 'software.label', default: 'Software')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -19,49 +19,49 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${hostInstance}">
+            <g:hasErrors bean="${softwareInstance}">
             <div class="errors">
-                <g:renderErrors bean="${hostInstance}" as="list" />
+                <g:renderErrors bean="${softwareInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${hostInstance?.id}" />
-                <g:hiddenField name="version" value="${hostInstance?.version}" />
+                <g:hiddenField name="id" value="${softwareInstance?.id}" />
+                <g:hiddenField name="version" value="${softwareInstance?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="nome"><g:message code="host.nome.label" default="Nome" /></label>
+                                  <label for="software"><g:message code="software.software.label" default="Software" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'nome', 'errors')}">
-                                    <g:textField name="nome" maxlength="50" value="${hostInstance?.nome}" />
+                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'software', 'errors')}">
+                                    <g:textField name="software" value="${softwareInstance?.software}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="ambiente"><g:message code="host.ambiente.label" default="Ambiente" /></label>
+                                  <label for="descricaoSoftware"><g:message code="software.descricaoSoftware.label" default="Descricao Software" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'ambiente', 'errors')}">
+                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'descricaoSoftware', 'errors')}">
+                                    <g:textField name="descricaoSoftware" value="${softwareInstance?.descricaoSoftware}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="objInstancia"><g:message code="software.objInstancia.label" default="Obj Instancia" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'objInstancia', 'errors')}">
                                     
 <ul>
-<g:each in="${hostInstance?.ambiente?}" var="a">
-    <li><g:link controller="ambiente" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+<g:each in="${softwareInstance?.objInstancia?}" var="o">
+    <li><g:link controller="instancia" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
-<g:link controller="ambiente" action="create" params="['host.id': hostInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'ambiente.label', default: 'Ambiente')])}</g:link>
+<g:link controller="instancia" action="create" params="['software.id': softwareInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'instancia.label', default: 'Instancia')])}</g:link>
 
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="objLocais"><g:message code="host.objLocais.label" default="Obj Locais" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objLocais', 'errors')}">
-                                    <g:select name="objLocais.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.objLocais?.id}"  />
                                 </td>
                             </tr>
                         
