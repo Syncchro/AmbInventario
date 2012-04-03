@@ -4,7 +4,7 @@ class Solicitante {
 	
     String solicitante
 	String projetoArea
-	Solicitante objSolicitante
+
 	
     static constraints = {
 		solicitante(blank:false , maxSize:50 , unique:true , minSize:3)

@@ -57,14 +57,7 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="objSolicitante"><g:message code="solicitante.objSolicitante.label" default="Obj Solicitante" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: solicitanteInstance, field: 'objSolicitante', 'errors')}">
-                                    <g:select name="objSolicitante.id" from="${br.com.synchro.ambinventario.Solicitante.list()}" optionKey="id" value="${solicitanteInstance?.objSolicitante?.id}"  />
-                                </td>
-                            </tr>
+          
                         
                         </tbody>
                     </table>

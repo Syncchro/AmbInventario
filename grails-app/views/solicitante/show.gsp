@@ -51,13 +51,6 @@
                             
                         </tr>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="solicitante.objSolicitante.label" default="Obj Solicitante" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="solicitante" action="show" id="${solicitanteInstance?.objSolicitante?.id}">${solicitanteInstance?.objSolicitante?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
                     </tbody>
                 </table>
             </div>

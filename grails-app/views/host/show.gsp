@@ -58,9 +58,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.objLocais.label" default="Obj Locais" /></td>
+                            <td valign="top" class="name"><g:message code="host.objLocal.label" default="Obj Locais" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objLocais?.id}">${hostInstance?.objLocais?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objLocal?.id}">${hostInstance?.objLocal?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
