@@ -35,7 +35,7 @@
                         
                             <g:sortableColumn property="nome" title="${message(code: 'host.nome.label', default: 'Nome')}" />
                         
-                            <th><g:message code="host.objLocais.label" default="Obj Locais" /></th>
+                            <th><g:message code="host.objLocal.label" default="Obj Locais" /></th>
                         
                         </tr>
                     </thead>
@@ -47,7 +47,7 @@
                         
                             <td>${fieldValue(bean: hostInstance, field: "nome")}</td>
                         
-                            <td>${fieldValue(bean: hostInstance, field: "objLocais")}</td>
+                            <td>${fieldValue(bean: hostInstance, field: "objLocal")}</td>
                         
                         </tr>
                     </g:each>

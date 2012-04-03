@@ -11,25 +11,21 @@ class Ambiente {
 	String urlConsole
 	String usuarioConsole
 	Integer senhaConsole
-	/*
-	 * Fisica = true;
-	 * Virtual = false;
-	 */
 	Integer memoriaTotal
-	//Em megabytes, apenas numeros inteiros
 	String obsAmbiente
 	Host objHost
 
     static belongsTo = [Host] 
 	static hasMany = [instancias:Instancia]
-	static optionals = ["obsAmbiente"]
+	static optionals = ["obsAmbiente","instrucaoAdicionais"]
     
 	static constraints = {
 		ambiente(blank:false , maxSize:50 , unique:true , minSize:3)
 		urlConsole(blank:false , maxSize:50 , unique:true , minSize:3)
-		instrucaoAdicionais(blank:false , maxSize:150 , unique:true)
+		instrucaoAdicionais(maxSize:150 , unique:true, nullable:true)
 		fisicaVirtual(nullable:false) 
 		objHost(nullable:true)
+		obsAmbiente(nullable:true)
     }
 
 	public String toString() {

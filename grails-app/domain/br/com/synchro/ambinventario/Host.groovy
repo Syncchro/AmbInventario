@@ -12,4 +12,8 @@ class Host {
 		nome(blank:false , maxSize:50 , unique:true , minSize:5)
 		objLocal (nullable:true)
     }
+	
+	public String toString() {
+		nome
+	}
 }
