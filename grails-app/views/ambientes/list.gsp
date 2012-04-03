@@ -30,8 +30,7 @@
                         
                             <g:sortableColumn property="fisicaVirtual" title="${message(code: 'ambientes.fisicaVirtual.label', default: 'Fisica Virtual')}" />
                         
-                            <th><g:message code="ambientes.objLocal.label" default="Obj Local" /></th>
-                        
+                                                
                             <th><g:message code="ambientes.objSO.label" default="Obj SO" /></th>
                         
                         </tr>
@@ -48,8 +47,7 @@
                         
                             <td>${fieldValue(bean: ambientesInstance, field: "fisicaVirtual")}</td>
                         
-                            <td>${fieldValue(bean: ambientesInstance, field: "objLocal")}</td>
-                        
+                                                 
                             <td>${fieldValue(bean: ambientesInstance, field: "objSO")}</td>
                         
                         </tr>

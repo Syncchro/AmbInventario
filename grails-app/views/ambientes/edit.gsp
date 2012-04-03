@@ -58,15 +58,7 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="objLocal"><g:message code="ambientes.objLocal.label" default="Obj Local" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: ambientesInstance, field: 'objLocal', 'errors')}">
-                                    <g:select name="objLocal.id" from="${br.com.synchro.ambinventario.Locais.list()}" optionKey="id" value="${ambientesInstance?.objLocal?.id}"  />
-                                </td>
-                            </tr>
-                        
+                                                  
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="objSO"><g:message code="ambientes.objSO.label" default="Obj SO" /></label>

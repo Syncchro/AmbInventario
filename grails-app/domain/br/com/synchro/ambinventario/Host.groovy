@@ -4,7 +4,7 @@ class Host {
 	
 	
     String nome
-	Local objLocais
+	Local objLocal
 	
 	static belongsTo = [Local]
 	static hasMany = [ambiente:Ambiente]
