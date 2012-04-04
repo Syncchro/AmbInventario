@@ -10,7 +10,7 @@ class Ambiente {
 	TipoAmbiente fisicaVirtual
 	String urlConsole
 	String usuarioConsole
-	Integer senhaConsole
+	String senhaConsole
 	Integer memoriaTotal
 	String obsAmbiente
 	Host objHost
@@ -26,6 +26,11 @@ class Ambiente {
 		fisicaVirtual(nullable:false) 
 		objHost(nullable:true)
 		obsAmbiente(nullable:true)
+		senhaConsole(nullable:true)
+		usuarioConsole(nullable:true)
+		memoriaTotal(nullable:true)
+		descricaoAmbiente(nullable:true)
+		urlConsole(nullable:true)
     }
 
 	public String toString() {

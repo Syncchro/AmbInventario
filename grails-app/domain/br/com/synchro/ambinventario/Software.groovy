@@ -9,6 +9,7 @@ class Software {
 
     static constraints = {
 		software(blank:false , unique:true , minSize:3)
+		descricaoSoftware(nullable:true)
     }
 	
 	public String toString() {

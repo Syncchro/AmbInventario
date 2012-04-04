@@ -9,6 +9,7 @@ class Local {
 
     static constraints = {
 		local(blank:false , maxSize:100 , unique:true , minSize:3)
+		descricaoLocal(nullable:true)
     }
 	
 	public String toString() {
