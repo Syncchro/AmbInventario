@@ -81,6 +81,15 @@
                                     <g:textField name="obsInstancia" value="${instanciaInstance?.obsInstancia}" />
                                 </td>
                             </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="objSolicitante"><g:message code="instancia.objSolicitante.label" default="Obj Solicitante" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'objSolicitante', 'errors')}">
+                                    <g:select name="objSolicitante.id" from="${br.com.synchro.ambinventario.Solicitante.list()}" optionKey="id" value="${instanciaInstance?.objSolicitante?.id}"  />
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>

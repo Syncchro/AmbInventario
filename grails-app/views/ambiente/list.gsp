@@ -42,6 +42,8 @@
                             <g:sortableColumn property="fisicaVirtual" title="${message(code: 'ambiente.fisicaVirtual.label', default: 'Fisica Virtual')}" />
                         
                             <g:sortableColumn property="descricaoAmbiente" title="${message(code: 'ambiente.descricaoAmbiente.label', default: 'Descricao Ambiente')}" />
+                            
+                            <g:sortableColumn property="memoriaRestante" title="${message(code: 'ambiente.memoriaRestante.label', default: 'Memória Restante')}" />
                         
                         </tr>
                     </thead>
@@ -60,6 +62,8 @@
                             <td>${fieldValue(bean: ambienteInstance, field: "fisicaVirtual")}</td>
                         
                             <td>${fieldValue(bean: ambienteInstance, field: "descricaoAmbiente")}</td>
+                            
+                            <td>${fieldValue(bean: ambienteInstance, field: "memoriaRestante")}</td>
                         
                         </tr>
                     </g:each>

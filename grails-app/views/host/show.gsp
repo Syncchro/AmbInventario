@@ -63,6 +63,24 @@
                             <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objLocal?.id}">${hostInstance?.objLocal?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.objSO.label" default="Local" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objSO?.id}">${hostInstance?.objSO?.encodeAsHTML()}</g:link></td>
+                        </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.usuarioSO.label" default="Usuário S.O." /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "usuarioSO")}</td>
+                        </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.senhaSO.label" default="Senha S.O." /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "senhaSO")}</td>
+                        </tr>
                     
                     </tbody>
                 </table>

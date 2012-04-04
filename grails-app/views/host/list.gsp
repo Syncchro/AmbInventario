@@ -35,7 +35,13 @@
                         
                             <g:sortableColumn property="nome" title="${message(code: 'host.nome.label', default: 'Nome')}" />
                         
-                            <th><g:message code="host.objLocal.label" default="Obj Locais" /></th>
+                            <th><g:message code="host.objLocal.label" default="Local" /></th>
+                            
+                            <th><g:message code="host.objSO.label" default="S.O." /></th>
+                            
+                            <th><g:message code="host.usuarioSO.label" default="Usuário S.O." /></th>
+                            
+                            <th><g:message code="host.senhaSO.label" default="Senha S.O." /></th>
                         
                         </tr>
                     </thead>
@@ -48,6 +54,12 @@
                             <td>${fieldValue(bean: hostInstance, field: "nome")}</td>
                         
                             <td>${fieldValue(bean: hostInstance, field: "objLocal")}</td>
+                            
+                            <td>${fieldValue(bean: hostInstance, field: "objSO")}</td>
+                            
+                            <td>${fieldValue(bean: hostInstance, field: "usuarioSO")}</td>
+                            
+                            <td>${fieldValue(bean: hostInstance, field: "senhaSO")}</td>
                         
                         </tr>
                     </g:each>

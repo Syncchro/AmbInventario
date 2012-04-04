@@ -43,6 +43,8 @@
                         
                             <g:sortableColumn property="obsInstancia" title="${message(code: 'instancia.obsInstancia.label', default: 'Obs Instancia')}" />
                         
+                        	<th><g:message code="instancia.objSolicitante.label" default="Solicitante" /></th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +62,8 @@
                             <td>${fieldValue(bean: instanciaInstance, field: "espacoUtilizado")}</td>
                         
                             <td>${fieldValue(bean: instanciaInstance, field: "obsInstancia")}</td>
+                            
+                            <td>${fieldValue(bean: instanciaInstance, field: "objSolicitante")}</td>
                         
                         </tr>
                     </g:each>

@@ -14,11 +14,13 @@ class Ambiente {
 	Integer memoriaTotal
 	String obsAmbiente
 	Host objHost
+	Integer memoriaRestante = 0
 
     static belongsTo = [Host] 
 	static hasMany = [instancias:Instancia]
 	static optionals = ["obsAmbiente","instrucaoAdicionais"]
-    
+    static transients = ["memoriaRestante"]
+	
 	static constraints = {
 		ambiente(blank:false , maxSize:50 , unique:true , minSize:3)
 		urlConsole(blank:false , maxSize:50 , unique:true , minSize:3)
@@ -35,6 +37,14 @@ class Ambiente {
 
 	public String toString() {
 		ambiente
+	}
+	
+	public Integer getMemoriaRestante(){
+		def espacoUtilizado = 0
+		for(instancia in instancias){
+			espacoUtilizado += instancia.espacoUtilizado?:0
+		}
+		((memoriaTotal?:0) - espacoUtilizado)
 	}
 
 }

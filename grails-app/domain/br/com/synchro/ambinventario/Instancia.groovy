@@ -4,13 +4,13 @@ class Instancia {
 
 	String instancia
 	String obsInstancia
-	Integer espacoUtilizado
+	Integer espacoUtilizado = 0
 	Ambiente objAmbiente
 	Software objSoftware
+	Solicitante objSolicitante
 	
-    static belongsTo = [Ambiente,Software] 
-    static hasMany =[objSolicitante:Solicitante] 
-	static optionals = ["obsInstancia"]
+    static belongsTo = [Ambiente,Software, Solicitante] 
+    static optionals = ["obsInstancia"]
     
 	static constraints = {
 		instancia(blank:false)
@@ -18,6 +18,7 @@ class Instancia {
 		objAmbiente(nullable:false)
 		objSoftware(nullable:true)
 		espacoUtilizado(nullable:true)
+		objSolicitante(nullable:false,blank:false)
     }
 
 	public String toString() {

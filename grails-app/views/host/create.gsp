@@ -54,6 +54,33 @@
                                     <g:select name="objLocal.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.objLocal?.id}"  />
                                 </td>
                             </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="objSO"><g:message code="host.objSO.label" default="Obj SO" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objSO', 'errors')}">
+                                    <g:select name="objSO.id" from="${br.com.synchro.ambinventario.SO.list()}" optionKey="id" value="${hostInstance?.objSO?.id}"  />
+                                </td>
+                            </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="usuarioSO"><g:message code="host.usuarioSO.label" default="Usuario SO" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'usuarioSO', 'errors')}">
+                                    <g:textField name="usuarioSO" maxlength="50" value="${hostInstance?.usuarioSO}" />
+                                </td>
+                            </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="senhaSO"><g:message code="host.senhaSO.label" default="Senha SO" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'senhaSO', 'errors')}">
+                                    <g:textField name="senhaSO" maxlength="50" value="${hostInstance?.senhaSO}" />
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>
