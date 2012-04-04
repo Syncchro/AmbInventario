@@ -11,7 +11,7 @@
         <g:javascript library="application" />
     </head>
     <body>
-    	<div style="width:960px; display:block; padding-left:50%; margin-left:-480px;">
+    	<div style="width:1280px; display:block; padding-left:50%; margin-left:-640px;">
 	        <div id="spinner" class="spinner" style="display:none;">
 	            <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
 	        </div>

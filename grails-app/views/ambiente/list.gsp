@@ -37,13 +37,13 @@
                         
                             <g:sortableColumn property="urlConsole" title="${message(code: 'ambiente.urlConsole.label', default: 'Url Console')}" />
                         
-                            <g:sortableColumn property="instrucaoAdicionais" title="${message(code: 'ambiente.instrucaoAdicionais.label', default: 'Instrucao Adicionais')}" />
+                            <g:sortableColumn property="instrucaoAdicionais" title="${message(code: 'ambiente.instrucaoAdicionais.label', default: 'Instr. Adicionais')}" />
                         
                             <g:sortableColumn property="fisicaVirtual" title="${message(code: 'ambiente.fisicaVirtual.label', default: 'Fisica Virtual')}" />
                         
                             <g:sortableColumn property="descricaoAmbiente" title="${message(code: 'ambiente.descricaoAmbiente.label', default: 'Descricao Ambiente')}" />
                             
-                            <g:sortableColumn property="memoriaRestante" title="${message(code: 'ambiente.memoriaRestante.label', default: 'Memória Restante (KB)')}" />
+                           <th><g:message code="ambiente.memoriaRestante.label" default="Memória Restante (KB)" /></th>
                         
                         </tr>
                     </thead>
