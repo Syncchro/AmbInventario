@@ -321,3 +321,13 @@ th.desc a {
             margin-left:280px;
             margin-right:20px;
         }
+        
+        .memoriaOk {
+        	color: green;
+        	font-weight: bold;
+        }
+        
+        .memoriaNOk {
+        	color: red;
+        	font-weight: bold;
+        }
