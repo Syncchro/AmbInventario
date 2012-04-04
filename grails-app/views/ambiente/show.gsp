@@ -119,6 +119,13 @@
                             <td valign="top" class="value">${fieldValue(bean: ambienteInstance, field: "usuarioConsole")}</td>
                             
                         </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="ambiente.memoriaRestante.label" default="Memoria Restante" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: ambienteInstance, field: "memoriaRestante")}</td>
+                            
+                        </tr>
                     
                     </tbody>
                 </table>
