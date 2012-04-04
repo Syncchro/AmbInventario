@@ -43,7 +43,7 @@
                         
                             <g:sortableColumn property="descricaoAmbiente" title="${message(code: 'ambiente.descricaoAmbiente.label', default: 'Descricao Ambiente')}" />
                             
-                            <g:sortableColumn property="memoriaRestante" title="${message(code: 'ambiente.memoriaRestante.label', default: 'Memória Restante')}" />
+                            <g:sortableColumn property="memoriaRestante" title="${message(code: 'ambiente.memoriaRestante.label', default: 'Memória Restante (KB)')}" />
                         
                         </tr>
                     </thead>
@@ -63,7 +63,7 @@
                         
                             <td>${fieldValue(bean: ambienteInstance, field: "descricaoAmbiente")}</td>
                             
-                            <td>${fieldValue(bean: ambienteInstance, field: "memoriaRestante")}</td>
+                            <td class="${ambienteInstance?.memoriaRestante >= new Integer(message(code: 'conf.ambiente.memoriaminima'))?'memoriaOk':'memoriaNOk'}">${fieldValue(bean: ambienteInstance, field: "memoriaRestante")}</td>
                         
                         </tr>
                     </g:each>

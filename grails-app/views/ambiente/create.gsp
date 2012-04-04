@@ -83,7 +83,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="memoriaTotal"><g:message code="ambiente.memoriaTotal.label" default="Memoria Total" /></label>
+                                    <label for="memoriaTotal"><g:message code="ambiente.memoriaTotal.label" default="Memoria Total (KB)" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: ambienteInstance, field: 'memoriaTotal', 'errors')}">
                                     <g:textField name="memoriaTotal" value="${fieldValue(bean: ambienteInstance, field: 'memoriaTotal')}" />

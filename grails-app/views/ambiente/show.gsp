@@ -123,7 +123,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="ambiente.memoriaRestante.label" default="Memoria Restante" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: ambienteInstance, field: "memoriaRestante")}</td>
+                            <td valign="top" class="${ambienteInstance?.memoriaRestante >= new Integer(message(code: 'conf.ambiente.memoriaminima'))?'memoriaOk':'memoriaNOk'}">${fieldValue(bean: ambienteInstance, field: "memoriaRestante")}</td>
                             
                         </tr>
                     
