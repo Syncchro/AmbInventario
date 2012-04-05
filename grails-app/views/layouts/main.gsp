@@ -20,6 +20,7 @@
 			<g:message code="application.fullname" />
 		</div>
 		<div id="menu">
+		<g:if test="${new LoginController().isLoggedIn()}">
 			<ul class="menu">
 				<li><a href="#" class="parent"><span><g:message
 								code="menu.cadastro" /></span></a>
@@ -27,14 +28,35 @@
 						<ul>
 							<g:each var="c"
 								in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-								<li><g:link controller="${c.logicalPropertyName}">
-										${c.name}
-									</g:link></li>
+								<g:if test="${c.name != 'Login' && c.name != 'Logout'}">
+									<li><g:link controller="${c.logicalPropertyName}">
+											${c.name}
+										</g:link></li>
+								</g:if>
 							</g:each>
 						</ul>
 					</div></li>
 			</ul>
+			</g:if>
+			<g:if test="${!new LoginController().isLoggedIn()}">
+				<div align="right" style="float: right">
+					<ul class="menu">
+						<li><span><a href="${request.contextPath}/login/auth"
+								class="parent"> login </a></span></li>
+					</ul>
+				</div>
+			</g:if>
+			<g:if test="${new LoginController().isLoggedIn()}">
+				<div align="right" style="float: right">
+					<ul class="menu">
+						<li><span><a
+								href="${request.contextPath}/logout/index" class="parent">
+									logout </a></span></li>
+					</ul>
+				</div>
+			</g:if>
 		</div>
+		
 		<g:layoutBody />
         </div>
     </body>
