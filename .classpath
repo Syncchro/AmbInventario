@@ -11,6 +11,11 @@
 	<classpathentry kind="src" path="test/unit"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="src" path=".link_to_grails_plugins/calendar-1.2.1/grails-app/taglib">
+		<attributes>
+			<attribute name="com.springsource.sts.grails.core.SOURCE_FOLDER" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path=".link_to_grails_plugins/famfamfam-1.0/grails-app/taglib">
 		<attributes>
 			<attribute name="com.springsource.sts.grails.core.SOURCE_FOLDER" value="true"/>

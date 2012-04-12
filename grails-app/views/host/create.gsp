@@ -42,7 +42,7 @@
                                     <label for="local"><g:message code="host.local.label" default="Local" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'local', 'errors')}">
-                                    <g:select name="local.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.local?.id}" noSelection="['null': '']" />
+                                    <g:select id="lcl" name="local.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.local?.id}" noSelection="['null': '']" />
                                 </td>
                             </tr>
                         
@@ -90,7 +90,6 @@
                                     <g:textField name="disco" value="${fieldValue(bean: hostInstance, field: 'disco')}" />
                                 </td>
                             </tr>
-                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="fisico"><g:message code="host.fisico.label" default="Fisico" /></label>
@@ -117,5 +116,22 @@
                 </div>
             </g:form>
         </div>
-    </body>
+	<script type="text/javascript">
+	$(function(){
+
+		$('#lcl').change(function(){
+			desabilitaCampo();	  
+		});
+				
+		function desabilitaCampo(){
+			var selected = !$('#lcl option:selected').val() == 'null' || $('#lcl option:selected').val() > 0;
+			if(!selected)
+				$('#fisico').removeAttr('disabled');
+			else
+				$('#fisico').attr('disabled','disabled');
+				$('#fisico').attr('checked',false);
+		}
+	});
+    </script>
+</body>
 </html>
