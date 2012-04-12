@@ -9,21 +9,13 @@
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -50,22 +42,38 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="descricaoSoftware"><g:message code="software.descricaoSoftware.label" default="Descricao Software" /></label>
+                                  <label for="versao"><g:message code="software.versao.label" default="Versao" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'descricaoSoftware', 'errors')}">
-                                    <g:textField name="descricaoSoftware" value="${softwareInstance?.descricaoSoftware}" />
+                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'versao', 'errors')}">
+                                    <g:textField name="versao" value="${softwareInstance?.versao}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="objInstancia"><g:message code="software.objInstancia.label" default="Obj Instancia" /></label>
+                                  <label for="ambientes"><g:message code="software.ambientes.label" default="Ambientes" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'objInstancia', 'errors')}">
+                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'ambientes', 'errors')}">
                                     
 <ul>
-<g:each in="${softwareInstance?.objInstancia?}" var="o">
-    <li><g:link controller="instancia" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+<g:each in="${softwareInstance?.ambientes?}" var="a">
+    <li><g:link controller="ambiente" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="ambiente" action="create" params="['software.id': softwareInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'ambiente.label', default: 'Ambiente')])}</g:link>
+
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="instancias"><g:message code="software.instancias.label" default="Instancias" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: softwareInstance, field: 'instancias', 'errors')}">
+                                    
+<ul>
+<g:each in="${softwareInstance?.instancias?}" var="i">
+    <li><g:link controller="instancia" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
 <g:link controller="instancia" action="create" params="['software.id': softwareInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'instancia.label', default: 'Instancia')])}</g:link>
@@ -81,7 +89,6 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </div>
             </g:form>
-        </div>
         </div>
     </body>
 </html>

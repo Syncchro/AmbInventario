@@ -8,21 +8,12 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -33,17 +24,15 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'instancia.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="instancia" title="${message(code: 'instancia.instancia.label', default: 'Instancia')}" />
+                            <g:sortableColumn property="nome" title="${message(code: 'instancia.nome.label', default: 'Nome')}" />
                         
-                            <th><g:message code="instancia.objAmbiente.label" default="Obj Ambiente" /></th>
+                            <g:sortableColumn property="observacao" title="${message(code: 'instancia.observacao.label', default: 'Observacao')}" />
                         
-                            <th><g:message code="instancia.objSoftware.label" default="Obj Software" /></th>
+                            <g:sortableColumn property="urlConsole" title="${message(code: 'instancia.urlConsole.label', default: 'Url Console')}" />
                         
-                            <g:sortableColumn property="espacoUtilizado" title="${message(code: 'instancia.espacoUtilizado.label', default: 'Espaco Utilizado')}" />
+                            <th><g:message code="instancia.software.label" default="Software" /></th>
                         
-                            <g:sortableColumn property="obsInstancia" title="${message(code: 'instancia.obsInstancia.label', default: 'Obs Instancia')}" />
-                        
-                        	<th><g:message code="instancia.objSolicitante.label" default="Solicitante" /></th>
+                            <g:sortableColumn property="ram" title="${message(code: 'instancia.ram.label', default: 'Ram')}" />
                         
                         </tr>
                     </thead>
@@ -53,17 +42,15 @@
                         
                             <td><g:link action="show" id="${instanciaInstance.id}">${fieldValue(bean: instanciaInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: instanciaInstance, field: "instancia")}</td>
+                            <td>${fieldValue(bean: instanciaInstance, field: "nome")}</td>
                         
-                            <td>${fieldValue(bean: instanciaInstance, field: "objAmbiente")}</td>
+                            <td>${fieldValue(bean: instanciaInstance, field: "observacao")}</td>
                         
-                            <td>${fieldValue(bean: instanciaInstance, field: "objSoftware")}</td>
+                            <td>${fieldValue(bean: instanciaInstance, field: "urlConsole")}</td>
                         
-                            <td>${fieldValue(bean: instanciaInstance, field: "espacoUtilizado")}</td>
+                            <td>${fieldValue(bean: instanciaInstance, field: "software")}</td>
                         
-                            <td>${fieldValue(bean: instanciaInstance, field: "obsInstancia")}</td>
-                            
-                            <td>${fieldValue(bean: instanciaInstance, field: "objSolicitante")}</td>
+                            <td>${fieldValue(bean: instanciaInstance, field: "ram")}</td>
                         
                         </tr>
                     </g:each>
@@ -73,7 +60,6 @@
             <div class="paginateButtons">
                 <g:paginate total="${instanciaInstanceTotal}" />
             </div>
-        </div>
         </div>
     </body>
 </html>

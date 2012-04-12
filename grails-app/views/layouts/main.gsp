@@ -28,7 +28,7 @@
 						<ul>
 							<g:each var="c"
 								in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-								<g:if test="${c.name != 'Login' && c.name != 'Logout'}">
+								<g:if test="${c.name != 'Login' && c.name != 'Logout' && c.name != 'Ambiente'}">
 									<li><g:link controller="${c.logicalPropertyName}">
 											${c.name}
 										</g:link></li>

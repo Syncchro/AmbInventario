@@ -8,21 +8,13 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -45,11 +37,60 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.ambiente.label" default="Ambiente" /></td>
+                            <td valign="top" class="name"><g:message code="host.local.label" default="Local" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.local?.id}">${hostInstance?.local?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.so.label" default="So" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="SO" action="show" id="${hostInstance?.so?.id}">${hostInstance?.so?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.usuarioSO.label" default="Usuario SO" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "usuarioSO")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.senhaSO.label" default="Senha SO" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "senhaSO")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.ram.label" default="Ram" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "ram")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.disco.label" default="Disco" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "disco")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.fisico.label" default="Fisico" /></td>
+                            
+                            <td valign="top" class="value"><g:formatBoolean boolean="${hostInstance?.fisico}" /></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="host.ambientes.label" default="Ambientes" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${hostInstance.ambiente}" var="a">
+                                <g:each in="${hostInstance.ambientes}" var="a">
                                     <li><g:link controller="ambiente" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
@@ -58,28 +99,23 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.objLocal.label" default="Obj Locais" /></td>
+                            <td valign="top" class="name"><g:message code="host.memoriaRestante.label" default="Memoria Restante" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objLocal?.id}">${hostInstance?.objLocal?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "memoriaRestante")}</td>
                             
                         </tr>
-                        
+                    
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.objSO.label" default="Local" /></td>
+                            <td valign="top" class="name"><g:message code="host.softwares.label" default="Softwares" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="local" action="show" id="${hostInstance?.objSO?.id}">${hostInstance?.objSO?.encodeAsHTML()}</g:link></td>
-                        </tr>
-                        
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.usuarioSO.label" default="Usuário S.O." /></td>
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${hostInstance.softwares}" var="s">
+                                    <li><g:link controller="software" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "usuarioSO")}</td>
-                        </tr>
-                        
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="host.senhaSO.label" default="Senha S.O." /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "senhaSO")}</td>
                         </tr>
                     
                     </tbody>
@@ -92,7 +128,6 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
             </div>
-        </div>
         </div>
     </body>
 </html>

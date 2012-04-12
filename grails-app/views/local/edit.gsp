@@ -9,21 +9,13 @@
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -45,15 +37,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: localInstance, field: 'local', 'errors')}">
                                     <g:textField name="local" maxlength="100" value="${localInstance?.local}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="descricaoLocal"><g:message code="local.descricaoLocal.label" default="Descricao Local" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: localInstance, field: 'descricaoLocal', 'errors')}">
-                                    <g:textField name="descricaoLocal" value="${localInstance?.descricaoLocal}" />
                                 </td>
                             </tr>
                         
@@ -81,7 +64,6 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </div>
             </g:form>
-        </div>
         </div>
     </body>
 </html>

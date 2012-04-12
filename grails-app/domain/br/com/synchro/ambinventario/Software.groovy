@@ -3,13 +3,13 @@ package br.com.synchro.ambinventario
 class Software {
 
 	String software;
-	String descricaoSoftware;
+	String versao;
 
-	static hasMany = [objInstancia:Instancia]
+	static hasMany = [instancias:Instancia, ambientes:Ambiente]
 
     static constraints = {
-		software(blank:false , unique:true , minSize:3)
-		descricaoSoftware(nullable:true)
+		software(blank:false , minSize:3, nullable:false)
+		versao(blank:false, nullable:false)
     }
 	
 	public String toString() {

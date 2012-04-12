@@ -8,21 +8,12 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -36,7 +27,11 @@
                             <g:sortableColumn property="solicitante" title="${message(code: 'solicitante.solicitante.label', default: 'Solicitante')}" />
                         
                             <g:sortableColumn property="projetoArea" title="${message(code: 'solicitante.projetoArea.label', default: 'Projeto Area')}" />
-                 
+                        
+                            <g:sortableColumn property="email" title="${message(code: 'solicitante.email.label', default: 'Email')}" />
+                        
+                            <g:sortableColumn property="telefone" title="${message(code: 'solicitante.telefone.label', default: 'Telefone')}" />
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +43,11 @@
                             <td>${fieldValue(bean: solicitanteInstance, field: "solicitante")}</td>
                         
                             <td>${fieldValue(bean: solicitanteInstance, field: "projetoArea")}</td>
-                                                
+                        
+                            <td>${fieldValue(bean: solicitanteInstance, field: "email")}</td>
+                        
+                            <td>${fieldValue(bean: solicitanteInstance, field: "telefone")}</td>
+                        
                         </tr>
                     </g:each>
                     </tbody>
@@ -57,7 +56,6 @@
             <div class="paginateButtons">
                 <g:paginate total="${solicitanteInstanceTotal}" />
             </div>
-        </div>
         </div>
     </body>
 </html>

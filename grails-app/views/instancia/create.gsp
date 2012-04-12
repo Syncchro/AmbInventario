@@ -9,21 +9,12 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -39,55 +30,82 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="instancia"><g:message code="instancia.instancia.label" default="Instancia" /></label>
+                                    <label for="nome"><g:message code="instancia.nome.label" default="Nome" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'instancia', 'errors')}">
-                                    <g:textField name="instancia" value="${instanciaInstance?.instancia}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="objAmbiente"><g:message code="instancia.objAmbiente.label" default="Obj Ambiente" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'objAmbiente', 'errors')}">
-                                    <g:select name="objAmbiente.id" from="${br.com.synchro.ambinventario.Ambiente.list()}" optionKey="id" value="${instanciaInstance?.objAmbiente?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'nome', 'errors')}">
+                                    <g:textField name="nome" value="${instanciaInstance?.nome}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="objSoftware"><g:message code="instancia.objSoftware.label" default="Software" /></label>
+                                    <label for="observacao"><g:message code="instancia.observacao.label" default="Observacao" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'objSoftware', 'errors')}">
-                                    <g:select name="objSoftware.id" from="${br.com.synchro.ambinventario.Software.list()}" optionKey="id" value="${instanciaInstance?.objSoftware?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="espacoUtilizado"><g:message code="instancia.espacoUtilizado.label" default="Espaço Utilizado (KB)" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'espacoUtilizado', 'errors')}">
-                                    <g:textField name="espacoUtilizado" value="${fieldValue(bean: instanciaInstance, field: 'espacoUtilizado')}" />
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'observacao', 'errors')}">
+                                    <g:textField name="observacao" value="${instanciaInstance?.observacao}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="obsInstancia"><g:message code="instancia.obsInstancia.label" default="Obs. Instancia" /></label>
+                                    <label for="urlConsole"><g:message code="instancia.urlConsole.label" default="Url Console" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'obsInstancia', 'errors')}">
-                                    <g:textField name="obsInstancia" value="${instanciaInstance?.obsInstancia}" />
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'urlConsole', 'errors')}">
+                                    <g:textField name="urlConsole" value="${instanciaInstance?.urlConsole}" />
                                 </td>
                             </tr>
-                            
+                        
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="objSolicitante"><g:message code="instancia.objSolicitante.label" default="Solicitante" /></label>
+                                    <label for="software"><g:message code="instancia.software.label" default="Software" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'objSolicitante', 'errors')}">
-                                    <g:select name="objSolicitante.id" from="${br.com.synchro.ambinventario.Solicitante.list()}" optionKey="id" value="${instanciaInstance?.objSolicitante?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'software', 'errors')}">
+                                    <g:select name="software.id" from="${br.com.synchro.ambinventario.Software.list()}" optionKey="id" value="${instanciaInstance?.software?.id}" noSelection="['null': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="ram"><g:message code="instancia.ram.label" default="Ram" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'ram', 'errors')}">
+                                    <g:textField name="ram" value="${fieldValue(bean: instanciaInstance, field: 'ram')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="solicitante"><g:message code="instancia.solicitante.label" default="Solicitante" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'solicitante', 'errors')}">
+                                    <g:select name="solicitante.id" from="${br.com.synchro.ambinventario.Solicitante.list()}" optionKey="id" value="${instanciaInstance?.solicitante?.id}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="dataInicio"><g:message code="instancia.dataInicio.label" default="Data Inicio" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataInicio', 'errors')}">
+                                    <g:datePicker name="dataInicio" precision="day" value="${instanciaInstance?.dataInicio}" default="none" noSelection="['': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="dataFim"><g:message code="instancia.dataFim.label" default="Data Fim" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataFim', 'errors')}">
+                                    <g:datePicker name="dataFim" precision="day" value="${instanciaInstance?.dataFim}" default="none" noSelection="['': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="periodoDeUso"><g:message code="instancia.periodoDeUso.label" default="Periodo De Uso" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'periodoDeUso', 'errors')}">
+                                    <g:textField name="periodoDeUso" value="${instanciaInstance?.periodoDeUso}" />
                                 </td>
                             </tr>
                         
@@ -98,7 +116,6 @@
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
                 </div>
             </g:form>
-        </div>
         </div>
     </body>
 </html>

@@ -2,27 +2,38 @@ package br.com.synchro.ambinventario
 
 class Instancia {
 
-	String instancia
-	String obsInstancia
-	Integer espacoUtilizado = 0
-	Ambiente objAmbiente
-	Software objSoftware
-	Solicitante objSolicitante
+	String nome
+	String observacao
+	Integer ram = 0
+	String urlConsole
+	Date dataInicio
+	Date dataFim
+	Software software
+	Solicitante solicitante
+	transient String periodoDeUso
 	
-    static belongsTo = [Ambiente,Software, Solicitante] 
-    static optionals = ["obsInstancia"]
+    static belongsTo = [Software, Solicitante] 
     
 	static constraints = {
-		instancia(blank:false)
-		obsInstancia(nullable:true)
-		objAmbiente(nullable:false)
-		objSoftware(nullable:true)
-		espacoUtilizado(nullable:true)
-		objSolicitante(nullable:false,blank:false)
+		nome(blank:false)
+		observacao(nullable:true)
+		urlConsole(nullable:true)
+		software(nullable:true)
+		ram(nullable:true)
+		solicitante(nullable:false,blank:false)
+		dataInicio(nullable:true)
+		dataFim(nullable:true)		
     }
 
 	public String toString() {
-		instancia
+		nome
 	}
 	
+	/**
+	 * Retorna o período já formatado, de acordo com as datas de início e fim.
+	 * @return
+	 */
+	public String getPeriodoDeUso(){
+		return "${dataInicio?.format('dd/MM/yyyy')} a ${dataFim?.format('dd/MM/yyyy')}"
+	}
 }

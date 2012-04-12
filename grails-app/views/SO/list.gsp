@@ -8,21 +8,12 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -35,8 +26,6 @@
                         
                             <g:sortableColumn property="so" title="${message(code: 'SO.so.label', default: 'So')}" />
                         
-                            <g:sortableColumn property="descricaoSO" title="${message(code: 'SO.descricaoSO.label', default: 'Descricao SO')}" />
-                        
                         </tr>
                     </thead>
                     <tbody>
@@ -47,8 +36,6 @@
                         
                             <td>${fieldValue(bean: SOInstance, field: "so")}</td>
                         
-                            <td>${fieldValue(bean: SOInstance, field: "descricaoSO")}</td>
-                        
                         </tr>
                     </g:each>
                     </tbody>
@@ -57,7 +44,6 @@
             <div class="paginateButtons">
                 <g:paginate total="${SOInstanceTotal}" />
             </div>
-        </div>
         </div>
     </body>
 </html>

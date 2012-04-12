@@ -9,21 +9,13 @@
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -57,7 +49,39 @@
                                 </td>
                             </tr>
                         
-          
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="email"><g:message code="solicitante.email.label" default="Email" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: solicitanteInstance, field: 'email', 'errors')}">
+                                    <g:textField name="email" maxlength="70" value="${solicitanteInstance?.email}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="telefone"><g:message code="solicitante.telefone.label" default="Telefone" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: solicitanteInstance, field: 'telefone', 'errors')}">
+                                    <g:textField name="telefone" maxlength="30" value="${solicitanteInstance?.telefone}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="instancias"><g:message code="solicitante.instancias.label" default="Instancias" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: solicitanteInstance, field: 'instancias', 'errors')}">
+                                    
+<ul>
+<g:each in="${solicitanteInstance?.instancias?}" var="i">
+    <li><g:link controller="instancia" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="instancia" action="create" params="['solicitante.id': solicitanteInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'instancia.label', default: 'Instancia')])}</g:link>
+
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>
@@ -67,7 +91,6 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </div>
             </g:form>
-        </div>
         </div>
     </body>
 </html>

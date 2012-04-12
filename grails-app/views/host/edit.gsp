@@ -9,21 +9,13 @@
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -50,12 +42,75 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="ambiente"><g:message code="host.ambiente.label" default="Ambiente" /></label>
+                                  <label for="local"><g:message code="host.local.label" default="Local" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'ambiente', 'errors')}">
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'local', 'errors')}">
+                                    <g:select name="local.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.local?.id}" noSelection="['null': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="so"><g:message code="host.so.label" default="So" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'so', 'errors')}">
+                                    <g:select name="so.id" from="${br.com.synchro.ambinventario.SO.list()}" optionKey="id" value="${hostInstance?.so?.id}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="usuarioSO"><g:message code="host.usuarioSO.label" default="Usuario SO" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'usuarioSO', 'errors')}">
+                                    <g:textField name="usuarioSO" value="${hostInstance?.usuarioSO}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="senhaSO"><g:message code="host.senhaSO.label" default="Senha SO" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'senhaSO', 'errors')}">
+                                    <g:textField name="senhaSO" value="${hostInstance?.senhaSO}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="ram"><g:message code="host.ram.label" default="Ram" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'ram', 'errors')}">
+                                    <g:textField name="ram" value="${fieldValue(bean: hostInstance, field: 'ram')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="disco"><g:message code="host.disco.label" default="Disco" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'disco', 'errors')}">
+                                    <g:textField name="disco" value="${fieldValue(bean: hostInstance, field: 'disco')}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="fisico"><g:message code="host.fisico.label" default="Fisico" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'fisico', 'errors')}">
+                                    <g:checkBox name="fisico" value="${hostInstance?.fisico}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="ambientes"><g:message code="host.ambientes.label" default="Ambientes" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'ambientes', 'errors')}">
                                     
 <ul>
-<g:each in="${hostInstance?.ambiente?}" var="a">
+<g:each in="${hostInstance?.ambientes?}" var="a">
     <li><g:link controller="ambiente" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
@@ -66,37 +121,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="objLocal"><g:message code="host.objLocal.label" default="Obj Locais" /></label>
+                                  <label for="memoriaRestante"><g:message code="host.memoriaRestante.label" default="Memoria Restante" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objLocal', 'errors')}">
-                                    <g:select name="objLocal.id" from="${br.com.synchro.ambinventario.Local.list()}" optionKey="id" value="${hostInstance?.objLocal?.id}"  />
-                                </td>
-                            </tr>
-                            
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="objSO"><g:message code="host.objSO.label" default="Obj Locais" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'objSO', 'errors')}">
-                                    <g:select name="objSO.id" from="${br.com.synchro.ambinventario.SO.list()}" optionKey="id" value="${hostInstance?.objSO?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'memoriaRestante', 'errors')}">
+                                    <g:textField name="memoriaRestante" value="${fieldValue(bean: hostInstance, field: 'memoriaRestante')}" />
                                 </td>
                             </tr>
-                            
+                        
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="usuarioSO"><g:message code="host.usuarioSO.label" default="Usuário SO" /></label>
+                                  <label for="softwares"><g:message code="host.softwares.label" default="Softwares" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'usuarioSO', 'errors')}">
-                                    <g:textField name="usuarioSO" maxlength="50" value="${hostInstance?.usuarioSO}" />
-                                </td>
-                            </tr>
-                            
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="senhaSO"><g:message code="host.senhaSO.label" default="Senha SO" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'senhaSO', 'errors')}">
-                                    <g:textField name="senhaSO" maxlength="50" value="${hostInstance?.senhaSO}" />
+                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'softwares', 'errors')}">
+                                    <g:select name="softwares" from="${br.com.synchro.ambinventario.Software.list()}" multiple="yes" optionKey="id" size="5" value="${hostInstance?.softwares*.id}" />
                                 </td>
                             </tr>
                         
@@ -108,7 +145,6 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </div>
             </g:form>
-        </div>
         </div>
     </body>
 </html>

@@ -8,21 +8,12 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div id="nav">
-            <div class="homePagePanel">
-                <div class="panelTop"></div>
-                <div class="panelBody">
-                    <h1><g:message code="cadastro.label" args="[entityName]" /></h1>
-                    <ul>
-                        <li><span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span></li>
-                    </ul>
-                </div>
-                <div class="panelBtm"></div>
-            </div>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <div id="pageBody">
         <div class="body">
-            <br/><br/>
+            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -35,13 +26,13 @@
                         
                             <g:sortableColumn property="nome" title="${message(code: 'host.nome.label', default: 'Nome')}" />
                         
-                            <th><g:message code="host.objLocal.label" default="Local" /></th>
-                            
-                            <th><g:message code="host.objSO.label" default="S.O." /></th>
-                            
-                            <th><g:message code="host.usuarioSO.label" default="Usuário S.O." /></th>
-                            
-                            <th><g:message code="host.senhaSO.label" default="Senha S.O." /></th>
+                            <th><g:message code="host.local.label" default="Local" /></th>
+                        
+                            <th><g:message code="host.so.label" default="So" /></th>
+                        
+                            <g:sortableColumn property="usuarioSO" title="${message(code: 'host.usuarioSO.label', default: 'Usuario SO')}" />
+                        
+                            <g:sortableColumn property="senhaSO" title="${message(code: 'host.senhaSO.label', default: 'Senha SO')}" />
                         
                         </tr>
                     </thead>
@@ -53,12 +44,12 @@
                         
                             <td>${fieldValue(bean: hostInstance, field: "nome")}</td>
                         
-                            <td>${fieldValue(bean: hostInstance, field: "objLocal")}</td>
-                            
-                            <td>${fieldValue(bean: hostInstance, field: "objSO")}</td>
-                            
+                            <td>${fieldValue(bean: hostInstance, field: "local")}</td>
+                        
+                            <td>${fieldValue(bean: hostInstance, field: "so")}</td>
+                        
                             <td>${fieldValue(bean: hostInstance, field: "usuarioSO")}</td>
-                            
+                        
                             <td>${fieldValue(bean: hostInstance, field: "senhaSO")}</td>
                         
                         </tr>
@@ -69,7 +60,6 @@
             <div class="paginateButtons">
                 <g:paginate total="${hostInstanceTotal}" />
             </div>
-        </div>
         </div>
     </body>
 </html>
