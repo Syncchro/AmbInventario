@@ -34,6 +34,6 @@ class Instancia {
 	 * @return
 	 */
 	public String getPeriodoDeUso(){
-		return "${dataInicio?.format('dd/MM/yyyy')} a ${dataFim?.format('dd/MM/yyyy')}"
+		return (dataInicio && dataFim)? "${dataInicio?.format('dd/MM/yyyy')} a ${dataFim?.format('dd/MM/yyyy')}" : ""
 	}
 }

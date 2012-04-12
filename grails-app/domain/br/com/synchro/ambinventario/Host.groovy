@@ -10,7 +10,6 @@ class Host {
 	Integer ram
 	Integer disco
 	Boolean fisico
-	transient Integer memoriaRestante
 		
 	static belongsTo = [Local,SO]
 	static hasMany = [softwares:Software, ambientes:Ambiente]
@@ -34,7 +33,7 @@ class Host {
 	 * Calcula o restante de memória disponível no host.
 	 * @return
 	 */
-	public Integer getMemoriaRestante(){
+	def memoriaRestante = {
 		def espacoUtilizado = 0
 		for(software in softwares){
 			for(instancia in software.instancias){
@@ -42,5 +41,16 @@ class Host {
 			}
 		}
 		((ram?:0) - espacoUtilizado)
+	}
+	
+	/**
+	 * Retorna a criticidade em relação a quantidade de memória disponível para o host.
+	 * O nivel é recebido como parametro (configurável) e indica a divisão entre as criticidades.
+	 * @return OK para {nivel}% ou mais de RAM livre. NOK para menos de {nivel}% de RAM livre.
+	 */
+	def criticidadeMemoria = { nivel ->
+		nivel = Integer.parseInt(nivel)
+		def porcentagem = ((ram?ram:0) / memoriaRestante()) * 100
+		porcentagem > nivel ? "OK" : "NOK"
 	}
 }

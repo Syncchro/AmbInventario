@@ -100,15 +100,6 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="memoriaRestante"><g:message code="host.memoriaRestante.label" default="Memoria Restante" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'memoriaRestante', 'errors')}">
-                                    <g:textField name="memoriaRestante" value="${fieldValue(bean: hostInstance, field: 'memoriaRestante')}" />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>

@@ -13,7 +13,7 @@ class Software {
     }
 	
 	public String toString() {
-		software
+		"${software} ${versao}"
 	}
 	
 }

@@ -101,7 +101,7 @@
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="host.memoriaRestante.label" default="Memoria Restante" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: hostInstance, field: "memoriaRestante")}</td>
+                            <td valign="top" class="value criticidadeMemoria${hostInstance.criticidadeMemoria(message(code: 'conf.ambiente.ram.nivel'))}">${hostInstance.memoriaRestante()}</td>
                             
                         </tr>
                     

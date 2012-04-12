@@ -103,15 +103,6 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="periodoDeUso"><g:message code="instancia.periodoDeUso.label" default="Periodo De Uso" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'periodoDeUso', 'errors')}">
-                                    <g:textField name="periodoDeUso" value="${instanciaInstance?.periodoDeUso}" />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>
