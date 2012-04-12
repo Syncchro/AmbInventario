@@ -51,6 +51,6 @@ class Host {
 	def criticidadeMemoria = { nivel ->
 		nivel = Integer.parseInt(nivel)
 		def porcentagem = ((ram?ram:0) / memoriaRestante()) * 100
-		porcentagem > nivel ? "OK" : "NOK"
+		porcentagem >= nivel ? "OK" : "NOK"
 	}
 }
