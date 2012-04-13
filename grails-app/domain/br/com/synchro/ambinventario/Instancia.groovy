@@ -8,21 +8,29 @@ class Instancia {
 	String urlConsole
 	Date dataInicio
 	Date dataFim
-	Software software
+	Ambiente ambiente
 	Solicitante solicitante
+	String usuario
+	String senha
 	transient String periodoDeUso
+	transient Host host
+	transient Software software
 	
-    static belongsTo = [Software, Solicitante] 
+    static belongsTo = [Ambiente, Solicitante] 
     
 	static constraints = {
 		nome(blank:false)
 		observacao(nullable:true)
 		urlConsole(nullable:true)
-		software(nullable:true)
+		ambiente(nullable:true)
 		ram(nullable:true)
 		solicitante(nullable:false,blank:false)
+		host(nullable:false,blank:false)
+		software(nullable:false,blank:false)
 		dataInicio(nullable:true)
-		dataFim(nullable:true)		
+		dataFim(nullable:true)	
+		usuario(nullable:true)
+		senha(nullable:true)
     }
 
 	public String toString() {

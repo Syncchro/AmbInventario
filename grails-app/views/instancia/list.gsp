@@ -30,7 +30,7 @@
                         
                             <g:sortableColumn property="urlConsole" title="${message(code: 'instancia.urlConsole.label', default: 'Url Console')}" />
                         
-                            <th><g:message code="instancia.software.label" default="Software" /></th>
+                            <th><g:message code="instancia.ambiente.label" default="Ambiente" /></th>
                         
                             <g:sortableColumn property="ram" title="${message(code: 'instancia.ram.label', default: 'Ram')}" />
                         
@@ -48,7 +48,7 @@
                         
                             <td>${fieldValue(bean: instanciaInstance, field: "urlConsole")}</td>
                         
-                            <td>${fieldValue(bean: instanciaInstance, field: "software")}</td>
+                            <td>${fieldValue(bean: instanciaInstance, field: "ambiente")}</td>
                         
                             <td>${fieldValue(bean: instanciaInstance, field: "ram")}</td>
                         

@@ -51,9 +51,9 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="instancia.software.label" default="Software" /></td>
+                            <td valign="top" class="name"><g:message code="instancia.ambiente.label" default="Ambiente" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="software" action="show" id="${instanciaInstance?.software?.id}">${instanciaInstance?.software?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="ambiente" action="show" id="${instanciaInstance?.ambiente?.id}">${instanciaInstance?.ambiente?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
@@ -68,6 +68,20 @@
                             <td valign="top" class="name"><g:message code="instancia.solicitante.label" default="Solicitante" /></td>
                             
                             <td valign="top" class="value"><g:link controller="solicitante" action="show" id="${instanciaInstance?.solicitante?.id}">${instanciaInstance?.solicitante?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="instancia.host.label" default="Host" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="host" action="show" id="${instanciaInstance?.host?.id}">${instanciaInstance?.host?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="instancia.software.label" default="Software" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="software" action="show" id="${instanciaInstance?.software?.id}">${instanciaInstance?.software?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     

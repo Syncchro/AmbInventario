@@ -57,10 +57,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="software"><g:message code="instancia.software.label" default="Software" /></label>
+                                    <label for="ambiente"><g:message code="instancia.ambiente.label" default="Ambiente" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'software', 'errors')}">
-                                    <g:select name="software.id" from="${br.com.synchro.ambinventario.Software.list()}" optionKey="id" value="${instanciaInstance?.software?.id}" noSelection="['null': '']" />
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'ambiente', 'errors')}">
+                                    <g:select name="ambiente.id" from="${br.com.synchro.ambinventario.Ambiente.list()}" optionKey="id" value="${instanciaInstance?.ambiente?.id}" noSelection="['null': '']" />
                                 </td>
                             </tr>
                         
@@ -84,6 +84,24 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
+                                    <label for="host"><g:message code="instancia.host.label" default="Host" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'host', 'errors')}">
+                                    <g:select name="host.id" from="${br.com.synchro.ambinventario.Host.list()}" optionKey="id" value="${instanciaInstance?.host?.id}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="software"><g:message code="instancia.software.label" default="Software" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'software', 'errors')}">
+                                    <g:select name="software.id" from="${br.com.synchro.ambinventario.Software.list()}" optionKey="id" value="${instanciaInstance?.software?.id}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
                                     <label for="dataInicio"><g:message code="instancia.dataInicio.label" default="Data Inicio" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataInicio', 'errors')}">
@@ -97,6 +115,15 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataFim', 'errors')}">
                                     <g:datePicker name="dataFim" precision="day" value="${instanciaInstance?.dataFim}" default="none" noSelection="['': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="periodoDeUso"><g:message code="instancia.periodoDeUso.label" default="Periodo De Uso" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'periodoDeUso', 'errors')}">
+                                    <g:textField name="periodoDeUso" value="${instanciaInstance?.periodoDeUso}" />
                                 </td>
                             </tr>
                         

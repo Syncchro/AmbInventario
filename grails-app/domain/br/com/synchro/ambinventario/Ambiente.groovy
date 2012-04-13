@@ -5,4 +5,7 @@ class Ambiente {
 	Host host
 	Software software
 	
+	public String toString(){
+		"${host} - ${software}"
+	}
 }

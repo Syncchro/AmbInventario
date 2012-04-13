@@ -12,6 +12,11 @@ class HostController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [hostInstanceList: Host.list(params), hostInstanceTotal: Host.count()]
     }
+	
+	def overview = {
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+		[hostInstanceList: Host.list(params), hostInstanceTotal: Host.count()]
+	}
 
     def create = {
         def hostInstance = new Host()

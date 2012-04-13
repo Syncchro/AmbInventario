@@ -21,6 +21,20 @@ class InstanciaController {
 
     def save = {
         def instanciaInstance = new Instancia(params)
+		
+		//Seta o ambiente, que é a combinação entre um host e um software:
+		Ambiente ambiente = Ambiente.findByHostAndSoftware(instanciaInstance.host,instanciaInstance.software)
+		if(!ambiente){
+			ambiente = new Ambiente()
+			ambiente.setHost(instanciaInstance.host)
+			ambiente.setSoftware(instanciaInstance.software)
+			if (!ambiente.save(flush: true)) {
+				flash.message = "${message(code: 'erro.salvar.ambiente', args: [ambiente.host.nome, ambiente.software.software])}"
+				render(view: "create", model: [instanciaInstance: instanciaInstance])
+			}
+		}
+		instanciaInstance.setAmbiente(ambiente)
+		
         if (instanciaInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'instancia.label', default: 'Instancia'), instanciaInstance.id])}"
             redirect(action: "show", id: instanciaInstance.id)
@@ -65,6 +79,20 @@ class InstanciaController {
                 }
             }
             instanciaInstance.properties = params
+			
+			//Seta o ambiente, que é a combinação entre um host e um software:
+			Ambiente ambiente = Ambiente.findByHostAndSoftware(instanciaInstance.host,instanciaInstance.software)
+			if(!ambiente){
+				ambiente = new Ambiente()
+				ambiente.setHost(instanciaInstance.host)
+				ambiente.setSoftware(instanciaInstance.software)
+				if (!ambiente.save(flush: true)) {
+					flash.message = "${message(code: 'erro.salvar.ambiente', args: [ambiente.host.nome, ambiente.software.software])}"
+					render(view: "create", model: [instanciaInstance: instanciaInstance])
+				}
+			}
+			instanciaInstance.setAmbiente(ambiente)
+			
             if (!instanciaInstance.hasErrors() && instanciaInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'instancia.label', default: 'Instancia'), instanciaInstance.id])}"
                 redirect(action: "show", id: instanciaInstance.id)

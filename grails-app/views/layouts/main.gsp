@@ -5,9 +5,11 @@
         <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <link type="text/css" href="${resource(dir:'css/menu',file:'menu.css')}" rel="stylesheet" />
+        <link type="text/css" href="${resource(dir:'css/treeview',file:'treeview.css')}" rel="stylesheet" />
 		<script type="text/javascript" src="${resource(dir:'js',file:'jquery.js')}"></script>
 		<script type="text/javascript" src="${resource(dir:'js/menu',file:'menu.js')}"></script>
-        <g:layoutHead />
+		<script type="text/javascript" src="${resource(dir:'js/treeview',file:'jquery.treeview.js')}"></script>
+		<g:layoutHead />
         <g:javascript library="application" />
     </head>
     <body>
@@ -56,8 +58,9 @@
 				</div>
 			</g:if>
 		</div>
-		
-		<g:layoutBody />
+		<div style="width:1280px; padding-left:50%; margin-left:-640px;">
+			<g:layoutBody />
+		</div>
         </div>
     </body>
 </html>

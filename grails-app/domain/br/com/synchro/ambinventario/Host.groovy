@@ -12,7 +12,7 @@ class Host {
 	Boolean fisico
 		
 	static belongsTo = [Local,SO]
-	static hasMany = [softwares:Software, ambientes:Ambiente]
+	static hasMany = [ambientes:Ambiente]
 	
     static constraints = {
 		nome(blank:false , maxSize:50 , unique:true , minSize:5)
@@ -35,9 +35,9 @@ class Host {
 	 */
 	def memoriaRestante = {
 		def espacoUtilizado = 0
-		for(software in softwares){
-			for(instancia in software.instancias){
-				espacoUtilizado += instancia.ram?:0
+		ambientes.each {
+			it.software.instancias.each {
+				espacoUtilizado += it.ram?:0
 			}
 		}
 		((ram?:0) - espacoUtilizado)
@@ -52,5 +52,19 @@ class Host {
 		nivel = Integer.parseInt(nivel)
 		def porcentagem = ((ram?ram:0) / memoriaRestante()) * 100
 		porcentagem >= nivel ? "OK" : "NOK"
+	}
+	
+	/**
+	 * Retorna os softwares relacionados com o Host e que possuem alguma instância.
+	 */
+	def softwareList = {
+		def softwares = []
+		def ambientes = this.ambientes
+		for(Ambiente ambiente in ambientes){
+			if(ambiente.software.instancias.size() > 0){
+			    softwares.add(ambiente.software)
+			}
+		}
+		softwares
 	}
 }
