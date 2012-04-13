@@ -120,10 +120,10 @@
 	$(function(){
 
 		$('#lcl').change(function(){
-			desabilitaCampo();	  
+			desabilitaFisico();	  
 		});
 				
-		function desabilitaCampo(){
+		function desabilitaFisico(){
 			var selected = !$('#lcl option:selected').val() == 'null' || $('#lcl option:selected').val() > 0;
 			if(!selected)
 				$('#fisico').removeAttr('disabled');
@@ -132,6 +132,21 @@
 				$('#fisico').attr('checked',false);
 		}
 	});
-    </script>
+
+			
+	$('#fisico').change(function() {
+		desabilitaLocal();
+	});
+
+	function desabilitaLocal() {
+		
+		var disabled = $('#lcl').attr('disabled');
+		if (disabled)
+			$('#lcl').removeAttr('disabled');
+		else 
+			$('#lcl').attr('disabled', 'disabled');
+		    			
+	}
+	</script>
 </body>
 </html>
