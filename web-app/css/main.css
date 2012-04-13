@@ -322,12 +322,11 @@ th.desc a {
             margin-right:20px;
         }
         
-        .memoriaOk {
+        .criticidadeMemoriaOK {
         	color: green;
         	font-weight: bold;
         }
         
-        .memoriaNOk {
+        .criticidadeMemoriaNOK {
         	color: red;
-        	font-weight: bold;
         }
