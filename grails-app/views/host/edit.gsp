@@ -2,7 +2,6 @@
 
 <%@ page import="br.com.synchro.ambinventario.Host"%>
 <html>
-<<<<<<< HEAD
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />

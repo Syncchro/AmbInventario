@@ -57,15 +57,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="ambiente"><g:message code="instancia.ambiente.label" default="Ambiente" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'ambiente', 'errors')}">
-                                    <g:select name="ambiente.id" from="${br.com.synchro.ambinventario.Ambiente.list()}" optionKey="id" value="${instanciaInstance?.ambiente?.id}" noSelection="['null': '']" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="ram"><g:message code="instancia.ram.label" default="Ram" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'ram', 'errors')}">
@@ -115,15 +106,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataFim', 'errors')}">
                                    <calendar:datePicker name="dataFim" defaultValue="${new Date()}" dateFormat="%m/%d/%Y" showTime=false/>
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="periodoDeUso"><g:message code="instancia.periodoDeUso.label" default="Periodo De Uso" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'periodoDeUso', 'errors')}">
-                                    <g:textField name="periodoDeUso" value="${instanciaInstance?.periodoDeUso}" />
                                 </td>
                             </tr>
                         

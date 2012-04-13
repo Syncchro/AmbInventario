@@ -39,6 +39,12 @@
 							</g:each>
 						</ul>
 					</div></li>
+					<li>
+						<g:link controller="host" action="overview">
+							<span><g:message
+								code="menu.overview" /></span>
+						</g:link>
+					</li>
 			</ul>
 			</g:if>
 			<g:if test="${!new LoginController().isLoggedIn()}">
