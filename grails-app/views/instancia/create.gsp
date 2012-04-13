@@ -105,16 +105,16 @@
                                     <label for="dataInicio"><g:message code="instancia.dataInicio.label" default="Data Inicio" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataInicio', 'errors')}">
-                                    <g:datePicker name="dataInicio" precision="day" value="${instanciaInstance?.dataInicio}" default="none" noSelection="['': '']" />
+                                     <calendar:datePicker name="dataInicio" defaultValue="${new Date()}" dateFormat="%m/%d/%Y" showTime=false/>
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="dataFim"><g:message code="instancia.dataFim.label" default="Data Fim" /></label>
+                                    <label for="dataFim"><g:message code="instancia.dataFim.label" default="data Fim" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: instanciaInstance, field: 'dataFim', 'errors')}">
-                                    <g:datePicker name="dataFim" precision="day" value="${instanciaInstance?.dataFim}" default="none" noSelection="['': '']" />
+                                   <calendar:datePicker name="dataFim" defaultValue="${new Date()}" dateFormat="%m/%d/%Y" showTime=false/>
                                 </td>
                             </tr>
                         

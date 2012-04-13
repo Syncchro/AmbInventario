@@ -1,7 +1,8 @@
 
 
-<%@ page import="br.com.synchro.ambinventario.Host" %>
+<%@ page import="br.com.synchro.ambinventario.Host"%>
 <html>
+<<<<<<< HEAD
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
@@ -137,5 +138,34 @@
                 </div>
             </g:form>
         </div>
+        <script type="text/javascript">
+	        $(function(){
+		       $('#lcl').change(function(){
+			   desabilitaLocal();	  
+		       });
+				
+				function desabilitaLocal(){
+					var selected = !$('#lcl option:selected').val() == 'null' || $('#lcl option:selected').val() > 0;
+					if(!selected)
+						$('#fisico').removeAttr('disabled');
+					else
+						$('#fisico').attr('disabled','disabled');
+						$('#fisico').attr('checked',false);
+				}
+			});
+			    	$('#fisico').change(function() {
+			    		desabilitaLocal();
+			    	});
+		
+			    	function desabilitaLocal() {
+			    		
+			    		var disabled = $('#lcl').attr('disabled');
+			    		if (disabled)
+			    			$('#lcl').removeAttr('disabled');
+			    		else 
+			    			$('#lcl').attr('disabled', 'disabled');
+			    		    			
+			}
+		    </script>
     </body>
 </html>
