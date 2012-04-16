@@ -19,7 +19,7 @@
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
-        <br/>
+        <h1>Hosts - Overview</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -27,7 +27,7 @@
                 <table style="padding: 0px;margin:0 auto;width:1280px;">
                     <thead>
                         <tr>
-                            <th><g:message code="host.nome.label" default="Hosts - Overview" /></th>
+                            <g:sortableColumn property="nome" title="${message(code: 'host.nome.label', default: 'Host')}" />
                         </tr>
                     </thead>
                     <tbody>
