@@ -119,15 +119,6 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="softwares"><g:message code="host.softwares.label" default="Softwares" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: hostInstance, field: 'softwares', 'errors')}">
-                                    <g:select name="softwares" from="${br.com.synchro.ambinventario.Software.list()}" multiple="yes" optionKey="id" size="5" value="${hostInstance?.softwares*.id}" />
-                                </td>
-                            </tr>
-                        
                         </tbody>
                     </table>
                 </div>

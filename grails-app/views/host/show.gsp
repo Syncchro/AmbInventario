@@ -110,7 +110,7 @@
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${hostInstance.softwares}" var="s">
+                                <g:each in="${hostInstance.softwareList()}" var="s">
                                     <li><g:link controller="software" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
