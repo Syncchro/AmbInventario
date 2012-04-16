@@ -16,4 +16,17 @@ class Software {
 		"${software} ${versao}"
 	}
 	
+	def instanciaList = { host ->
+		def insts = []
+		if(host){
+			for(Instancia instancia in this.instancias){
+				if(instancia.host.id.equals(host.id)){
+						insts.add(instancia)
+				}
+			}
+		} else {
+			insts = this.instancias
+		}
+		insts
+	}
 }

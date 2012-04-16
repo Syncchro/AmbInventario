@@ -51,9 +51,9 @@
 										<ul>
 											<g:each in="${hostInstance.softwareList()}" status="j" var="softwareInstance">
 												<g:if test="${!softwareInstance.instancias.isEmpty()}">
-													<li><span class="software">${softwareInstance.software}</span>
+													<li><span class="software">${softwareInstance}</span>
 														<ul id="folder${softwareInstance.software}">
-															<g:each in="${softwareInstance.instancias}" status="k" var="instanciaInstance">
+															<g:each in="${softwareInstance.instanciaList(hostInstance)}" status="k" var="instanciaInstance">
 																<li><span class="file">${instanciaInstance.nome}</span>
 																<div class="details">
 																	<div class="detailsBody">
@@ -71,7 +71,7 @@
 													</li>
 												</g:if>
 												<g:if test="${softwareInstance.instancias.isEmpty()}">
-													<span class="folder">${softwareInstance.software}</span>
+													<span class="folder">${softwareInstance}</span>
 												</g:if>
 											</g:each>
 										</ul></li>
